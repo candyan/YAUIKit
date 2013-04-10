@@ -37,7 +37,7 @@ CGFloat viewScale = 0.7;
                   [[fromView.subviews lastObject] setAlpha:.7];
                 }
                 completion:^(UIView *fromView, UIView *toView) {
-                  fromView.transform = CGAffineTransformMakeScale(1, 1);
+                  fromView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeRotation(0));
                   [[fromView.subviews lastObject] removeFromSuperview];
                 }];
 }
@@ -45,14 +45,14 @@ CGFloat viewScale = 0.7;
 - (UIViewController *) popViewControllerWithDemoAnimation {
   return [self popViewControllerWithDuration:.5f
                                   prelayouts:^(UIView *fromView, UIView *toView) {
-                                    toView.transform = CGAffineTransformMakeScale(viewScale, viewScale);
+                                    toView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(viewScale, viewScale), CGAffineTransformMakeRotation(M_PI));
                                     UIView *shadowView = [[UIView alloc] initWithFrame:fromView.frame];
                                     shadowView.backgroundColor = [UIColor blackColor];
                                     shadowView.alpha = .7;
                                     [toView addSubview:shadowView];
                                   }
                                   animations:^(UIView *fromView, UIView *toView) {
-                                    toView.transform = CGAffineTransformMakeScale(1, 1);
+                                    toView.transform = fromView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeRotation(0));
                                     fromView.frame = CGRectMake(fromView.frame.size.width,
                                                                 0,
                                                                 fromView.frame.size.width,

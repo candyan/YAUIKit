@@ -7,9 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "PlaceHolderTextViewController.h"
-
-#import "UINavigationController+Demo.h"
+#import "ViewControllerHeader.h"
 
 @interface ViewController ()
 
@@ -37,7 +35,7 @@
 
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,8 +44,18 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YAUIKitCell"];
   }
   
-  if (indexPath.row == 0) {
-    [cell.textLabel setText:@"YA PlaceHolder TextView"];
+  switch (indexPath.row) {
+    case 0: {
+      [cell.textLabel setText:@"YA PlaceHolder TextView"];
+      break;
+    }
+      
+    case 1: {
+      [cell.textLabel setText:@"AlertView & ActionSheet"];
+    }
+      
+    default:
+      break;
   }
   return cell;
 }
@@ -57,10 +65,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row == 0) {
-    PlaceHolderTextViewController *viewController = [[PlaceHolderTextViewController alloc] initWithNibName:@"PlaceHolderTextViewController" bundle:nil];
-    [self.navigationController pushViewControllerWithDemoAnimation:viewController];
+  UIViewController *pushViewController = nil;
+  switch (indexPath.row) {
+    case 0: {
+      pushViewController = [[PlaceHolderTextViewController alloc] initWithNibName:@"PlaceHolderTextViewController" bundle:nil];
+      break;
+    }
+      
+    case 1: {
+      pushViewController = [[AlertAndASViewController alloc] initWithNibName:@"AlertAndASViewController" bundle:nil];
+    }
+      
+    default:
+      break;
   }
+  
+  [self.navigationController pushViewControllerWithDemoAnimation:pushViewController];
 }
 
 @end

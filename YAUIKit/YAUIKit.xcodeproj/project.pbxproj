@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */; };
+		4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
+		4C59B9E6171548E4003B7FC2 /* AlertAndASViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E5171548E4003B7FC2 /* AlertAndASViewController.m */; };
+		4C59B9E9171549FD003B7FC2 /* AlertAndASViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C59B9E8171549FC003B7FC2 /* AlertAndASViewController.xib */; };
+		4C59B9EA17154DC7003B7FC2 /* YAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */; };
+		4C59B9EB17154DCB003B7FC2 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
 		4C5C3D791713E53D00F706A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D781713E53D00F706A7 /* Foundation.framework */; };
 		4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3D891713E96000F706A7 /* YAPlaceHolderTextView.m */; };
 		4C5C3D911713F3A400F706A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D901713F3A400F706A7 /* UIKit.framework */; };
@@ -86,6 +92,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C59B9DD17150D3C003B7FC2 /* YAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAAlertView.h; sourceTree = "<group>"; };
+		4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAAlertView.m; sourceTree = "<group>"; };
+		4C59B9E0171542A4003B7FC2 /* YAActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAActionSheet.h; sourceTree = "<group>"; };
+		4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAActionSheet.m; sourceTree = "<group>"; };
+		4C59B9E4171548E4003B7FC2 /* AlertAndASViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertAndASViewController.h; sourceTree = "<group>"; };
+		4C59B9E5171548E4003B7FC2 /* AlertAndASViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertAndASViewController.m; sourceTree = "<group>"; };
+		4C59B9E71715490B003B7FC2 /* ViewControllerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerHeader.h; sourceTree = "<group>"; };
+		4C59B9E8171549FC003B7FC2 /* AlertAndASViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertAndASViewController.xib; sourceTree = "<group>"; };
 		4C5C3D751713E53D00F706A7 /* libYAUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYAUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C3D781713E53D00F706A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C5C3D7C1713E53D00F706A7 /* YAUIKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YAUIKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -152,6 +166,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C59B9DB17150C84003B7FC2 /* YAAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				4C59B9DD17150D3C003B7FC2 /* YAAlertView.h */,
+				4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */,
+			);
+			path = YAAlertView;
+			sourceTree = "<group>";
+		};
+		4C59B9DC17150C84003B7FC2 /* YAActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4C59B9E0171542A4003B7FC2 /* YAActionSheet.h */,
+				4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */,
+			);
+			path = YAActionSheet;
+			sourceTree = "<group>";
+		};
+		4C59B9E3171548CC003B7FC2 /* AlertAndActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4C59B9E4171548E4003B7FC2 /* AlertAndASViewController.h */,
+				4C59B9E5171548E4003B7FC2 /* AlertAndASViewController.m */,
+				4C59B9E8171549FC003B7FC2 /* AlertAndASViewController.xib */,
+			);
+			path = AlertAndActionSheet;
+			sourceTree = "<group>";
+		};
 		4C5C3D6C1713E53D00F706A7 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +246,8 @@
 		4C5C3D861713E64300F706A7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4C59B9DB17150C84003B7FC2 /* YAAlertView */,
+				4C59B9DC17150C84003B7FC2 /* YAActionSheet */,
 				4C5C3D871713E66900F706A7 /* YAPlaceHolderTextView */,
 			);
 			path = Source;
@@ -221,8 +265,10 @@
 		4C5C3D951713F3A400F706A7 /* YAUIKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C59B9E3171548CC003B7FC2 /* AlertAndActionSheet */,
 				4C5C3DEC1714218700F706A7 /* PlaceHolderTextViewController */,
 				4C5C3DE717141DC600F706A7 /* Extend */,
+				4C59B9E71715490B003B7FC2 /* ViewControllerHeader.h */,
 				4C5C3D9E1713F3A400F706A7 /* AppDelegate.h */,
 				4C5C3D9F1713F3A400F706A7 /* AppDelegate.m */,
 				4C5C3DA71713F3A400F706A7 /* ViewController.h */,
@@ -394,6 +440,7 @@
 				4C5C3DA61713F3A400F706A7 /* Default-568h@2x.png in Resources */,
 				4C5C3DAC1713F3A400F706A7 /* ViewController.xib in Resources */,
 				4C5C3DF1171421A100F706A7 /* PlaceHolderTextViewController.xib in Resources */,
+				4C59B9E9171549FD003B7FC2 /* AlertAndASViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +452,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */,
+				4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */,
+				4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +466,7 @@
 				4C5C3DA91713F3A400F706A7 /* ViewController.m in Sources */,
 				4C5C3DEA17141E3B00F706A7 /* UINavigationController+Demo.m in Sources */,
 				4C5C3DF0171421A100F706A7 /* PlaceHolderTextViewController.m in Sources */,
+				4C59B9E6171548E4003B7FC2 /* AlertAndASViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +474,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C59B9EB17154DCB003B7FC2 /* YAActionSheet.m in Sources */,
+				4C59B9EA17154DC7003B7FC2 /* YAAlertView.m in Sources */,
 				4C5C3DD717141B8700F706A7 /* YAPlaceHolderTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
