@@ -1,0 +1,3 @@
+[submodule "Dependency/YAToolKit"]
+	path = Dependency/YAToolKit
+	url = git://github.com/sampleYan/YAToolKit.git
