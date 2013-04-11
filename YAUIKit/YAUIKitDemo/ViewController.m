@@ -35,7 +35,7 @@
 
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 2;
+  return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,6 +52,12 @@
       
     case 1: {
       [cell.textLabel setText:@"AlertView & ActionSheet"];
+      break;
+    }
+      
+    case 2: {
+      [cell.textLabel setText:@"Picker View"];
+      break;
     }
       
     default:
@@ -75,6 +81,11 @@
       
     case 1: {
       pushViewController = [[AlertAndASViewController alloc] initWithNibName:@"AlertAndASViewController" bundle:nil];
+      break;
+    }
+    case 2:{
+      pushViewController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
+      break;
     }
       
     default:

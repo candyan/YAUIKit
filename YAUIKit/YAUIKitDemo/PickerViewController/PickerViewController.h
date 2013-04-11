@@ -10,4 +10,8 @@
 
 @interface PickerViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *componentTextField;
+
+- (IBAction)showPickerView:(id)sender;
+
 @end

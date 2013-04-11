@@ -11,8 +11,6 @@
 		4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
 		4C59B9E6171548E4003B7FC2 /* AlertAndASViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E5171548E4003B7FC2 /* AlertAndASViewController.m */; };
 		4C59B9E9171549FD003B7FC2 /* AlertAndASViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C59B9E8171549FC003B7FC2 /* AlertAndASViewController.xib */; };
-		4C59B9EA17154DC7003B7FC2 /* YAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */; };
-		4C59B9EB17154DCB003B7FC2 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
 		4C59BA0017156255003B7FC2 /* YAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9FF17156255003B7FC2 /* YAPickerView.m */; };
 		4C5C3D791713E53D00F706A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D781713E53D00F706A7 /* Foundation.framework */; };
 		4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3D891713E96000F706A7 /* YAPlaceHolderTextView.m */; };
@@ -29,17 +27,13 @@
 		4C5C3DAC1713F3A400F706A7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DAA1713F3A400F706A7 /* ViewController.xib */; };
 		4C5C3DBC1713F4BF00F706A7 /* libYAToolKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DB61713F46F00F706A7 /* libYAToolKit.a */; };
 		4C5C3DBD1713F50400F706A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D901713F3A400F706A7 /* UIKit.framework */; };
-		4C5C3DD717141B8700F706A7 /* YAPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3D891713E96000F706A7 /* YAPlaceHolderTextView.m */; };
-		4C5C3DD917141B8700F706A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D901713F3A400F706A7 /* UIKit.framework */; };
-		4C5C3DDB17141B8700F706A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D781713E53D00F706A7 /* Foundation.framework */; };
-		4C5C3DE517141BF300F706A7 /* libYAUIKit(no YAToolKit).a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DE017141B8700F706A7 /* libYAUIKit(no YAToolKit).a */; };
-		4C5C3DE617141BF800F706A7 /* libYAToolKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DB61713F46F00F706A7 /* libYAToolKit.a */; };
 		4C5C3DEA17141E3B00F706A7 /* UINavigationController+Demo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3DE917141E3B00F706A7 /* UINavigationController+Demo.m */; };
 		4C5C3DF0171421A100F706A7 /* PlaceHolderTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3DEE171421A100F706A7 /* PlaceHolderTextViewController.m */; };
 		4C5C3DF1171421A100F706A7 /* PlaceHolderTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DEF171421A100F706A7 /* PlaceHolderTextViewController.xib */; };
 		4C5C3DF417146B7000F706A7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DF317146B6F00F706A7 /* QuartzCore.framework */; };
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
+		4C611255171662AC006CC59B /* libYAUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D751713E53D00F706A7 /* libYAUIKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,33 +51,17 @@
 			remoteGlobalIDString = 4C693A53171108F80001ACA7;
 			remoteInfo = YAToolKit;
 		};
-		4C5C3DE117141BAB00F706A7 /* PBXContainerItemProxy */ = {
+		4C6112531716629F006CC59B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C5C3D6D1713E53D00F706A7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4C5C3DD317141B8700F706A7;
-			remoteInfo = "YAUIKit(no YAToolKit)";
-		};
-		4C5C3DE317141BB000F706A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C5C3DB11713F46D00F706A7 /* YAToolKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4C693A53171108F80001ACA7;
-			remoteInfo = YAToolKit;
+			remoteGlobalIDString = 4C5C3D741713E53D00F706A7;
+			remoteInfo = YAUIKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4C5C3D731713E53D00F706A7 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4C5C3DDC17141B8700F706A7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/${PRODUCT_NAME}";
@@ -126,7 +104,6 @@
 		4C5C3DA81713F3A400F706A7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4C5C3DAB1713F3A400F706A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		4C5C3DB11713F46D00F706A7 /* YAToolKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YAToolKit.xcodeproj; path = ../../Dependency/YAToolKit/YAToolKit/YAToolKit.xcodeproj; sourceTree = "<group>"; };
-		4C5C3DE017141B8700F706A7 /* libYAUIKit(no YAToolKit).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libYAUIKit(no YAToolKit).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C3DE817141E3B00F706A7 /* UINavigationController+Demo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Demo.h"; sourceTree = "<group>"; };
 		4C5C3DE917141E3B00F706A7 /* UINavigationController+Demo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Demo.m"; sourceTree = "<group>"; };
 		4C5C3DED171421A100F706A7 /* PlaceHolderTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHolderTextViewController.h; sourceTree = "<group>"; };
@@ -153,21 +130,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C611255171662AC006CC59B /* libYAUIKit.a in Frameworks */,
 				4C5C3DF417146B7000F706A7 /* QuartzCore.framework in Frameworks */,
-				4C5C3DE617141BF800F706A7 /* libYAToolKit.a in Frameworks */,
-				4C5C3DE517141BF300F706A7 /* libYAUIKit(no YAToolKit).a in Frameworks */,
 				4C5C3D911713F3A400F706A7 /* UIKit.framework in Frameworks */,
 				4C5C3D921713F3A400F706A7 /* Foundation.framework in Frameworks */,
 				4C5C3D941713F3A400F706A7 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4C5C3DD817141B8700F706A7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C5C3DD917141B8700F706A7 /* UIKit.framework in Frameworks */,
-				4C5C3DDB17141B8700F706A7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +193,6 @@
 			children = (
 				4C5C3D751713E53D00F706A7 /* libYAUIKit.a */,
 				4C5C3D8F1713F3A400F706A7 /* YAUIKitDemo.app */,
-				4C5C3DE017141B8700F706A7 /* libYAUIKit(no YAToolKit).a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -389,30 +355,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				4C5C3DE417141BB000F706A7 /* PBXTargetDependency */,
-				4C5C3DE217141BAB00F706A7 /* PBXTargetDependency */,
+				4C6112541716629F006CC59B /* PBXTargetDependency */,
 			);
 			name = YAUIKitDemo;
 			productName = YAUIKitDemo;
 			productReference = 4C5C3D8F1713F3A400F706A7 /* YAUIKitDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4C5C3DD317141B8700F706A7 /* YAUIKit(no YAToolKit) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4C5C3DDD17141B8700F706A7 /* Build configuration list for PBXNativeTarget "YAUIKit(no YAToolKit)" */;
-			buildPhases = (
-				4C5C3DD617141B8700F706A7 /* Sources */,
-				4C5C3DD817141B8700F706A7 /* Frameworks */,
-				4C5C3DDC17141B8700F706A7 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "YAUIKit(no YAToolKit)";
-			productName = YAUIKit;
-			productReference = 4C5C3DE017141B8700F706A7 /* libYAUIKit(no YAToolKit).a */;
-			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -443,7 +391,6 @@
 			targets = (
 				4C5C3D741713E53D00F706A7 /* YAUIKit */,
 				4C5C3D8E1713F3A400F706A7 /* YAUIKitDemo */,
-				4C5C3DD317141B8700F706A7 /* YAUIKit(no YAToolKit) */,
 			);
 		};
 /* End PBXProject section */
@@ -502,16 +449,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C5C3DD617141B8700F706A7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C59B9EB17154DCB003B7FC2 /* YAActionSheet.m in Sources */,
-				4C59B9EA17154DC7003B7FC2 /* YAAlertView.m in Sources */,
-				4C5C3DD717141B8700F706A7 /* YAPlaceHolderTextView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -520,15 +457,10 @@
 			name = YAToolKit;
 			targetProxy = 4C5C3DBA1713F4B900F706A7 /* PBXContainerItemProxy */;
 		};
-		4C5C3DE217141BAB00F706A7 /* PBXTargetDependency */ = {
+		4C6112541716629F006CC59B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C5C3DD317141B8700F706A7 /* YAUIKit(no YAToolKit) */;
-			targetProxy = 4C5C3DE117141BAB00F706A7 /* PBXContainerItemProxy */;
-		};
-		4C5C3DE417141BB000F706A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = YAToolKit;
-			targetProxy = 4C5C3DE317141BB000F706A7 /* PBXContainerItemProxy */;
+			target = 4C5C3D741713E53D00F706A7 /* YAUIKit */;
+			targetProxy = 4C6112531716629F006CC59B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -696,32 +628,6 @@
 			};
 			name = Release;
 		};
-		4C5C3DDE17141B8700F706A7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DSTROOT = /tmp/YAUIKit.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "YAUIKit(no YAToolKit)";
-				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Debug;
-		};
-		4C5C3DDF17141B8700F706A7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DSTROOT = /tmp/YAUIKit.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "YAUIKit(no YAToolKit)";
-				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -748,15 +654,6 @@
 			buildConfigurations = (
 				4C5C3DAE1713F3A400F706A7 /* Debug */,
 				4C5C3DAF1713F3A400F706A7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4C5C3DDD17141B8700F706A7 /* Build configuration list for PBXNativeTarget "YAUIKit(no YAToolKit)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4C5C3DDE17141B8700F706A7 /* Debug */,
-				4C5C3DDF17141B8700F706A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
