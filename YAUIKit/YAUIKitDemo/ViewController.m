@@ -66,6 +66,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   UIViewController *pushViewController = nil;
+
   switch (indexPath.row) {
     case 0: {
       pushViewController = [[PlaceHolderTextViewController alloc] initWithNibName:@"PlaceHolderTextViewController" bundle:nil];
