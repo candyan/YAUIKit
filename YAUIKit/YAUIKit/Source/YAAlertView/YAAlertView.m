@@ -8,7 +8,9 @@
 
 #import "YAAlertView.h"
 
-@implementation YAAlertView
+@implementation YAAlertView {
+  YAAlertView *_selfRetain;
+}
 
 @synthesize alertView = _alertView;
 
@@ -33,7 +35,7 @@
                              cancelButtonTitle:nil
                              otherButtonTitles:nil];
     _block = [NSMutableArray array];
-    _strongAlertView = self;
+    _selfRetain = self;
   }
   
   return self;
@@ -84,7 +86,7 @@
       ((void (^)())obj)();
     }
   }
-  _strongAlertView = nil;
+  _selfRetain = nil;
 }
 
 @end

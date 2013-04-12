@@ -13,7 +13,7 @@
 @private
   UIAlertView *_alertView;
   NSMutableArray *_block;
-  YAAlertView *_strongAlertView;
+  
 }
 
 + (YAAlertView *)alertWithTitle:(NSString *)title;

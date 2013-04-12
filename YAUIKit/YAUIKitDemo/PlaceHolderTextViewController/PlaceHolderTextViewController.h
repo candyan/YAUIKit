@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 liu yan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface PlaceHolderTextViewController : UIViewController<UINavigationControllerDelegate>
+@interface PlaceHolderTextViewController : BaseViewController<UINavigationControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UITextField *changeColorTextField;
 

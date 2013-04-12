@@ -24,11 +24,13 @@ typedef void(^ValueChangedBlock)(BOOL on);
   
   UIImage *_toggleThumbImageOn;
   UIImage *_toggleThumbImageOff;
+  ValueChangedBlock _valueChangedBlock;
 }
 
 @property (nonatomic, assign) BOOL on;
 @property (nonatomic, assign) UIEdgeInsets thumbEdgeInsets;
-@property (nonatomic, copy) ValueChangedBlock valueChangedBlock;
+
+- (void)setValueChangedBlock:(void(^)(BOOL on))valueChangedBlock;
 
 - (void) setBackgroundImage:(UIImage *)backgroundImage toggleStatus:(YAToggleStatus)toggleStatus;
 - (void) setThumbImage:(UIImage *)thumbImage toggleStatus:(YAToggleStatus)toggleStatus;

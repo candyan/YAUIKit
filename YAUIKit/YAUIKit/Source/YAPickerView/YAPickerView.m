@@ -9,7 +9,9 @@
 #import "YAPickerView.h"
 #import "YAToolKit.h"
 
-@implementation YAPickerView
+@implementation YAPickerView {
+  YAPickerView *_selfRetain;
+}
 
 @dynamic component;
 @synthesize size = _size;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 liu yan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface AlertAndASViewController : UIViewController
+@interface AlertAndASViewController : BaseViewController
 
 - (IBAction)clickAlertButton:(id)sender;
 

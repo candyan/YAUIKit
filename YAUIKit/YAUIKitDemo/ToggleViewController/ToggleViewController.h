@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 liu yan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ToggleViewController : UIViewController
+@interface ToggleViewController : BaseViewController
 
 @end

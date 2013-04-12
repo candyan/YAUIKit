@@ -12,7 +12,6 @@ typedef void(^DidPickerSelected)(NSInteger row, NSInteger component, BOOL comple
 
 @interface YAPickerView : NSObject<UIPickerViewDataSource, UIPickerViewDelegate> {
   NSMutableArray *_componentArray;
-  YAPickerView *_selfRetain;
 }
 
 @property (nonatomic, readonly) NSInteger component;

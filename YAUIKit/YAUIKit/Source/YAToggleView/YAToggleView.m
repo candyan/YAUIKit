@@ -12,6 +12,9 @@
 
 @implementation YAToggleView
 
+@synthesize on = _on;
+@synthesize thumbEdgeInsets = _thumbEdgeInsets;
+
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
@@ -104,6 +107,10 @@
   
   _on = on;
   [self setValue:[NSNumber numberWithBool:on] forKey:@"on"];
+}
+
+- (void)setValueChangedBlock:(void(^)(BOOL on))valueChangedBlock {
+  _valueChangedBlock = valueChangedBlock;
 }
 
 #pragma mark - KVO

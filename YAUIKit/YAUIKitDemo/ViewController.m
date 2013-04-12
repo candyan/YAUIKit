@@ -35,7 +35,7 @@
 
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 4;
+  return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,6 +62,10 @@
       
     case 3: {
       [cell.textLabel setText:@"Toggle View"];
+      break;
+    }
+    case 4:{
+      [cell.textLabel setText:@"Search"];
       break;
     }
       
@@ -95,6 +99,10 @@
       
     case 3: {
       pushViewController = [[ToggleViewController alloc] initWithNibName:nil bundle:nil];
+      break;
+    }
+    case 4: {
+      pushViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
       break;
     }
       

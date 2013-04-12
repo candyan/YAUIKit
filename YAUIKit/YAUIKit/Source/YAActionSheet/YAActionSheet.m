@@ -12,7 +12,9 @@
 @property (nonatomic, retain, readwrite) UIActionSheet *sheet;
 @end
 
-@implementation YAActionSheet
+@implementation YAActionSheet {
+  YAActionSheet *_selfRetain;
+}
 
 @synthesize sheet = _sheet;
 
@@ -32,7 +34,7 @@
     self.sheet = actionSheet;    
     // Create the blocks storage for handling all button actions
     _blocks = [NSMutableArray array];
-    _strongActionSheet = self;
+    _selfRetain = self;
   }
   
   return self;
@@ -89,7 +91,7 @@
       ((void (^)())obj)();
     }
   }
-  _strongActionSheet = nil;
+  _selfRetain = nil;
 }
 
 - (NSUInteger)buttonCount {

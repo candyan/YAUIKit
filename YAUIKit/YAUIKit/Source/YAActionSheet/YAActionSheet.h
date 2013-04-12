@@ -13,7 +13,6 @@
 @private
   UIActionSheet *_sheet;
   NSMutableArray *_blocks;
-  YAActionSheet *_strongActionSheet;
 }
 
 @property (nonatomic, retain, readonly) UIActionSheet *sheet;

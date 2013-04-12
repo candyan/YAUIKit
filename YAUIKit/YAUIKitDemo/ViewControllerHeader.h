@@ -13,6 +13,7 @@
 #import "AlertAndASViewController.h"
 #import "PickerViewController.h"
 #import "ToggleViewController.h"
+#import "SearchViewController.h"
 
 #import "UINavigationController+Demo.h"
 #import "UIView+YAToolKit.h"

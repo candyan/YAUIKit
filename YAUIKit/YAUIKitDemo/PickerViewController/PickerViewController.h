@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 liu yan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface PickerViewController : UIViewController
+@interface PickerViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *componentTextField;
 
