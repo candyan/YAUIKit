@@ -35,7 +35,7 @@
 
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 3;
+  return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,6 +57,11 @@
       
     case 2: {
       [cell.textLabel setText:@"Picker View"];
+      break;
+    }
+      
+    case 3: {
+      [cell.textLabel setText:@"Toggle View"];
       break;
     }
       
@@ -83,8 +88,13 @@
       pushViewController = [[AlertAndASViewController alloc] initWithNibName:@"AlertAndASViewController" bundle:nil];
       break;
     }
-    case 2:{
+    case 2: {
       pushViewController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
+      break;
+    }
+      
+    case 3: {
+      pushViewController = [[ToggleViewController alloc] initWithNibName:nil bundle:nil];
       break;
     }
       

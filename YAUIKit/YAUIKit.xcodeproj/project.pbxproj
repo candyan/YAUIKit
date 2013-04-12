@@ -34,6 +34,14 @@
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
 		4C611255171662AC006CC59B /* libYAUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D751713E53D00F706A7 /* libYAUIKit.a */; };
+		4C61125917167FF5006CC59B /* YAToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61125817167FF5006CC59B /* YAToggleView.m */; };
+		4CEF06CA1716AC8F00AD7913 /* ToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */; };
+		4CEF06D01716B09600AD7913 /* toggle_bg_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
+		4CEF06D11716B09600AD7913 /* toggle_bg_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
+		4CEF06D21716B09600AD7913 /* toggle_thumb_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
+		4CEF06D31716B53200AD7913 /* toggle_bg_off@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
+		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
+		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,12 +71,15 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		4C5C3D731713E53D00F706A7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 7;
 			files = (
+				4CEF06D31716B53200AD7913 /* toggle_bg_off@2x.png in CopyFiles */,
+				4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */,
+				4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -113,6 +124,13 @@
 		4C61123717165644006CC59B /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		4C61123817165644006CC59B /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		4C61123917165644006CC59B /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
+		4C61125717167FF5006CC59B /* YAToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAToggleView.h; sourceTree = "<group>"; };
+		4C61125817167FF5006CC59B /* YAToggleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAToggleView.m; sourceTree = "<group>"; };
+		4CEF06C81716AC8F00AD7913 /* ToggleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleViewController.h; sourceTree = "<group>"; };
+		4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleViewController.m; sourceTree = "<group>"; };
+		4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_bg_off@2x.png"; sourceTree = "<group>"; };
+		4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_bg_on@2x.png"; sourceTree = "<group>"; };
+		4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_thumb_btn@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +231,7 @@
 			children = (
 				4C5C3D861713E64300F706A7 /* Source */,
 				4C5C3DB01713F3E500F706A7 /* Dependency */,
+				4CEF06CB1716AEAE00AD7913 /* Resource */,
 				4C5C3D7B1713E53D00F706A7 /* Supporting Files */,
 			);
 			path = YAUIKit;
@@ -229,6 +248,7 @@
 		4C5C3D861713E64300F706A7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4C6112561716742B006CC59B /* YAToggleView */,
 				4C59B9FD1715620A003B7FC2 /* YAPickerView */,
 				4C59B9DB17150C84003B7FC2 /* YAAlertView */,
 				4C59B9DC17150C84003B7FC2 /* YAActionSheet */,
@@ -249,6 +269,7 @@
 		4C5C3D951713F3A400F706A7 /* YAUIKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4CEF06C71716AC5E00AD7913 /* ToggleViewController */,
 				4C61123617165634006CC59B /* PickerViewController */,
 				4C59B9E3171548CC003B7FC2 /* AlertAndActionSheet */,
 				4C5C3DEC1714218700F706A7 /* PlaceHolderTextViewController */,
@@ -321,6 +342,42 @@
 				4C61123917165644006CC59B /* PickerViewController.xib */,
 			);
 			path = PickerViewController;
+			sourceTree = "<group>";
+		};
+		4C6112561716742B006CC59B /* YAToggleView */ = {
+			isa = PBXGroup;
+			children = (
+				4C61125717167FF5006CC59B /* YAToggleView.h */,
+				4C61125817167FF5006CC59B /* YAToggleView.m */,
+			);
+			path = YAToggleView;
+			sourceTree = "<group>";
+		};
+		4CEF06C71716AC5E00AD7913 /* ToggleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF06C81716AC8F00AD7913 /* ToggleViewController.h */,
+				4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */,
+			);
+			path = ToggleViewController;
+			sourceTree = "<group>";
+		};
+		4CEF06CB1716AEAE00AD7913 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF06CC1716AF1C00AD7913 /* YAToggleView */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4CEF06CC1716AF1C00AD7913 /* YAToggleView */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */,
+				4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */,
+				4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */,
+			);
+			path = YAToggleView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +475,9 @@
 				4C5C3DF1171421A100F706A7 /* PlaceHolderTextViewController.xib in Resources */,
 				4C59B9E9171549FD003B7FC2 /* AlertAndASViewController.xib in Resources */,
 				4C61123B17165644006CC59B /* PickerViewController.xib in Resources */,
+				4CEF06D01716B09600AD7913 /* toggle_bg_off@2x.png in Resources */,
+				4CEF06D11716B09600AD7913 /* toggle_bg_on@2x.png in Resources */,
+				4CEF06D21716B09600AD7913 /* toggle_thumb_btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +492,7 @@
 				4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */,
 				4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */,
 				4C59BA0017156255003B7FC2 /* YAPickerView.m in Sources */,
+				4C61125917167FF5006CC59B /* YAToggleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +507,7 @@
 				4C5C3DF0171421A100F706A7 /* PlaceHolderTextViewController.m in Sources */,
 				4C59B9E6171548E4003B7FC2 /* AlertAndASViewController.m in Sources */,
 				4C61123A17165644006CC59B /* PickerViewController.m in Sources */,
+				4CEF06CA1716AC8F00AD7913 /* ToggleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
