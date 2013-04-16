@@ -36,6 +36,10 @@
 		4C5D59B81717C11800C948C2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D59B61717C11800C948C2 /* SearchViewController.xib */; };
 		4C5D59BC1718089900C948C2 /* YAPanBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59BB1718089900C948C2 /* YAPanBackController.m */; };
 		4C5D59C0171816FA00C948C2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59BF171816FA00C948C2 /* BaseViewController.m */; };
+		4C60500B171D248D0051F41B /* YAPullRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500A171D248D0051F41B /* YAPullRefreshController.m */; };
+		4C60500F171D24E10051F41B /* MSPullToRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500E171D24E10051F41B /* MSPullToRefreshController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C60501C171D3A0F0051F41B /* PullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */; };
+		4C60501D171D3A0F0051F41B /* PullRefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */; };
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
 		4C611255171662AC006CC59B /* libYAUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D751713E53D00F706A7 /* libYAUIKit.a */; };
@@ -135,6 +139,13 @@
 		4C5D59BB1718089900C948C2 /* YAPanBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPanBackController.m; sourceTree = "<group>"; };
 		4C5D59BE171816FA00C948C2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		4C5D59BF171816FA00C948C2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		4C605009171D248D0051F41B /* YAPullRefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPullRefreshController.h; sourceTree = "<group>"; };
+		4C60500A171D248D0051F41B /* YAPullRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPullRefreshController.m; sourceTree = "<group>"; };
+		4C60500D171D24E10051F41B /* MSPullToRefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPullToRefreshController.h; sourceTree = "<group>"; };
+		4C60500E171D24E10051F41B /* MSPullToRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPullToRefreshController.m; sourceTree = "<group>"; };
+		4C605019171D3A0F0051F41B /* PullRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshViewController.h; sourceTree = "<group>"; };
+		4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshViewController.m; sourceTree = "<group>"; };
+		4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullRefreshViewController.xib; sourceTree = "<group>"; };
 		4C61123717165644006CC59B /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		4C61123817165644006CC59B /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		4C61123917165644006CC59B /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
@@ -244,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5C3D861713E64300F706A7 /* Source */,
+				4C605007171D22D20051F41B /* Library */,
 				4C5C3DB01713F3E500F706A7 /* Dependency */,
 				4CEF06CB1716AEAE00AD7913 /* Resource */,
 				4C5C3D7B1713E53D00F706A7 /* Supporting Files */,
@@ -262,6 +274,7 @@
 		4C5C3D861713E64300F706A7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4C605008171D22EB0051F41B /* YAPullRefreshController */,
 				4C5D59B91718086100C948C2 /* YAPanBackController */,
 				4C5D599E1717B09600C948C2 /* YASearchBar */,
 				4C6112561716742B006CC59B /* YAToggleView */,
@@ -286,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5D59BD171816ED00C948C2 /* BaseViewController */,
+				4C605018171D39F90051F41B /* PullRefreshViewController */,
 				4C5D59B31717C10100C948C2 /* SearchViewController */,
 				4CEF06C71716AC5E00AD7913 /* ToggleViewController */,
 				4C61123617165634006CC59B /* PickerViewController */,
@@ -387,6 +401,42 @@
 				4C5D59BF171816FA00C948C2 /* BaseViewController.m */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		4C605007171D22D20051F41B /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4C60500C171D24E10051F41B /* MSPullToRefreshController */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		4C605008171D22EB0051F41B /* YAPullRefreshController */ = {
+			isa = PBXGroup;
+			children = (
+				4C605009171D248D0051F41B /* YAPullRefreshController.h */,
+				4C60500A171D248D0051F41B /* YAPullRefreshController.m */,
+			);
+			path = YAPullRefreshController;
+			sourceTree = "<group>";
+		};
+		4C60500C171D24E10051F41B /* MSPullToRefreshController */ = {
+			isa = PBXGroup;
+			children = (
+				4C60500D171D24E10051F41B /* MSPullToRefreshController.h */,
+				4C60500E171D24E10051F41B /* MSPullToRefreshController.m */,
+			);
+			path = MSPullToRefreshController;
+			sourceTree = "<group>";
+		};
+		4C605018171D39F90051F41B /* PullRefreshViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C605019171D3A0F0051F41B /* PullRefreshViewController.h */,
+				4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */,
+				4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */,
+			);
+			path = PullRefreshViewController;
 			sourceTree = "<group>";
 		};
 		4C61123617165634006CC59B /* PickerViewController */ = {
@@ -534,6 +584,7 @@
 				4CEF06D11716B09600AD7913 /* toggle_bg_on@2x.png in Resources */,
 				4CEF06D21716B09600AD7913 /* toggle_thumb_btn@2x.png in Resources */,
 				4C5D59B81717C11800C948C2 /* SearchViewController.xib in Resources */,
+				4C60501D171D3A0F0051F41B /* PullRefreshViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +602,8 @@
 				4C61125917167FF5006CC59B /* YAToggleView.m in Sources */,
 				4C5D59A11717B0A500C948C2 /* YASearchBar.m in Sources */,
 				4C5D59BC1718089900C948C2 /* YAPanBackController.m in Sources */,
+				4C60500B171D248D0051F41B /* YAPullRefreshController.m in Sources */,
+				4C60500F171D24E10051F41B /* MSPullToRefreshController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +621,7 @@
 				4CEF06CA1716AC8F00AD7913 /* ToggleViewController.m in Sources */,
 				4C5D59B71717C11800C948C2 /* SearchViewController.m in Sources */,
 				4C5D59C0171816FA00C948C2 /* BaseViewController.m in Sources */,
+				4C60501C171D3A0F0051F41B /* PullRefreshViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

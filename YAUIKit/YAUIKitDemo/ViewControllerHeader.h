@@ -14,6 +14,7 @@
 #import "PickerViewController.h"
 #import "ToggleViewController.h"
 #import "SearchViewController.h"
+#import "PullRefreshViewController.h"
 
 #import "UINavigationController+Demo.h"
 #import "UIView+YAToolKit.h"

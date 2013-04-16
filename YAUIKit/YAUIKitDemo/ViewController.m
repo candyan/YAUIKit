@@ -35,7 +35,7 @@
 
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 5;
+  return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,7 +69,7 @@
       break;
     }
     case 5: {
-      [cell.textLabel setText:@"Search Display"];
+      [cell.textLabel setText:@"Pull Refresh"];
       break;
     }
       
@@ -110,6 +110,7 @@
       break;
     }
     case 5:{
+      pushViewController = [[PullRefreshViewController alloc] initWithNibName:@"PullRefreshViewController" bundle:nil];
       break;
     }
       
