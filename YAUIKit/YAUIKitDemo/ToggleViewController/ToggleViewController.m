@@ -23,6 +23,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+      _toggleView = [[YAToggleView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 60) / 2,
+                                                                   (self.view.bounds.size.height - 27) / 2,
+                                                                   60,
+                                                                   27)];
+      __block ToggleViewController *tempViewController = self;
+      [_toggleView setValueChangedBlock:^(BOOL on) {
+        if (on) {
+          [tempViewController.view setBackgroundColor:[UIColor whiteColor]];
+        } else {
+          [tempViewController.view setBackgroundColor:[UIColor blackColor]];
+        }
+      }];
+      [self.view addSubview:_toggleView];
     }
     return self;
 }
@@ -36,19 +49,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  _toggleView = [[YAToggleView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 60) / 2,
-                                                               (self.view.bounds.size.height - 27) / 2,
-                                                               60,
-                                                               27)];
-  __block ToggleViewController *tempViewController = self;
-  [_toggleView setValueChangedBlock:^(BOOL on) {
-    if (on) {
-      [tempViewController.view setBackgroundColor:[UIColor whiteColor]];
-    } else {
-      [tempViewController.view setBackgroundColor:[UIColor blackColor]];
-    }
-  }];
-  [self.view addSubview:_toggleView];
+ 
 }
 
 - (void)didReceiveMemoryWarning

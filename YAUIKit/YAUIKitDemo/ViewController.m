@@ -68,6 +68,10 @@
       [cell.textLabel setText:@"Search"];
       break;
     }
+    case 5: {
+      [cell.textLabel setText:@"Search Display"];
+      break;
+    }
       
     default:
       break;
@@ -103,6 +107,9 @@
     }
     case 4: {
       pushViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+      break;
+    }
+    case 5:{
       break;
     }
       
