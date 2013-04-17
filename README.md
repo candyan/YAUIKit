@@ -5,6 +5,15 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 
 ## ChangeLog
 
+#### v0.2.0
+##### 合并YAToolKit，提供YAToolKit中的所有功能以下。
+- Set Each Frame Property
+- Set Each Bounds Property
+- Remove the View all Subviews
+- 提供使用16进制颜色值来获取颜色的方法
+- 提供生成纯色UIImage的方法
+- 提供可自定义动画的Pop & Push方法。
+
 #### v0.1.0
 
 - 第一次发布YAUIKit
@@ -41,6 +50,7 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 
 在 `Link Binary with Libaries` 中，加入下列库 `libYAUIKit.a`
 
-###### TIPS:
+#### 5.使用方法
 
-如果你的工程中还需要使用YAToolKit。那么请使用`YAUIKit(without YAToolKit)` Target.
+`#import “YAUIKit.h”` 即可使用UIKit中的全部功能和View。
+
