@@ -31,6 +31,22 @@
 		4C5C3DF0171421A100F706A7 /* PlaceHolderTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3DEE171421A100F706A7 /* PlaceHolderTextViewController.m */; };
 		4C5C3DF1171421A100F706A7 /* PlaceHolderTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DEF171421A100F706A7 /* PlaceHolderTextViewController.xib */; };
 		4C5C3DF417146B7000F706A7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DF317146B6F00F706A7 /* QuartzCore.framework */; };
+		4C5C42D5171E568500391666 /* YAPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3D891713E96000F706A7 /* YAPlaceHolderTextView.m */; };
+		4C5C42D6171E568500391666 /* YAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */; };
+		4C5C42D7171E568500391666 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
+		4C5C42D8171E568500391666 /* YAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9FF17156255003B7FC2 /* YAPickerView.m */; };
+		4C5C42D9171E568500391666 /* YAToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61125817167FF5006CC59B /* YAToggleView.m */; };
+		4C5C42DA171E568500391666 /* YASearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59A01717B0A500C948C2 /* YASearchBar.m */; };
+		4C5C42DB171E568500391666 /* YAPanBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59BB1718089900C948C2 /* YAPanBackController.m */; };
+		4C5C42DC171E568500391666 /* YAPullRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500A171D248D0051F41B /* YAPullRefreshController.m */; };
+		4C5C42DD171E568500391666 /* MSPullToRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500E171D24E10051F41B /* MSPullToRefreshController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C5C42DF171E568500391666 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D901713F3A400F706A7 /* UIKit.framework */; };
+		4C5C42E1171E568500391666 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D781713E53D00F706A7 /* Foundation.framework */; };
+		4C5C42E3171E568500391666 /* toggle_bg_off@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
+		4C5C42E4171E568500391666 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
+		4C5C42E5171E568500391666 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
+		4C5C42EE171E56C700391666 /* libYAUIKit(without YAToolKit).a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C42E9171E568500391666 /* libYAUIKit(without YAToolKit).a */; };
+		4C5C42EF171E56CA00391666 /* libYAToolKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DB61713F46F00F706A7 /* libYAToolKit.a */; };
 		4C5D59A11717B0A500C948C2 /* YASearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59A01717B0A500C948C2 /* YASearchBar.m */; };
 		4C5D59B71717C11800C948C2 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59B51717C11800C948C2 /* SearchViewController.m */; };
 		4C5D59B81717C11800C948C2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D59B61717C11800C948C2 /* SearchViewController.xib */; };
@@ -42,7 +58,6 @@
 		4C60501D171D3A0F0051F41B /* PullRefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */; };
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
-		4C611255171662AC006CC59B /* libYAUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D751713E53D00F706A7 /* libYAUIKit.a */; };
 		4C61125917167FF5006CC59B /* YAToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61125817167FF5006CC59B /* YAToggleView.m */; };
 		4CEF06CA1716AC8F00AD7913 /* ToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */; };
 		4CEF06D01716B09600AD7913 /* toggle_bg_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
@@ -68,12 +83,19 @@
 			remoteGlobalIDString = 4C693A53171108F80001ACA7;
 			remoteInfo = YAToolKit;
 		};
-		4C6112531716629F006CC59B /* PBXContainerItemProxy */ = {
+		4C5C42EA171E56BD00391666 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C5C3D6D1713E53D00F706A7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4C5C3D741713E53D00F706A7;
-			remoteInfo = YAUIKit;
+			remoteGlobalIDString = 4C5C42D1171E568500391666;
+			remoteInfo = "YAUIKit(without YAToolKit)";
+		};
+		4C5C42EC171E56C000391666 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5C3DB11713F46D00F706A7 /* YAToolKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C693A53171108F80001ACA7;
+			remoteInfo = YAToolKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -87,6 +109,18 @@
 				4CEF06D31716B53200AD7913 /* toggle_bg_off@2x.png in CopyFiles */,
 				4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */,
 				4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4C5C42E2171E568500391666 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 7;
+			files = (
+				4C5C42E3171E568500391666 /* toggle_bg_off@2x.png in CopyFiles */,
+				4C5C42E4171E568500391666 /* toggle_bg_on@2x.png in CopyFiles */,
+				4C5C42E5171E568500391666 /* toggle_thumb_btn@2x.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -130,6 +164,7 @@
 		4C5C3DEE171421A100F706A7 /* PlaceHolderTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceHolderTextViewController.m; sourceTree = "<group>"; };
 		4C5C3DEF171421A100F706A7 /* PlaceHolderTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceHolderTextViewController.xib; sourceTree = "<group>"; };
 		4C5C3DF317146B6F00F706A7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4C5C42E9171E568500391666 /* libYAUIKit(without YAToolKit).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libYAUIKit(without YAToolKit).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5D599F1717B0A500C948C2 /* YASearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASearchBar.h; sourceTree = "<group>"; };
 		4C5D59A01717B0A500C948C2 /* YASearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASearchBar.m; sourceTree = "<group>"; };
 		4C5D59B41717C11800C948C2 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -173,11 +208,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C611255171662AC006CC59B /* libYAUIKit.a in Frameworks */,
+				4C5C42EF171E56CA00391666 /* libYAToolKit.a in Frameworks */,
+				4C5C42EE171E56C700391666 /* libYAUIKit(without YAToolKit).a in Frameworks */,
 				4C5C3DF417146B7000F706A7 /* QuartzCore.framework in Frameworks */,
 				4C5C3D911713F3A400F706A7 /* UIKit.framework in Frameworks */,
 				4C5C3D921713F3A400F706A7 /* Foundation.framework in Frameworks */,
 				4C5C3D941713F3A400F706A7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C5C42DE171E568500391666 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5C42DF171E568500391666 /* UIKit.framework in Frameworks */,
+				4C5C42E1171E568500391666 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +281,7 @@
 			children = (
 				4C5C3D751713E53D00F706A7 /* libYAUIKit.a */,
 				4C5C3D8F1713F3A400F706A7 /* YAUIKitDemo.app */,
+				4C5C42E9171E568500391666 /* libYAUIKit(without YAToolKit).a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -517,12 +563,30 @@
 			buildRules = (
 			);
 			dependencies = (
-				4C6112541716629F006CC59B /* PBXTargetDependency */,
+				4C5C42ED171E56C000391666 /* PBXTargetDependency */,
+				4C5C42EB171E56BD00391666 /* PBXTargetDependency */,
 			);
 			name = YAUIKitDemo;
 			productName = YAUIKitDemo;
 			productReference = 4C5C3D8F1713F3A400F706A7 /* YAUIKitDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4C5C42D1171E568500391666 /* YAUIKit(without YAToolKit) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C5C42E6171E568500391666 /* Build configuration list for PBXNativeTarget "YAUIKit(without YAToolKit)" */;
+			buildPhases = (
+				4C5C42D4171E568500391666 /* Sources */,
+				4C5C42DE171E568500391666 /* Frameworks */,
+				4C5C42E2171E568500391666 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YAUIKit(without YAToolKit)";
+			productName = YAUIKit;
+			productReference = 4C5C42E9171E568500391666 /* libYAUIKit(without YAToolKit).a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -553,6 +617,7 @@
 			targets = (
 				4C5C3D741713E53D00F706A7 /* YAUIKit */,
 				4C5C3D8E1713F3A400F706A7 /* YAUIKitDemo */,
+				4C5C42D1171E568500391666 /* YAUIKit(without YAToolKit) */,
 			);
 		};
 /* End PBXProject section */
@@ -625,6 +690,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4C5C42D4171E568500391666 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5C42D5171E568500391666 /* YAPlaceHolderTextView.m in Sources */,
+				4C5C42D6171E568500391666 /* YAAlertView.m in Sources */,
+				4C5C42D7171E568500391666 /* YAActionSheet.m in Sources */,
+				4C5C42D8171E568500391666 /* YAPickerView.m in Sources */,
+				4C5C42D9171E568500391666 /* YAToggleView.m in Sources */,
+				4C5C42DA171E568500391666 /* YASearchBar.m in Sources */,
+				4C5C42DB171E568500391666 /* YAPanBackController.m in Sources */,
+				4C5C42DC171E568500391666 /* YAPullRefreshController.m in Sources */,
+				4C5C42DD171E568500391666 /* MSPullToRefreshController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -633,10 +714,15 @@
 			name = YAToolKit;
 			targetProxy = 4C5C3DBA1713F4B900F706A7 /* PBXContainerItemProxy */;
 		};
-		4C6112541716629F006CC59B /* PBXTargetDependency */ = {
+		4C5C42EB171E56BD00391666 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C5C3D741713E53D00F706A7 /* YAUIKit */;
-			targetProxy = 4C6112531716629F006CC59B /* PBXContainerItemProxy */;
+			target = 4C5C42D1171E568500391666 /* YAUIKit(without YAToolKit) */;
+			targetProxy = 4C5C42EA171E56BD00391666 /* PBXContainerItemProxy */;
+		};
+		4C5C42ED171E56C000391666 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YAToolKit;
+			targetProxy = 4C5C42EC171E56C000391666 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -728,7 +814,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -737,7 +823,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "../$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -748,7 +834,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -757,18 +843,19 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "../$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
 		4C5C3DAE1713F3A400F706A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
 				INFOPLIST_FILE = "YAUIKitDemo/YAUIKitDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "";
@@ -777,7 +864,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -785,11 +872,12 @@
 		4C5C3DAF1713F3A400F706A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
 				INFOPLIST_FILE = "YAUIKitDemo/YAUIKitDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "";
@@ -799,8 +887,48 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4C5C42E7171E568500391666 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/YAUIKit.dst;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "YAUIKit(without YAToolKit)";
+				PUBLIC_HEADERS_FOLDER_PATH = "../$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		4C5C42E8171E568500391666 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/YAUIKit.dst;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "YAUIKit(without YAToolKit)";
+				PUBLIC_HEADERS_FOLDER_PATH = "../$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -830,6 +958,15 @@
 			buildConfigurations = (
 				4C5C3DAE1713F3A400F706A7 /* Debug */,
 				4C5C3DAF1713F3A400F706A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C5C42E6171E568500391666 /* Build configuration list for PBXNativeTarget "YAUIKit(without YAToolKit)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5C42E7171E568500391666 /* Debug */,
+				4C5C42E8171E568500391666 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
