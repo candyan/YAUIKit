@@ -16,7 +16,6 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 - 提供Block版本的PickerView
 - 提供页面滑动后退Controller
 - 提供可以全部自定义的SearchBar
-- 提供可定制Pop&Push动画的UINavigationController
 
 ## 添加到你的工程
 #### 1.YAUIKit
