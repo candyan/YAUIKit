@@ -16,6 +16,11 @@ CGFloat kSearchTextFieldEdgeTop = 6.0;
 
 @implementation YASearchBar
 
+@synthesize searchTextField = _searchTextField;
+@synthesize cancelButton = _cancelButton;
+@synthesize inputBoxImageView = _inputBoxImageView;
+@synthesize inputEdgeInsets = _inputEdgeInsets;
+
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];

@@ -17,6 +17,7 @@
 @synthesize size = _size;
 @synthesize pickerView = _pickerView;
 @synthesize didPickerSelected = _didPickerSelected;
+@synthesize pickerDelegate = _pickerDelegate;
 
 #pragma mark - init
 - (id)initWithTitleArray:(NSArray *)titleArray  {

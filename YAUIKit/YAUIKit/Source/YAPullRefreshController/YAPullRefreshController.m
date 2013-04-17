@@ -12,6 +12,13 @@
 
 @implementation YAPullRefreshController
 
+@synthesize delegate = _delegate;
+@synthesize pullRefreshFooterView = _pullRefreshFooterView;
+@synthesize pullRefreshHeaderView = _pullRefreshHeaderView;
+@synthesize refreshableDirection = _refreshableDirection;
+@synthesize refreshableInsets = _refreshableInsets;
+@synthesize refreshingInsets = _refreshingInsets;
+
 #pragma mark - init
 - (id)initWithScrollView:(UIScrollView *)scrollView {
   return [self initWithScrollView:scrollView refreshableDirection:kYARefreshableDirectionTop];
@@ -69,14 +76,6 @@
       _refreshableInsets.bottom = 0;
     }
   }
-}
-
-- (void) setCanEngageRefreshBlock:(CanEngageRefresh)canEngageRefreshBlock
-         didDisengageRefreshBlock:(DidDisengageRefresh)didDisengageRefreshBlock
-            didEngageRefreshBlock:(DidEngageRefresh)didEngageRefreshBlock {
-  [self setCanEngageRefreshBlock:canEngageRefreshBlock];
-  [self setDidDisengageRefreshBlock:didDisengageRefreshBlock];
-  [self setDidEngageRefreshBlock:didEngageRefreshBlock];
 }
 
 - (void)setRefreshableDirection:(YARefreshableDirection)refreshableDirection {
@@ -168,20 +167,20 @@
 }
 
 - (void)pullToRefreshController:(MSPullToRefreshController *)controller canEngageRefreshDirection:(MSRefreshDirection)direction {
-  if (_canEngageRefreshBlock) {
-    _canEngageRefreshBlock((YARefreshDirection)direction);
+  if ([_delegate respondsToSelector:@selector(pullRefreshController:canEngageRefreshDirection:)]) {
+    [_delegate pullRefreshController:self canEngageRefreshDirection:(YARefreshDirection)direction];
   }
 }
 
 - (void)pullToRefreshController:(MSPullToRefreshController *)controller didEngageRefreshDirection:(MSRefreshDirection)direction {
-  if (_didEngageRefreshBlock) {
-    _didEngageRefreshBlock((YARefreshDirection)direction);
+  if ([_delegate respondsToSelector:@selector(pullRefreshController:didEngageRefreshDirection:)]) {
+    [_delegate pullRefreshController:self didEngageRefreshDirection:(YARefreshDirection)direction];
   }
 }
 
 - (void)pullToRefreshController:(MSPullToRefreshController *)controller didDisengageRefreshDirection:(MSRefreshDirection)direction {
-  if (_didDisengageRefreshBlock) {
-    _didDisengageRefreshBlock((YARefreshDirection)direction);
+  if ([_delegate respondsToSelector:@selector(pullRefreshController:didDisengageRefreshDirection:)]) {
+    [_delegate pullRefreshController:self didDisengageRefreshDirection:(YARefreshDirection)direction];
   }
 }
 

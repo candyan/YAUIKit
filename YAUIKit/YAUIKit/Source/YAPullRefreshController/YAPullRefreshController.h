@@ -23,9 +23,7 @@ typedef enum {
   kYARefreshableDirectionButtom = MSRefreshDirectionBottom,
 } YARefreshableDirection;
 
-typedef void(^CanEngageRefresh)(YARefreshDirection direction);
-typedef void(^DidEngageRefresh)(YARefreshDirection direction);
-typedef void(^DidDisengageRefresh)(YARefreshDirection direction);
+@protocol YAPullRefreshDelegate;
 
 @interface YAPullRefreshController : NSObject<MSPullToRefreshDelegate> {
   MSPullToRefreshController *_ptrc;
@@ -36,9 +34,7 @@ typedef void(^DidDisengageRefresh)(YARefreshDirection direction);
 @property (nonatomic, assign) YARefreshableDirection refreshableDirection;
 @property (nonatomic, assign) UIEdgeInsets refreshingInsets;
 @property (nonatomic, assign) UIEdgeInsets refreshableInsets;
-@property (nonatomic, copy) CanEngageRefresh canEngageRefreshBlock;
-@property (nonatomic, copy) DidEngageRefresh didEngageRefreshBlock;
-@property (nonatomic, copy) DidDisengageRefresh didDisengageRefreshBlock;
+@property (nonatomic, unsafe_unretained) id<YAPullRefreshDelegate> delegate;
 
 - (id) initWithScrollView:(UIScrollView *)scrollView;
 
@@ -57,8 +53,12 @@ typedef void(^DidDisengageRefresh)(YARefreshDirection direction);
 - (void) finishRefreshWithDirection:(YARefreshDirection)refreshDirection
                            complate:(void(^)())complate;
 
-- (void) setCanEngageRefreshBlock:(CanEngageRefresh)canEngageRefreshBlock
-         didDisengageRefreshBlock:(DidDisengageRefresh)didDisengageRefreshBlock
-            didEngageRefreshBlock:(DidEngageRefresh)didEngageRefreshBlock;
+@end
+
+@protocol YAPullRefreshDelegate <NSObject>
+
+- (void) pullRefreshController:(YAPullRefreshController *)pullRefreshController canEngageRefreshDirection:(YARefreshDirection)direction;
+- (void) pullRefreshController:(YAPullRefreshController *)pullRefreshController didEngageRefreshDirection:(YARefreshDirection)direction;
+- (void) pullRefreshController:(YAPullRefreshController *)pullRefreshController didDisengageRefreshDirection:(YARefreshDirection)direction;
 
 @end
