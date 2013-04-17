@@ -10,7 +10,7 @@
 
 #import "YAPullRefreshController.h"
 
-@interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate> {
+@interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate, YAPullRefreshDelegate> {
   YAPullRefreshController *_yprc;
   UILabel *_refreshHeaderView;
   UILabel *_refreshFooterView;
@@ -69,31 +69,7 @@
   [_refreshFooterView setFont:[UIFont systemFontOfSize:15.0]];
   [_refreshFooterView setTextAlignment:UITextAlignmentCenter];
   [_yprc setPullRefreshFooterView:_refreshFooterView];
-  
-  __block UILabel *tempHeaderView = _refreshHeaderView;
-  __block UILabel *tempFootView = _refreshFooterView;
-  __block PullRefreshViewController *tempVC = self;
-  [_yprc setCanEngageRefreshBlock:^(YARefreshDirection direction) {
-    if (direction == kYARefreshableDirectionTop) {
-      [tempHeaderView setText:@"放开即可刷新"];
-    } else if (direction == kYARefreshableDirectionButtom) {
-      [tempFootView setText:@"放开即可加载更多"];
-    }
-  } didDisengageRefreshBlock:^(YARefreshDirection direction) {
-    if (direction == kYARefreshableDirectionTop) {
-      [tempHeaderView setText:@"下拉刷新"];
-    } else if (direction == kYARefreshableDirectionButtom) {
-      [tempFootView setText:@"上拉加载更多"];
-    }
-  } didEngageRefreshBlock:^(YARefreshDirection direction) {
-    if (direction == kYARefreshableDirectionTop) {
-      [tempHeaderView setText:@"正在刷新..."];
-      [tempVC refreshNumber];
-    } else if (direction == kYARefreshableDirectionButtom) {
-      [tempFootView setText:@"正在加载更多..."];
-      [tempVC loadMoreNumber];
-    }
-  }];
+  _yprc.delegate = self;
 }
 
 #pragma mark - TableView Delegate
@@ -140,6 +116,33 @@
       [_yprc finishRefreshWithDirection:kYARefreshDirectionButtom animated:YES complate:nil];
     });
   });
+}
+
+#pragma mark - Pull Refresh Delegate
+- (void)pullRefreshController:(YAPullRefreshController *)pullRefreshController canEngageRefreshDirection:(YARefreshDirection)direction {
+  if (direction == kYARefreshableDirectionTop) {
+    [_refreshHeaderView setText:@"放开即可刷新"];
+  } else if (direction == kYARefreshableDirectionButtom) {
+    [_refreshFooterView setText:@"放开即可加载更多"];
+  }
+}
+
+- (void)pullRefreshController:(YAPullRefreshController *)pullRefreshController didDisengageRefreshDirection:(YARefreshDirection)direction {
+  if (direction == kYARefreshableDirectionTop) {
+    [_refreshHeaderView setText:@"下拉刷新"];
+  } else if (direction == kYARefreshableDirectionButtom) {
+    [_refreshFooterView setText:@"上拉加载更多"];
+  }
+}
+
+- (void)pullRefreshController:(YAPullRefreshController *)pullRefreshController didEngageRefreshDirection:(YARefreshDirection)direction {
+  if (direction == kYARefreshableDirectionTop) {
+    [_refreshHeaderView setText:@"正在刷新..."];
+    [self refreshNumber];
+  } else if (direction == kYARefreshableDirectionButtom) {
+    [_refreshFooterView setText:@"正在加载更多..."];
+    [self loadMoreNumber];
+  }
 }
 
 @end
