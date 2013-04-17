@@ -3,6 +3,21 @@ YAUIKit
 
 YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和自定义。
 
+## ChangeLog
+
+#### v0.1.0
+
+- 第一次发布YAUIKit
+- 提供带Place Holder的UITextView
+- 提供可下拉刷新，上拉加载等功能的Controller
+- 提供可自定义的Toggle
+- 提供Block版本的AlertView
+- 提供Block版本的ActionSheet
+- 提供Block版本的PickerView
+- 提供页面滑动后退Controller
+- 提供可以全部自定义的SearchBar
+- 提供可定制Pop&Push动画的UINavigationController
+
 ## 添加到你的工程
 #### 1.YAUIKit
 
