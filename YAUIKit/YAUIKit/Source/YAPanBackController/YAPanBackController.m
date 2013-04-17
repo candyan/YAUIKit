@@ -7,8 +7,7 @@
 //
 
 #import "YAPanBackController.h"
-
-#import "YAToolKit.h"
+#import "UIView+YAUIKit.h"
 
 @implementation YAPanBackController {
   CGFloat _panBackStartPointX;

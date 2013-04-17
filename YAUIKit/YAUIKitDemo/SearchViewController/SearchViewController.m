@@ -8,9 +8,6 @@
 
 #import "SearchViewController.h"
 
-#import "YASearchBar.h"
-#import "YAAlertView.h"
-
 @interface SearchViewController () {
   YASearchBar *_searchBar;
 }

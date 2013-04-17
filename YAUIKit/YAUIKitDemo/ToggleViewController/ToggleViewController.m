@@ -8,8 +8,6 @@
 
 #import "ToggleViewController.h"
 
-#import "YAToggleView.h"
-
 @interface ToggleViewController () {
   YAToggleView *_toggleView;
 }

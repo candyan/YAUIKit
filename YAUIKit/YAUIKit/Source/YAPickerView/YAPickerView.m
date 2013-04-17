@@ -7,7 +7,7 @@
 //
 
 #import "YAPickerView.h"
-#import "YAToolKit.h"
+#import "UIView+YAUIKit.h"
 
 @implementation YAPickerView {
   YAPickerView *_selfRetain;

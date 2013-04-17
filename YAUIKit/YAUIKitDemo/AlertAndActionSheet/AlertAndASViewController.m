@@ -7,11 +7,7 @@
 //
 
 #import "AlertAndASViewController.h"
-
 #import "UINavigationController+Demo.h"
-
-#import "YAActionSheet.h"
-#import "YAAlertView.h"
 
 @interface AlertAndASViewController ()
 

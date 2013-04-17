@@ -8,8 +8,6 @@
 
 #import "PullRefreshViewController.h"
 
-#import "YAPullRefreshController.h"
-
 @interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate, YAPullRefreshDelegate> {
   YAPullRefreshController *_yprc;
   UILabel *_refreshHeaderView;

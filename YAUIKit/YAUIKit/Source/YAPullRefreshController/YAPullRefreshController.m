@@ -7,8 +7,7 @@
 //
 
 #import "YAPullRefreshController.h"
-
-#import "YAToolKit.h"
+#import "UIView+YAUIKit.h"
 
 @implementation YAPullRefreshController
 

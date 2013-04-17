@@ -9,9 +9,6 @@
 #import "PlaceHolderTextViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-#import "YAPlaceHolderTextView.h"
-#import "UIColor+YAToolKit.h"
-
 @interface PlaceHolderTextViewController () {
   YAPlaceHolderTextView *_placeholderTextView;
 }

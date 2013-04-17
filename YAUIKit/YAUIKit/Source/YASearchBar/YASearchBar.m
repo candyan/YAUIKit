@@ -7,8 +7,7 @@
 //
 
 #import "YASearchBar.h"
-
-#import "YAToolKit.h"
+#import "UIView+YAUIKit.h"
 #import <QuartzCore/QuartzCore.h>
 
 CGFloat kSearchTextFieldEdgeLeft = 15.0;

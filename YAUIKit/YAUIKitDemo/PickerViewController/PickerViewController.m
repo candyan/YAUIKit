@@ -8,9 +8,6 @@
 
 #import "PickerViewController.h"
 
-#import "YAPickerView.h"
-#import "YAAlertView.h"
-
 @interface PickerViewController () {
   NSArray *_titleArray;
   NSString *_alertContent;
