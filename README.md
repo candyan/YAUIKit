@@ -33,7 +33,7 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 
 #### 2.设置项目 Building Settings
 
-点击 `项目` -> `(TARGETS)` 图标，在 `Build Settings` 里找到 `Other Linker Flags`, 设置为 `-ObjC`。
+点击 `项目` -> `(TARGETS)` 图标，在 `Build Settings` 里找到 `Other Linker Flags`, 设置为 `-ObjC`和`-all_load`。
 
 #### 3.设置目标 Building Settings
 
