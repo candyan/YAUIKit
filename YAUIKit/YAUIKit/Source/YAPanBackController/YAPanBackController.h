@@ -10,7 +10,7 @@
 
 @interface YAPanBackController : NSObject <UIGestureRecognizerDelegate> {
   UIPanGestureRecognizer *_panBackGR;
-  UIViewController *_currentViewController;
+  __unsafe_unretained UIViewController *_currentViewController;
   
   void(^_prelayoutsBlock)(UIView *fromView, UIView *toView);
   void(^_panChangedBlock)(UIView *fromView, UIView *toView, CGFloat changedPrecent);

@@ -279,6 +279,7 @@
 				4C59B9DC17150C84003B7FC2 /* YAActionSheet */,
 				4C5C3D871713E66900F706A7 /* YAPlaceHolderTextView */,
 				4C5C4304171E712D00391666 /* YAUIKit.h */,
+				4C605018171D39F90051F41B /* PullRefreshViewController */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -296,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				4C5D59BD171816ED00C948C2 /* BaseViewController */,
-				4C605018171D39F90051F41B /* PullRefreshViewController */,
 				4C5D59B31717C10100C948C2 /* SearchViewController */,
 				4CEF06C71716AC5E00AD7913 /* ToggleViewController */,
 				4C61123617165634006CC59B /* PickerViewController */,
@@ -464,7 +464,8 @@
 				4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */,
 				4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */,
 			);
-			path = PullRefreshViewController;
+			name = PullRefreshViewController;
+			path = ../../YAUIKitDemo/PullRefreshViewController;
 			sourceTree = "<group>";
 		};
 		4C61123617165634006CC59B /* PickerViewController */ = {

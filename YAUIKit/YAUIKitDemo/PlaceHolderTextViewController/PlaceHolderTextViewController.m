@@ -44,7 +44,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [_placeholderTextView setPlaceholder:@"这是一个Place Holder呦~~~"];
+  [_placeholderTextView setPlaceholder:@"这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~这是一个Place Holder呦~~~"];
 }
 
 - (IBAction)changePlaceHolderColor:(id)sender {
