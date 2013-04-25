@@ -57,6 +57,7 @@ typedef enum {
 
 @protocol YAPullRefreshDelegate <NSObject>
 
+@optional
 - (void) pullRefreshController:(YAPullRefreshController *)pullRefreshController canEngageRefreshDirection:(YARefreshDirection)direction;
 - (void) pullRefreshController:(YAPullRefreshController *)pullRefreshController didEngageRefreshDirection:(YARefreshDirection)direction;
 - (void) pullRefreshController:(YAPullRefreshController *)pullRefreshController didDisengageRefreshDirection:(YARefreshDirection)direction;
