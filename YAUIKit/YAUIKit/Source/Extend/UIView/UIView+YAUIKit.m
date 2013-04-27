@@ -68,4 +68,14 @@
   }
 }
 
+- (NSArray *)subviewsWithClassName:(Class)className {
+  NSMutableArray *someSubviews = [NSMutableArray array];
+  for(id subview in self.subviews) {
+    if ([subview isKindOfClass:className]) {
+      [someSubviews addObject:subview];
+    }
+  }
+  return someSubviews;
+}
+
 @end

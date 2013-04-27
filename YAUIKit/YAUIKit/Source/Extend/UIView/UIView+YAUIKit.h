@@ -33,4 +33,6 @@
 ///-------------------------------------
 - (void) removeAllSubViews;
 
+- (NSArray *) subviewsWithClassName:(Class)className;
+
 @end
