@@ -53,6 +53,8 @@ typedef enum {
 - (void) finishRefreshWithDirection:(YARefreshDirection)refreshDirection
                            complate:(void(^)())complate;
 
+- (void) setOriginEdgeInsets:(UIEdgeInsets)edgeInsets;
+
 @end
 
 @protocol YAPullRefreshDelegate <NSObject>

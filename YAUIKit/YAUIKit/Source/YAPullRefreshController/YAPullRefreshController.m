@@ -92,6 +92,10 @@
   }
 }
 
+- (void) setOriginEdgeInsets:(UIEdgeInsets)edgeInsets {
+  [_ptrc setOriginEdgeInsets:edgeInsets];
+}
+
 #pragma mark - Refresh Method
 - (void)startRefreshWithDirection:(YARefreshDirection)refreshDirection {
   [self startRefreshWithDirection:refreshDirection animated:NO];
