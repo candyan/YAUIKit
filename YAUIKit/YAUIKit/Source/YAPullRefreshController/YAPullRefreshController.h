@@ -17,6 +17,7 @@ typedef enum {
 } YARefreshDirection;
 
 typedef enum {
+  kYARefreshableDirectionNone = 0,
   kYARefreshableDirectionTop = MSRefreshDirectionTop,
   kYARefreshableDirectionRight = MSRefreshDirectionRight,
   kYARefreshvDirectionLeft = MSRefreshDirectionLeft,
