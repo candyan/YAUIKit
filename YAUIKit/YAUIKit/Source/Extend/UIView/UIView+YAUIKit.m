@@ -68,7 +68,7 @@
   }
 }
 
-- (NSArray *)subviewsWithClassName:(Class)className {
+- (NSArray *)subviewsForClassName:(Class)className {
   NSMutableArray *someSubviews = [NSMutableArray array];
   for(id subview in self.subviews) {
     if ([subview isKindOfClass:className]) {
@@ -76,6 +76,17 @@
     }
   }
   return someSubviews;
+}
+
+- (NSArray *)subviewsForClassName:(Class)className tag:(NSInteger)tag {
+  NSArray *subviews = [self subviewsForClassName:className];
+  NSMutableArray *tagSubViews = [NSMutableArray array];
+  for (UIView *subview in subviews) {
+    if (subview.tag == tag) {
+      [tagSubViews addObject:subviews];
+    }
+  }
+  return tagSubViews;
 }
 
 @end
