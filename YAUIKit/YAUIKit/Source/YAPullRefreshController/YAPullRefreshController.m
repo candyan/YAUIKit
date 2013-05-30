@@ -28,13 +28,13 @@
   if (self) {
     _ptrc = [[MSPullToRefreshController alloc] initWithScrollView:scrollView delegate:self];
     _refreshableDirection = refreshableDirection;
-    [self addObserver:scrollView forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
+    [_ptrc.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionPrior context:NULL];
   }
   return self;
 }
 
 - (void)dealloc {
-  [self removeObserver:_ptrc.scrollView forKeyPath:@"contentSize"];
+  [_ptrc.scrollView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 #pragma mark - Property Method
