@@ -10,7 +10,7 @@
 
 typedef void(^DidPickerSelected)(NSInteger row, NSInteger component, BOOL complete);
 
-@interface YAPickerView : NSObject<UIPickerViewDataSource, UIPickerViewDelegate> {
+@interface YAPickerView : NSObject<UIPickerViewDataSource, UIPickerViewDelegate, UIPopoverControllerDelegate> {
   NSMutableArray *_componentArray;
 }
 
@@ -27,5 +27,6 @@ typedef void(^DidPickerSelected)(NSInteger row, NSInteger component, BOOL comple
 - (void) selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated;
 
 - (void) showInView:(UIView *)inView;
+- (void) showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
 
 @end

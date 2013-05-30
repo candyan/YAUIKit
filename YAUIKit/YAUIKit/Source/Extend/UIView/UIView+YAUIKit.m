@@ -83,7 +83,7 @@
   NSMutableArray *tagSubViews = [NSMutableArray array];
   for (UIView *subview in subviews) {
     if (subview.tag == tag) {
-      [tagSubViews addObject:subviews];
+      [tagSubViews addObject:subview];
     }
   }
   return tagSubViews;

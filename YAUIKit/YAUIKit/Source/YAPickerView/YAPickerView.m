@@ -9,8 +9,11 @@
 #import "YAPickerView.h"
 #import "UIView+YAUIKit.h"
 
+static UIPopoverController *kPopoverController = nil;
+
 @implementation YAPickerView {
   YAPickerView *_selfRetain;
+  UIPopoverController *_popoverController;
 }
 
 @dynamic component;
@@ -36,6 +39,7 @@
 - (void)dealloc {
   _pickerDelegate = nil;
   _pickerView.delegate = nil;
+  kPopoverController = nil;
 }
 
 #pragma mark - Property
@@ -92,6 +96,7 @@
                                                                _size.width,
                                                                _size.height)];
   _pickerView.delegate = self;
+  _pickerView.dataSource = self;
   [_pickerView reloadAllComponents];
   _selfRetain = self;
   [inView addSubview:_pickerView];
@@ -102,6 +107,24 @@
   [UIView animateWithDuration:.2f animations:^{
     [_pickerView setFrameOriginY:(inView.frame.size.height - _pickerView.frame.size.height)];
   }];
+}
+
+- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated {
+  UIViewController *sortViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+  UIView *theView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.size.width, self.size.height)];
+  _pickerView = [[UIPickerView alloc] initWithFrame:theView.bounds];
+  _pickerView.delegate = self;
+  _pickerView.dataSource = self;
+  [theView addSubview:_pickerView];
+  sortViewController.view = theView;
+  
+  [_pickerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(finishPicker:)]];
+  
+  kPopoverController = [[UIPopoverController alloc] initWithContentViewController:sortViewController];
+  kPopoverController.delegate = self;
+  [kPopoverController setPopoverContentSize:self.size];
+  [kPopoverController presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+  _selfRetain = self;
 }
 
 #pragma mark - GR
@@ -115,12 +138,27 @@
       _didPickerSelected([_pickerView selectedRowInComponent:index], index, complete);
     }
   }
-  [UIView animateWithDuration:.2f animations:^{
-    [_pickerView setFrameOriginY:_pickerView.superview.frame.size.height];
-  } completion:^(BOOL finished) {
-    [_pickerView removeFromSuperview];
+  if (kPopoverController) {
+    [kPopoverController dismissPopoverAnimated:YES];
     _selfRetain = nil;
-  }];
+  } else {
+    [UIView animateWithDuration:.2f animations:^{
+      [_pickerView setFrameOriginY:_pickerView.superview.frame.size.height];
+    } completion:^(BOOL finished) {
+      [_pickerView removeFromSuperview];
+      _selfRetain = nil;
+    }];
+  }
+  
+}
+
+#pragma mark - Popover Controller Delegate
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
+  return YES;
+}
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+  kPopoverController = nil;
+  _selfRetain = nil;
 }
 
 @end
