@@ -28,8 +28,13 @@
   if (self) {
     _ptrc = [[MSPullToRefreshController alloc] initWithScrollView:scrollView delegate:self];
     _refreshableDirection = refreshableDirection;
+    [self addObserver:scrollView forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
   }
   return self;
+}
+
+- (void)dealloc {
+  [self removeObserver:_ptrc.scrollView forKeyPath:@"contentSize"];
 }
 
 #pragma mark - Property Method
@@ -184,6 +189,13 @@
 - (void)pullToRefreshController:(MSPullToRefreshController *)controller didDisengageRefreshDirection:(MSRefreshDirection)direction {
   if ([_delegate respondsToSelector:@selector(pullRefreshController:didDisengageRefreshDirection:)]) {
     [_delegate pullRefreshController:self didDisengageRefreshDirection:(YARefreshDirection)direction];
+  }
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if ([keyPath isEqualToString:@"contentSize"]) {
+    [_pullRefreshFooterView setFrameOriginY:(_ptrc.scrollView.contentSize.height + _ptrc.scrollView.contentInset.bottom)];
   }
 }
 
