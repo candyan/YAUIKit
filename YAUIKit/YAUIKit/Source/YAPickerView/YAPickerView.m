@@ -39,7 +39,6 @@ static UIPopoverController *kPopoverController = nil;
 - (void)dealloc {
   _pickerDelegate = nil;
   _pickerView.delegate = nil;
-  kPopoverController = nil;
 }
 
 #pragma mark - Property
@@ -117,14 +116,14 @@ static UIPopoverController *kPopoverController = nil;
   _pickerView.dataSource = self;
   [theView addSubview:_pickerView];
   sortViewController.view = theView;
+  [_pickerView reloadAllComponents];
+  _selfRetain = self;
   
   [_pickerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(finishPicker:)]];
   
   kPopoverController = [[UIPopoverController alloc] initWithContentViewController:sortViewController];
-  kPopoverController.delegate = self;
   [kPopoverController setPopoverContentSize:self.size];
   [kPopoverController presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-  _selfRetain = self;
 }
 
 #pragma mark - GR
@@ -139,6 +138,7 @@ static UIPopoverController *kPopoverController = nil;
     }
   }
   if (kPopoverController) {
+    [_pickerView removeFromSuperview];
     [kPopoverController dismissPopoverAnimated:YES];
     _selfRetain = nil;
   } else {
@@ -150,15 +150,6 @@ static UIPopoverController *kPopoverController = nil;
     }];
   }
   
-}
-
-#pragma mark - Popover Controller Delegate
-- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
-  return YES;
-}
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-  kPopoverController = nil;
-  _selfRetain = nil;
 }
 
 @end

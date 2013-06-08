@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^DidPickerSelected)(NSInteger row, NSInteger component, BOOL complete);
-
 @interface YAPickerView : NSObject<UIPickerViewDataSource, UIPickerViewDelegate, UIPopoverControllerDelegate> {
   NSMutableArray *_componentArray;
 }
 
 @property (nonatomic, readonly) NSInteger component;
 @property (nonatomic, retain) UIPickerView *pickerView;
-@property (nonatomic, copy) DidPickerSelected didPickerSelected;
+@property (nonatomic, copy) void(^didPickerSelected)(NSInteger row, NSInteger component, BOOL complete);
 @property (nonatomic, assign) CGSize size;
 @property (nonatomic, unsafe_unretained) id<UIPickerViewDelegate> pickerDelegate;
 

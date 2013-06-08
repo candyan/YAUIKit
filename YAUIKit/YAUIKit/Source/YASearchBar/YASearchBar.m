@@ -69,7 +69,7 @@ CGFloat kSearchTextFieldEdgeTop = 6.0;
   [searchTextField setFont:[UIFont fontWithName:@"Helvetica" size:searchTextField.frame.size.height - 2]];
   [searchTextField setReturnKeyType:UIReturnKeySearch];
   [searchTextField setDelegate:self];
-  [searchTextField setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth];
+  [searchTextField setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleWidth];
   [searchTextField addTarget:self action:@selector(searchTextBeginEdit) forControlEvents:UIControlEventEditingDidBegin];
   return searchTextField;
 }
