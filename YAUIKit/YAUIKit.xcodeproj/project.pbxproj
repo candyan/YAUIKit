@@ -54,6 +54,7 @@
 		4CEF06D31716B53200AD7913 /* toggle_bg_off@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
 		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
 		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
+		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,8 @@
 		4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_bg_off@2x.png"; sourceTree = "<group>"; };
 		4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_bg_on@2x.png"; sourceTree = "<group>"; };
 		4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_thumb_btn@2x.png"; sourceTree = "<group>"; };
+		4CF4160717670B8A00664D8C /* YASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASegmentedControl.h; sourceTree = "<group>"; };
+		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +272,7 @@
 		4C5C3D861713E64300F706A7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4CF4160617670B6500664D8C /* YASegmentedControl */,
 				4C5C42F0171E702C00391666 /* Extend */,
 				4C605008171D22EB0051F41B /* YAPullRefreshController */,
 				4C5D59B91718086100C948C2 /* YAPanBackController */,
@@ -514,6 +518,15 @@
 			path = YAToggleView;
 			sourceTree = "<group>";
 		};
+		4CF4160617670B6500664D8C /* YASegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				4CF4160717670B8A00664D8C /* YASegmentedControl.h */,
+				4CF4160817670B8A00664D8C /* YASegmentedControl.m */,
+			);
+			path = YASegmentedControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -620,6 +633,7 @@
 				4C5C42FE171E702D00391666 /* UIImage+YAColor.m in Sources */,
 				4C5C42FF171E702D00391666 /* UINavigationController+YAAnimation.m in Sources */,
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
+				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
