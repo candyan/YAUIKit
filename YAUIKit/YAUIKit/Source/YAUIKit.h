@@ -24,5 +24,6 @@
 #import "YAPlaceHolderTextView.h"
 #import "YAActionSheet.h"
 #import "YAPullRefreshController.h"
+#import "YASegmentedControl.h"
 
 #endif
