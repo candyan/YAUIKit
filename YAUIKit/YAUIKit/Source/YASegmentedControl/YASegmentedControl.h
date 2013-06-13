@@ -15,6 +15,11 @@ typedef enum : NSUInteger
   kYASegmentedControlModeMultipleSelectionable = 1 << 2,
 } YASegmentedControlMode;
 
+typedef enum {
+  kYASegmentedControlLayoutModeHorizontal = 1 << 0,
+  kYASegmentedControlLayoutModeVertical = 1 << 1,
+} YASegmentedControlLayoutMode;
+
 @interface YASegmentedControl : UIControl
 
 @property (nonatomic, strong) NSArray *buttonsArray;
@@ -23,6 +28,7 @@ typedef enum : NSUInteger
 @property (nonatomic, strong) NSIndexSet *selectedIndexes;
 @property (nonatomic, assign) UIEdgeInsets contentEdgeInsets;
 @property (nonatomic, assign) YASegmentedControlMode segmentedControlMode;
+@property (nonatomic, assign) YASegmentedControlLayoutMode segmentedControlLayoutMode;
 
 - (void)setSelectedIndex:(NSUInteger)index;
 - (void)setSelectedIndexes:(NSIndexSet *)indexSet byExpandingSelection:(BOOL)expandSelection;

@@ -9,7 +9,7 @@
 
 #import "YASegmentedControl.h"
 
-#define kAKButtonSeparatorWidth 1.0
+#define kYAButtonSeparatorWidth 1.0
 
 @interface YASegmentedControl ()
 
@@ -48,6 +48,7 @@
   self.selectedIndexes = [NSIndexSet indexSet];
   self.contentEdgeInsets = UIEdgeInsetsZero;
   self.segmentedControlMode = kYASegmentedControlModeSticky;
+  self.segmentedControlLayoutMode = kYASegmentedControlLayoutModeHorizontal;
   self.buttonsArray = [[NSArray alloc] init];
   
   [self addSubview:self.backgroundImageView];
@@ -57,12 +58,20 @@
 
 - (void)layoutSubviews
 {
+  if (self.segmentedControlLayoutMode == kYASegmentedControlLayoutModeHorizontal) {
+    [self layoutSubviewsForHorizontalMode];
+  } else if (self.segmentedControlLayoutMode == kYASegmentedControlLayoutModeVertical) {
+    [self layoutSubviewsForVerticalMode];
+  }
+}
+
+- (void) layoutSubviewsForHorizontalMode {
   CGRect contentRect = UIEdgeInsetsInsetRect(self.bounds, _contentEdgeInsets);
   
   NSUInteger buttonsCount = _buttonsArray.count;
   NSUInteger separtorsNumber = buttonsCount - 1;
   
-  CGFloat separatorWidth = (_separatorImage != nil) ? _separatorImage.size.width : kAKButtonSeparatorWidth;
+  CGFloat separatorWidth = (_separatorImage != nil) ? _separatorImage.size.width : kYAButtonSeparatorWidth;
   CGFloat buttonWidth = floorf((CGRectGetWidth(contentRect) - (separtorsNumber * separatorWidth)) / buttonsCount);
   CGFloat buttonHeight = CGRectGetHeight(contentRect);
   CGSize buttonSize = CGSizeMake(buttonWidth, buttonHeight);
@@ -85,7 +94,9 @@
       spaceLeft--;
     }
     
-    if (increment != 0) offsetX += separatorWidth;
+    if (increment != 0) {
+      offsetX += separatorWidth;
+    }
     
     [button setFrame:CGRectMake(offsetX, offsetY, dButtonWidth, buttonSize.height)];
     
@@ -100,6 +111,55 @@
     
     increment++;
     offsetX = CGRectGetMaxX(button.frame);
+  }
+}
+
+- (void) layoutSubviewsForVerticalMode {
+  CGRect contentRect = UIEdgeInsetsInsetRect(self.bounds, _contentEdgeInsets);
+  
+  NSUInteger buttonsCount = _buttonsArray.count;
+  NSUInteger separtorsNumber = buttonsCount - 1;
+  
+  CGFloat separatorHeight = (_separatorImage != nil) ? _separatorImage.size.height : kYAButtonSeparatorWidth;
+  CGFloat buttonWidth = CGRectGetWidth(contentRect);
+  CGFloat buttonHeight = floorf((CGRectGetHeight(contentRect) - (separtorsNumber * separatorHeight)) / buttonsCount);
+  CGSize buttonSize = CGSizeMake(buttonWidth, buttonHeight);
+  
+  CGFloat dButtonHeight = 0;
+  CGFloat spaceTop = CGRectGetHeight(contentRect) - (buttonsCount * buttonSize.height) - (separtorsNumber * separatorHeight);
+  
+  CGFloat offsetX = CGRectGetMinX(contentRect);
+  CGFloat offsetY = CGRectGetMinY(contentRect);
+  
+  NSUInteger increment = 0;
+  
+  for (UIButton *button in _buttonsArray)
+  {
+    dButtonHeight = buttonSize.height;
+    
+    if (spaceTop != 0)
+    {
+      dButtonHeight++;
+      spaceTop--;
+    }
+    
+    if (increment != 0) {
+      offsetY += separatorHeight;
+    }
+    
+    [button setFrame:CGRectMake(offsetX, offsetY, buttonSize.width, dButtonHeight)];
+    
+    if (increment < separtorsNumber)
+    {
+      UIImageView *separatorImageView = separatorsArray[increment];
+      [separatorImageView setFrame:CGRectMake(offsetX,
+                                              CGRectGetMaxY(button.frame),
+                                              CGRectGetWidth(self.bounds) - _contentEdgeInsets.left - _contentEdgeInsets.right,
+                                              separatorHeight)];
+    }
+    
+    increment++;
+    offsetY = CGRectGetMaxY(button.frame);
   }
 }
 
