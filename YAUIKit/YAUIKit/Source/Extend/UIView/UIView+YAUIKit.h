@@ -19,6 +19,9 @@
 - (void) setFrameWidth:(CGFloat)width;
 - (void) setFrameHeight:(CGFloat)height;
 
+- (void) setFrameOriginPoint:(CGPoint)originPoint;
+- (void) setFrameSize:(CGSize)size;
+
 ///-------------------------------------
 /// Set UIView Each Bounds Property
 ///-------------------------------------
@@ -27,6 +30,9 @@
 
 - (void) setBoundsWidth:(CGFloat)width;
 - (void) setBoundsHeight:(CGFloat)height;
+
+- (void) setBoundsOriginPoint:(CGPoint)originPoint;
+- (void) setBoundsSize:(CGSize)size;
 
 ///-------------------------------------
 /// UIView SubView 

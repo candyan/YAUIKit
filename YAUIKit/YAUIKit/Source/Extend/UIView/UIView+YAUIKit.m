@@ -35,6 +35,18 @@
   self.frame = originFrame;
 }
 
+- (void) setFrameOriginPoint:(CGPoint)originPoint {
+  CGRect originFrame = self.frame;
+  originFrame.origin = originPoint;
+  self.frame = originFrame;
+}
+
+- (void) setFrameSize:(CGSize)size {
+  CGRect originFrame = self.frame;
+  originFrame.size = size;
+  self.frame = originFrame;
+}
+
 #pragma mark - Set Bounds Property
 - (void) setBoundsOriginX:(CGFloat)originX {
   CGRect originFrame = self.bounds;
@@ -57,6 +69,18 @@
 - (void) setBoundsHeight:(CGFloat)height {
   CGRect originFrame = self.bounds;
   originFrame.size.height = height;
+  self.bounds = originFrame;
+}
+
+- (void) setBoundsOriginPoint:(CGPoint)originPoint {
+  CGRect originFrame = self.bounds;
+  originFrame.origin = originPoint;
+  self.bounds = originFrame;
+}
+
+- (void) setBoundsSize:(CGSize)size {
+  CGRect originFrame = self.bounds;
+  originFrame.size = size;
   self.bounds = originFrame;
 }
 
