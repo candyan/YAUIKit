@@ -10,6 +10,11 @@
 
 @interface UIImage (YARotate)
 
-- (UIImage *) imageForRotateDegrees:(CGFloat)degrees;
+- (UIImage *)imageRotatedByDegrees:(CGFloat)degrees;
+- (UIImage *)imageRotatedByRadians:(CGFloat)radians;
+- (UIImage *)imageByScalingToSize:(CGSize)targetSize;
+- (UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize;
+- (UIImage *)imageByScalingProportionallyToMinimumSize:(CGSize)targetSize;
+- (UIImage *)imageAtRect:(CGRect)rect;
 
 @end
