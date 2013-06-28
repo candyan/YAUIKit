@@ -19,6 +19,7 @@
   self = [super init];
   if (self) {
     _currentViewController = currentViewController;
+    self.canPanBack = YES;
     [self createPanBackGestureRecongizer];
     
     [self setPanBackPrelayoutsBlock:^(UIView *fromView, UIView *toView) {
@@ -149,7 +150,8 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-  if ([[touch view] isKindOfClass:[UISlider class]]) {
+  if ([[touch view] isKindOfClass:[UISlider class]] ||
+      !self.canPanBack) {
     return NO;
   }
   return YES;

@@ -48,6 +48,7 @@
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
 		4C61125917167FF5006CC59B /* YAToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61125817167FF5006CC59B /* YAToggleView.m */; };
+		4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69D2E1177D38C90043B3BD /* YAPanController.m */; };
 		4CEF06CA1716AC8F00AD7913 /* ToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */; };
 		4CEF06D01716B09600AD7913 /* toggle_bg_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
 		4CEF06D11716B09600AD7913 /* toggle_bg_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
@@ -152,6 +153,8 @@
 		4C61123917165644006CC59B /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
 		4C61125717167FF5006CC59B /* YAToggleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAToggleView.h; sourceTree = "<group>"; };
 		4C61125817167FF5006CC59B /* YAToggleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAToggleView.m; sourceTree = "<group>"; };
+		4C69D2E0177D38C90043B3BD /* YAPanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPanController.h; sourceTree = "<group>"; };
+		4C69D2E1177D38C90043B3BD /* YAPanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPanController.m; sourceTree = "<group>"; };
 		4CEF06C81716AC8F00AD7913 /* ToggleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleViewController.h; sourceTree = "<group>"; };
 		4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleViewController.m; sourceTree = "<group>"; };
 		4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_bg_off@2x.png"; sourceTree = "<group>"; };
@@ -278,6 +281,7 @@
 				4CF4160617670B6500664D8C /* YASegmentedControl */,
 				4C5C42F0171E702C00391666 /* Extend */,
 				4C605008171D22EB0051F41B /* YAPullRefreshController */,
+				4C69D2DF177D385E0043B3BD /* YAPanController */,
 				4C5D59B91718086100C948C2 /* YAPanBackController */,
 				4C5D599E1717B09600C948C2 /* YASearchBar */,
 				4C6112561716742B006CC59B /* YAToggleView */,
@@ -496,6 +500,15 @@
 			path = YAToggleView;
 			sourceTree = "<group>";
 		};
+		4C69D2DF177D385E0043B3BD /* YAPanController */ = {
+			isa = PBXGroup;
+			children = (
+				4C69D2E0177D38C90043B3BD /* YAPanController.h */,
+				4C69D2E1177D38C90043B3BD /* YAPanController.m */,
+			);
+			path = YAPanController;
+			sourceTree = "<group>";
+		};
 		4CEF06C71716AC5E00AD7913 /* ToggleViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +653,7 @@
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
 				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
 				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
+				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

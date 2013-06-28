@@ -18,6 +18,7 @@
 
 //Custom View
 #import "YAPanBackController.h"
+#import "YAPanController.h"
 #import "YAPickerView.h"
 #import "YAAlertView.h"
 #import "YASearchBar.h"

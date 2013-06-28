@@ -18,6 +18,8 @@
   void(^_completionBlock)(UIView *fromView, UIView *toView, BOOL success);
 }
 
+@property (assign, nonatomic) BOOL canPanBack;
+
 - (id) initWithCurrentViewController:(UIViewController *)currentViewController;
 
 - (void) addPanBackToView:(UIView *)view;
