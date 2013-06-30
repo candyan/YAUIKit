@@ -27,5 +27,6 @@
 #import "YAActionSheet.h"
 #import "YAPullRefreshController.h"
 #import "YASegmentedControl.h"
+#import "YABadgeView.h"
 
 #endif
