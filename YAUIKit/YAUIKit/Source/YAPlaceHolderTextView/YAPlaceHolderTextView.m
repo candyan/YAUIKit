@@ -42,7 +42,7 @@ CGFloat placeholderEdgeInset = 8.0f;
   if ([self.placeholder length] > 0) {
     if (!_placeHolderLabel) {
       _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(placeholderEdgeInset,
-                                                                    0,
+                                                                    placeholderEdgeInset,
                                                                     self.bounds.size.width - 2 * placeholderEdgeInset,
                                                                     0)];
       [_placeHolderLabel setLineBreakMode:UILineBreakModeCharacterWrap];
