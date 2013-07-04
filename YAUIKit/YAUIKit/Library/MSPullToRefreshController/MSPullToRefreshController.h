@@ -78,7 +78,7 @@ typedef enum {
     MSRefreshingDirections _refreshingDirections;
     
     // delegate to receive callbacks on different stages of the refresh cycle
-    id <MSPullToRefreshDelegate> _delegate;
+    __unsafe_unretained id <MSPullToRefreshDelegate> _delegate;
     
     // used internally to capture the did end dragging state
     BOOL _wasDragging;

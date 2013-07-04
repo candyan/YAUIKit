@@ -35,6 +35,7 @@
 
 - (void)dealloc {
   [_ptrc.scrollView removeObserver:self forKeyPath:@"contentSize"];
+  _ptrc = nil;
 }
 
 #pragma mark - Property Method

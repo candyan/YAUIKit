@@ -43,6 +43,7 @@
     // basic clean up
     [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
     [_scrollView release];
+    _delegate = nil;
     [super dealloc];
 }
 
@@ -91,7 +92,8 @@
         case MSRefreshDirectionBottom:
             refreshableDirection = MSRefreshableDirectionBottom;
             refreshingDirection = MSRefreshingDirectionBottom;
-            contentOffset = CGPointMake(0, _scrollView.contentSize.height + refreshingInset + contentInset.bottom);
+            contentOffset = CGPointMake(0, _scrollView.contentSize.height - _scrollView.bounds.size.height
+                                        + refreshingInset + contentInset.bottom);
             break;
         case MSRefreshDirectionRight:
             refreshableDirection = MSRefreshableDirectionRight;
