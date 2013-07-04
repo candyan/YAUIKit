@@ -71,7 +71,7 @@
   NSUInteger buttonsCount = _buttonsArray.count;
   NSUInteger separtorsNumber = buttonsCount - 1;
   
-  CGFloat separatorWidth = (_separatorImage != nil) ? _separatorImage.size.width : kYAButtonSeparatorWidth;
+  CGFloat separatorWidth = self.hasSeparator ? ((_separatorImage != nil) ? _separatorImage.size.height : kYAButtonSeparatorWidth) : 0;
   CGFloat buttonWidth = floorf((CGRectGetWidth(contentRect) - (separtorsNumber * separatorWidth)) / buttonsCount);
   CGFloat buttonHeight = CGRectGetHeight(contentRect);
   CGSize buttonSize = CGSizeMake(buttonWidth, buttonHeight);
@@ -120,7 +120,7 @@
   NSUInteger buttonsCount = _buttonsArray.count;
   NSUInteger separtorsNumber = buttonsCount - 1;
   
-  CGFloat separatorHeight = (_separatorImage != nil) ? _separatorImage.size.height : kYAButtonSeparatorWidth;
+  CGFloat separatorHeight = self.hasSeparator ? ((_separatorImage != nil) ? _separatorImage.size.height : kYAButtonSeparatorWidth) : 0;
   CGFloat buttonWidth = CGRectGetWidth(contentRect);
   CGFloat buttonHeight = floorf((CGRectGetHeight(contentRect) - (separtorsNumber * separatorHeight)) / buttonsCount);
   CGSize buttonSize = CGSizeMake(buttonWidth, buttonHeight);

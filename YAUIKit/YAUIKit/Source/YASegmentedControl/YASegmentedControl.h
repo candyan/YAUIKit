@@ -29,6 +29,7 @@ typedef enum {
 @property (nonatomic, assign) UIEdgeInsets contentEdgeInsets;
 @property (nonatomic, assign) YASegmentedControlMode segmentedControlMode;
 @property (nonatomic, assign) YASegmentedControlLayoutMode segmentedControlLayoutMode;
+@property (nonatomic, assign) BOOL hasSeparator;
 
 - (void)setSelectedIndex:(NSUInteger)index;
 - (void)setSelectedIndexes:(NSIndexSet *)indexSet byExpandingSelection:(BOOL)expandSelection;
