@@ -11,7 +11,7 @@
 
 @property (nonatomic, assign) MSRefreshingDirections refreshingDirections;
 @property (nonatomic, assign) MSRefreshableDirections refreshableDirections;
-@property (nonatomic, assign) id <MSPullToRefreshDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <MSPullToRefreshDelegate> delegate;
 
 - (void) _checkOffsetsForDirection:(MSRefreshDirection)direction change:(NSDictionary *)change;
 
