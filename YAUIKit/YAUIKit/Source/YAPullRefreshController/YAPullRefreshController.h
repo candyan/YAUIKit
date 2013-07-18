@@ -30,8 +30,8 @@ typedef enum {
   MSPullToRefreshController *_ptrc;
 }
 
-@property (nonatomic, retain) UIView *pullRefreshHeaderView;
-@property (nonatomic, retain) UIView *pullRefreshFooterView;
+@property (nonatomic, unsafe_unretained) UIView *pullRefreshHeaderView;
+@property (nonatomic, unsafe_unretained) UIView *pullRefreshFooterView;
 @property (nonatomic, assign) YARefreshableDirection refreshableDirection;
 @property (nonatomic, assign) UIEdgeInsets refreshingInsets;
 @property (nonatomic, assign) UIEdgeInsets refreshableInsets;

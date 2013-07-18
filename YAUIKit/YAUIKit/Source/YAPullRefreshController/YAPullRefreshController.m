@@ -41,47 +41,55 @@
 
 #pragma mark - Property Method
 - (void) setPullRefreshHeaderView:(UIView *)pullRefreshHeaderView {
-  if (_pullRefreshHeaderView != pullRefreshHeaderView) {
+  
+  if (_pullRefreshHeaderView) {
     [_pullRefreshHeaderView removeFromSuperview];
-    
-    _pullRefreshHeaderView = pullRefreshHeaderView;
-    if (_pullRefreshHeaderView) {
-      [_pullRefreshHeaderView setFrameOriginY:-_pullRefreshHeaderView.frame.size.height];
-      [_ptrc.scrollView addSubview:_pullRefreshHeaderView];
-      
-      _refreshableInsets.top = _pullRefreshHeaderView.frame.size.height;
-      _refreshingInsets.top = _pullRefreshHeaderView.frame.size.height;
-      
-      if (!(_refreshableDirection & kYARefreshableDirectionTop)) {
-        [_pullRefreshHeaderView setHidden:YES];
-      }
-    } else {
-      _refreshingInsets.top = 0;
-      _refreshableInsets.top = 0;
-    }
+    _pullRefreshHeaderView = nil;
   }
+  
+  if (pullRefreshHeaderView) {
+    CGFloat headerHeight = CGRectGetHeight(pullRefreshHeaderView.frame);
+    [pullRefreshHeaderView setFrameOriginY:-headerHeight];
+    [_ptrc.scrollView addSubview:pullRefreshHeaderView];
+    
+    _refreshableInsets.top = headerHeight;
+    _refreshingInsets.top = headerHeight;
+    
+    if (!(_refreshableDirection & kYARefreshableDirectionTop)) {
+      [_pullRefreshHeaderView setHidden:YES];
+    }
+  } else {
+    _refreshingInsets.top = 0;
+    _refreshableInsets.top = 0;
+  }
+  
+  _pullRefreshHeaderView = pullRefreshHeaderView;
 }
 
 - (void) setPullRefreshFooterView:(UIView *)pullRefreshFooterView {
-  if (_pullRefreshFooterView != pullRefreshFooterView) {
+  
+  if (_pullRefreshFooterView) {
     [_pullRefreshFooterView removeFromSuperview];
-    
-    _pullRefreshFooterView = pullRefreshFooterView;
-    if (_pullRefreshFooterView) {
-      [_pullRefreshFooterView setFrameOriginY:(_ptrc.scrollView.contentSize.height + _ptrc.scrollView.contentInset.bottom)];
-      [_ptrc.scrollView addSubview:_pullRefreshFooterView];
-      
-      _refreshableInsets.bottom = _pullRefreshFooterView.frame.size.height;
-      _refreshingInsets.bottom = _pullRefreshFooterView.frame.size.height;
-      
-      if (!(_refreshableDirection & kYARefreshableDirectionButtom)) {
-        [_pullRefreshFooterView setHidden:YES];
-      }
-    } else {
-      _refreshingInsets.bottom = 0;
-      _refreshableInsets.bottom = 0;
-    }
+    _pullRefreshFooterView = nil;
   }
+  
+  if (pullRefreshFooterView) {
+    CGFloat footerHeight = CGRectGetHeight(pullRefreshFooterView.frame);
+    [pullRefreshFooterView setFrameOriginY:(_ptrc.scrollView.contentSize.height + _ptrc.scrollView.contentInset.bottom)];
+    [_ptrc.scrollView addSubview:pullRefreshFooterView];
+    
+    _refreshableInsets.bottom = footerHeight;
+    _refreshingInsets.bottom = footerHeight;
+    
+    if (!(_refreshableDirection & kYARefreshableDirectionButtom)) {
+      [_pullRefreshFooterView setHidden:YES];
+    }
+  } else {
+    _refreshingInsets.bottom = 0;
+    _refreshableInsets.bottom = 0;
+  }
+  
+  _pullRefreshFooterView = pullRefreshFooterView;
 }
 
 - (void)setRefreshableDirection:(YARefreshableDirection)refreshableDirection {
