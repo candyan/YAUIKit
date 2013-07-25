@@ -20,7 +20,7 @@ typedef enum {
   kYARefreshableDirectionNone = 0,
   kYARefreshableDirectionTop = MSRefreshDirectionTop,
   kYARefreshableDirectionRight = MSRefreshDirectionRight,
-  kYARefreshvDirectionLeft = MSRefreshDirectionLeft,
+  kYARefreshableDirectionLeft = MSRefreshDirectionLeft,
   kYARefreshableDirectionButtom = MSRefreshDirectionBottom,
 } YARefreshableDirection;
 
