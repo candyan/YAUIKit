@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02291EB817BCEB6400DDF0ED /* YADialogView.m */; };
 		4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5518D1176AD3A80046F5B8 /* UIImage+YARotate.m */; };
 		4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */; };
 		4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
@@ -86,6 +87,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02291EB717BCEB6400DDF0ED /* YADialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YADialogView.h; sourceTree = "<group>"; };
+		02291EB817BCEB6400DDF0ED /* YADialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YADialogView.m; sourceTree = "<group>"; };
 		4C5518D0176AD3A80046F5B8 /* UIImage+YARotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YARotate.h"; sourceTree = "<group>"; };
 		4C5518D1176AD3A80046F5B8 /* UIImage+YARotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YARotate.m"; sourceTree = "<group>"; };
 		4C59B9DD17150D3C003B7FC2 /* YAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAAlertView.h; sourceTree = "<group>"; };
@@ -192,6 +195,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02291EB617BCEB5300DDF0ED /* YADialogView */ = {
+			isa = PBXGroup;
+			children = (
+				02291EB717BCEB6400DDF0ED /* YADialogView.h */,
+				02291EB817BCEB6400DDF0ED /* YADialogView.m */,
+			);
+			path = YADialogView;
+			sourceTree = "<group>";
+		};
 		4C59B9DB17150C84003B7FC2 /* YAAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +293,7 @@
 		4C5C3D861713E64300F706A7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				02291EB617BCEB5300DDF0ED /* YADialogView */,
 				4C8A39891780856600C7FA9E /* YABadgeView */,
 				4CF4160617670B6500664D8C /* YASegmentedControl */,
 				4C5C42F0171E702C00391666 /* Extend */,
@@ -668,6 +681,7 @@
 				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
 				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 				4C8A398C1780858400C7FA9E /* YABadgeView.m in Sources */,
+				02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
