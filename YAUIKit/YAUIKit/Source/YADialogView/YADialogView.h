@@ -11,6 +11,10 @@
 @interface YADialogView : UIView
 
 @property (nonatomic, unsafe_unretained) UIView *contentView;
+@property (nonatomic, unsafe_unretained) UIButton * cancelButton;
+@property (nonatomic, unsafe_unretained) UIButton * confirmButton;
+@property (nonatomic, unsafe_unretained) UILabel * titleLable;
+@property (nonatomic, strong) UIColor *backgroundViewColor;
 
 - (id) initWithTitle:(NSString *)title;
 
