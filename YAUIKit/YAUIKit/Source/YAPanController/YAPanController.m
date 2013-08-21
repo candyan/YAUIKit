@@ -61,7 +61,7 @@
       backSuccess = YES;
     }
     
-    [UIView animateWithDuration:.2 animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
       if (_animationsBlock) {
         _animationsBlock(backSuccess);
       }
