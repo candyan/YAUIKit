@@ -161,7 +161,7 @@ static CGFloat const kDialogElementWidth = 225.f;
 
 - (UIButton *) commonButton {
   UIButton * commonButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  [commonButton.layer setCornerRadius:4.f];
+  [commonButton.layer setCornerRadius:3.f];
   [commonButton.layer setMasksToBounds:YES];
   [commonButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [commonButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:11.f]];
