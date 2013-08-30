@@ -8,7 +8,7 @@
 
 #import "YAPlaceHolderTextView.h"
 
-CGFloat placeholderEdgeInset = 8.0f;
+CGFloat const kPlaceholderEdgeInset = 8.0f;
 
 @implementation YAPlaceHolderTextView
 
@@ -16,7 +16,8 @@ CGFloat placeholderEdgeInset = 8.0f;
 @synthesize placeholderColor = _placeholderColor;
 
 #pragma mark - init & setup
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+{
   self = [super initWithFrame:frame];
   if (self) {
     [self setupPlaceHolderTextView];
@@ -24,52 +25,59 @@ CGFloat placeholderEdgeInset = 8.0f;
   return self;
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
   [super awakeFromNib];
   [self setupPlaceHolderTextView];
 }
 
-- (void) setupPlaceHolderTextView {
+- (void) setupPlaceHolderTextView
+{
   [self setPlaceholder:@""];
   [self setPlaceholderColor:[UIColor lightGrayColor]];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
 }
 
 #pragma mark - draw
-
-- (void)drawRect:(CGRect)rect {
-  
-  if ([self.placeholder length] > 0) {
-    if (!_placeHolderLabel) {
-      _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(placeholderEdgeInset,
-                                                                    placeholderEdgeInset,
-                                                                    self.bounds.size.width - 2 * placeholderEdgeInset,
-                                                                    0)];
-      [_placeHolderLabel setLineBreakMode:UILineBreakModeCharacterWrap];
-      [_placeHolderLabel setNumberOfLines:0];
-      [_placeHolderLabel setBackgroundColor:[UIColor clearColor]];
-      [_placeHolderLabel setFont:self.font];
-      [_placeHolderLabel setTextColor:_placeholderColor];
-      [_placeHolderLabel setHidden:YES];
-      [self addSubview:_placeHolderLabel];
-    }
-    
-    [_placeHolderLabel setText:self.placeholder];
-    [_placeHolderLabel sizeToFit];
-    
-    if ([self.text length] == 0) {
-      [_placeHolderLabel setHidden:NO];
-    }
+- (void)drawRect:(CGRect)rect
+{
+  if ([self.placeholder length] > 0
+      && [self.text length] == 0) {
+    [[self _placeHolderLabel] setText:self.placeholder];
+    [[self _placeHolderLabel] sizeToFit];
+    [[self _placeHolderLabel] setHidden:NO];
+  } else {
+    [[self _placeHolderLabel] setHidden:YES];
   }
   
   [super drawRect:rect];
 }
 
 #pragma mark - Prop
-- (void)setContentInset:(UIEdgeInsets)contentInset {
+- (UILabel *)_placeHolderLabel
+{
+  if (!_placeHolderLabel) {
+    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPlaceholderEdgeInset,
+                                                                  kPlaceholderEdgeInset,
+                                                                  self.bounds.size.width - 2 * kPlaceholderEdgeInset,
+                                                                  0)];
+    [_placeHolderLabel setUserInteractionEnabled:YES];
+    [_placeHolderLabel setLineBreakMode:UILineBreakModeCharacterWrap];
+    [_placeHolderLabel setNumberOfLines:0];
+    [_placeHolderLabel setBackgroundColor:[UIColor clearColor]];
+    [_placeHolderLabel setFont:self.font];
+    [_placeHolderLabel setTextColor:_placeholderColor];
+    [_placeHolderLabel setHidden:YES];
+    [self addSubview:_placeHolderLabel];
+  }
+  return _placeHolderLabel;
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset
+{
   UIEdgeInsets insets = contentInset;
   
-  if (insets.bottom > placeholderEdgeInset) {
+  if (insets.bottom > kPlaceholderEdgeInset) {
     insets.bottom = 0;
   }
   insets.top = 0;
@@ -77,7 +85,8 @@ CGFloat placeholderEdgeInset = 8.0f;
   [super setContentInset:insets];
 }
 
-- (void)setContentOffset:(CGPoint)contentOffset {
+- (void)setContentOffset:(CGPoint)contentOffset
+{
   if(self.tracking || self.decelerating){
 		//initiated by user...
 		self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -85,7 +94,7 @@ CGFloat placeholderEdgeInset = 8.0f;
     
 		float bottomOffset = (self.contentSize.height - self.frame.size.height + self.contentInset.bottom);
 		if(contentOffset.y < bottomOffset && self.scrollEnabled){
-			self.contentInset = UIEdgeInsetsMake(0, 0, placeholderEdgeInset, 0); //maybe use scrollRangeToVisible?
+			self.contentInset = UIEdgeInsetsMake(0, 0, kPlaceholderEdgeInset, 0); //maybe use scrollRangeToVisible?
 		}
 		
 	}
@@ -93,41 +102,39 @@ CGFloat placeholderEdgeInset = 8.0f;
 	[super setContentOffset:contentOffset];
 }
 
-- (void)setText:(NSString *)text {
+- (void)setText:(NSString *)text
+{
   [super setText:text];
   [self textChanged:nil];
 }
 
-- (void)setPlaceholderColor:(UIColor *)placeholderColor {
+- (void)setPlaceholderColor:(UIColor *)placeholderColor
+{
   _placeholderColor = placeholderColor;
-  if (_placeHolderLabel) {
-    [_placeHolderLabel setTextColor:_placeholderColor];
-  }
+  [[self _placeHolderLabel] setTextColor:placeholderColor];
 }
 
-- (void)setPlaceholder:(NSString *)placeholder {
+- (void)setPlaceholder:(NSString *)placeholder
+{
   _placeholder = placeholder;
-  if (_placeHolderLabel) {
-    [_placeHolderLabel setText:_placeholder];
-    [_placeHolderLabel sizeToFit];
-  }
+  [self setNeedsDisplay];
 }
 
-- (void)setFont:(UIFont *)font {
+- (void)setFont:(UIFont *)font
+{
   [super setFont:font];
-  [_placeHolderLabel setFont:font];
+  [[self _placeHolderLabel] setFont:font];
 }
 
 #pragma mark - Notification
-- (void) textChanged:(NSNotification *)notification {
-  if ([self.placeholder length] == 0) {
-    return;
-  }
+- (void)textChanged:(NSNotification *)notification
+{
+  if ([self.placeholder length] == 0) return;
   
   if ([self.text length] == 0) {
-    [_placeHolderLabel setHidden:NO];
+    [[self _placeHolderLabel] setHidden:NO];
   } else {
-    [_placeHolderLabel setHidden:YES];
+    [[self _placeHolderLabel] setHidden:YES];
   }
 }
 
