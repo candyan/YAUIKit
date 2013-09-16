@@ -113,4 +113,20 @@
   return tagSubViews;
 }
 
+#pragma mark - Debugging
+
+- (void)logViewHierarchy {
+  [self _logViewHierarchyAtLevel:0];
+}
+
+- (void)_logViewHierarchyAtLevel:(int)level {
+  for (int index = 0; index < level; ++index) {
+    printf("  ");
+  }
+  printf("%s\n", [[self description] cStringUsingEncoding:NSUTF8StringEncoding]);
+  for (UIView *subview in self.subviews) {
+    [subview _logViewHierarchyAtLevel:(level + 1)];
+  }
+}
+
 @end

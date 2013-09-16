@@ -43,4 +43,9 @@
 
 - (NSArray *) subviewsForClassName:(Class)className tag:(NSInteger)tag;
 
+///-------------------------------------
+/// Debugging
+///-------------------------------------
+- (void)logViewHierarchy;
+
 @end
