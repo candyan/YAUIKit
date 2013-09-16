@@ -37,8 +37,8 @@
   [self.view layoutIfNeeded] ;
   
   __block UIView *superView = toViewController.view.superview;
-  [superView addSubview:fromViewController.view];
-  [superView bringSubviewToFront:toViewController.view];
+  [superView insertSubview:fromViewController.view
+              belowSubview:toViewController.view];
   
   if (preparation) {
     preparation(fromViewController.view, toViewController.view);
