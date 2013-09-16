@@ -34,4 +34,11 @@
                                          animations:(void (^)(UIView *fromView, UIView *toView))animations
                                          completion:(void (^)(UIView *fromView, UIView *toView))completion;
 
+- (NSArray *)popToViewController:(UIViewController *)viewController
+                        duration:(NSTimeInterval)duration
+                         options:(UIViewAnimationOptions)options
+                      prelayouts:(void (^)(UIView *fromView, UIView *toView))preparation
+                      animations:(void (^)(UIView *fromView, UIView *toView))animations
+                      completion:(void (^)(UIView *fromView, UIView *toView))completion;
+
 @end
