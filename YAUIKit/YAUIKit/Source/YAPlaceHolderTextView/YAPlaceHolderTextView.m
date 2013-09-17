@@ -61,7 +61,6 @@ CGFloat const kPlaceholderEdgeInset = 8.0f;
                                                                   kPlaceholderEdgeInset,
                                                                   self.bounds.size.width - 2 * kPlaceholderEdgeInset,
                                                                   0)];
-    [_placeHolderLabel setUserInteractionEnabled:YES];
     [_placeHolderLabel setLineBreakMode:NSLineBreakByCharWrapping];
     [_placeHolderLabel setNumberOfLines:0];
     [_placeHolderLabel setBackgroundColor:[UIColor clearColor]];
