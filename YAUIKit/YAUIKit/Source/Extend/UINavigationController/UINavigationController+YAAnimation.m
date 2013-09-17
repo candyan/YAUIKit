@@ -37,8 +37,8 @@
   [self.view layoutIfNeeded] ;
   
   __block UIView *superView = toViewController.view.superview;
-  [superView addSubview:fromViewController.view];
-  [superView bringSubviewToFront:toViewController.view];
+  [superView insertSubview:fromViewController.view
+              belowSubview:toViewController.view];
   
   if (preparation) {
     preparation(fromViewController.view, toViewController.view);
@@ -83,20 +83,39 @@
   if (count <= 1) {
     return nil;
   }
-  
+
+  return [[self popToViewController:[[self viewControllers] objectAtIndex:(count - 2)]
+                           duration:duration
+                            options:options
+                         prelayouts:preparation
+                         animations:animations
+                         completion:completion] lastObject];
+}
+
+- (NSArray *)popToViewController:(UIViewController *)viewController
+                        duration:(NSTimeInterval)duration
+                         options:(UIViewAnimationOptions)options
+                      prelayouts:(void (^)(UIView *fromView, UIView *toView))preparation
+                      animations:(void (^)(UIView *fromView, UIView *toView))animations
+                      completion:(void (^)(UIView *fromView, UIView *toView))completion
+{
+  if ([self.viewControllers indexOfObject:viewController] == NSNotFound) {
+    return nil;
+  }
+
   __block UIViewController *fromViewController = self.visibleViewController;
-  [self popViewControllerAnimated:NO];
+  NSArray *popedViewControllers = [self popToViewController:viewController animated:NO];
   [self.view layoutIfNeeded];
-  
+
   __block UIViewController *toViewController = self.visibleViewController;
   UIView *superView = toViewController.view.superview;
   [superView addSubview:fromViewController.view];
-  
+
   [self.view layoutIfNeeded];
   if (preparation) {
     preparation(fromViewController.view, toViewController.view);
   }
-  
+
   [UIView animateWithDuration:duration
                         delay:0.0
                       options:options
@@ -111,8 +130,8 @@
                      }
                      [fromViewController.view removeFromSuperview];
                    }];
-  
-  return fromViewController;
+
+  return popedViewControllers;
 }
 
 @end
