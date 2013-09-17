@@ -358,8 +358,8 @@
       
       [self.badgeText drawInRect:textFrame
                         withFont:self.badgeTextFont
-                   lineBreakMode:UILineBreakModeCharacterWrap
-                       alignment:UITextAlignmentCenter];
+                   lineBreakMode:NSLineBreakByCharWrapping
+                       alignment:NSTextAlignmentCenter];
     }
     CGContextRestoreGState(ctx);
   }
