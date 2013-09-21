@@ -15,6 +15,7 @@
 #import "UIImage+YAColor.h"
 #import "UINavigationController+YAAnimation.h"
 #import "UIImage+YARotate.h"
+#import "UIControl+YAUIKit.h"
 
 //Custom View
 #import "YAPanBackController.h"

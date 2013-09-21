@@ -16,5 +16,6 @@
 - (UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize;
 - (UIImage *)imageByScalingProportionallyToMinimumSize:(CGSize)targetSize;
 - (UIImage *)imageAtRect:(CGRect)rect;
+- (UIImage *)imageByScale:(CGFloat)scale;
 
 @end

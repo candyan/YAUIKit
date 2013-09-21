@@ -212,4 +212,10 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
   
 }
 
+- (UIImage *)imageByScale:(CGFloat)scale
+{
+  CGSize scaleSize = CGSizeMake(self.size.width * sqrtf(scale), self.size.height * sqrtf(scale));
+  return [self imageByScalingToSize:scaleSize];
+}
+
 @end
