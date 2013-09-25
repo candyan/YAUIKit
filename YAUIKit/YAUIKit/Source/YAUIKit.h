@@ -34,5 +34,6 @@
 
 //Refresh Control
 #import "UIScrollView+YARefreshControl.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
 
 #endif
