@@ -18,7 +18,8 @@
 #define fequalzero(a) (fabs(a) < FLT_EPSILON)
 #endif
 
-static CGFloat const kRefreshViewHeight = 60.0f;
+static CGFloat const kRefreshViewHeight = 40.0f;
+static NSTimeInterval const kRefreshAnimateDuration = 0.3f;
 
 @interface YARefreshControl ()
 
@@ -91,9 +92,9 @@ static CGFloat const kRefreshViewHeight = 60.0f;
 - (UIView *)refreshView
 {
   if (!_refreshView) {
-    CGRect frame = self.scrollView.bounds;
+    CGRect frame = self.scrollView.frame;
     frame.size.height = kRefreshViewHeight;
-    frame.origin.y = self.originEdgeInsets.top;
+    frame.origin.y += self.originEdgeInsets.top;
     UIView *refreshView = [[UIView alloc] initWithFrame:frame];
     [refreshView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth
                                       | UIViewAutoresizingFlexibleBottomMargin)];
@@ -179,7 +180,11 @@ static CGFloat const kRefreshViewHeight = 60.0f;
         if(previousState == kYARefreshStateTriggered
            && self.refreshActionHandle) {
           [self.indicator startLoading];
-          self.refreshActionHandle();
+          double delayInSeconds = kRefreshAnimateDuration;
+          dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+          dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            self.refreshActionHandle();
+          });
         }
         break;
     }
@@ -325,7 +330,7 @@ static CGFloat const kRefreshViewHeight = 60.0f;
 
 - (void)_setScrollViewContentInset:(UIEdgeInsets)contentInset animate:(BOOL)flag
 {
-  NSTimeInterval duration = flag ? 0.3 : 0.0;
+  NSTimeInterval duration = flag ? kRefreshAnimateDuration : 0.0;
   [UIView animateWithDuration:duration animations:^{
     [self.scrollView setContentInset:contentInset];
   }];
