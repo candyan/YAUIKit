@@ -110,7 +110,7 @@
       break;
     }
     case 5:{
-      pushViewController = [[PullRefreshViewController alloc] initWithNibName:@"PullRefreshViewController" bundle:nil];
+      pushViewController = [[PullRefreshViewController alloc] initWithNibName:nil bundle:nil];
       break;
     }
       

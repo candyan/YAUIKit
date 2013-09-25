@@ -8,31 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUIntenger, YARefreshPosition)
-{
-  kYARefreshPositionTop    = 1 << 0,
-  kYARefreshPositionBottom = 1 << 1,
-}
-
-typedef NS_ENUM(NSUIntenger, YARefreshState)
+typedef NS_ENUM(NSUInteger, YARefreshState)
 {
   kYARefreshStateStopped   = 1 << 0,
   kYARefreshStateTriggered = 1 << 1,
   kYARefreshStateLoading   = 1 << 2,
-}
+};
 
 @interface YARefreshControl : NSObject
 
 @property (nonatomic, readonly) YARefreshState    refreshState;
-@property (nonatomic, readonly) YARefreshPosition refreshPosition;
 @property (nonatomic, assign)   BOOL              refreshEnable;
 
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView 
-                   refreshPosition:(YARefreshPosition)refreshPosition;
+               refreshActionHandle:(void(^)())actionHandle;
 
-- (void)setTilte:(NSString *)title forState:(YARefreshState)state;
+- (void)setTitle:(NSString *)title forState:(YARefreshState)state;
 - (void)setSubTitle:(NSString *)subTitle forState:(YARefreshState)state;
-- (void)setCustomView:(UIView *)customView forState:(YARefreshState)state;
+//- (void)setCustomView:(UIView *)customView forState:(YARefreshState)state;
+
+- (void)setTitleColor:(UIColor *)color;
+- (void)setTitleFont:(UIFont *)font;
+- (void)setIndicatorColor:(UIColor *)color;
 
 - (void)beginRefresh;
 - (void)endRefresh;

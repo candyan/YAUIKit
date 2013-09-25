@@ -45,7 +45,6 @@
 		4C60500B171D248D0051F41B /* YAPullRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500A171D248D0051F41B /* YAPullRefreshController.m */; };
 		4C60500F171D24E10051F41B /* MSPullToRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500E171D24E10051F41B /* MSPullToRefreshController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C60501C171D3A0F0051F41B /* PullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */; };
-		4C60501D171D3A0F0051F41B /* PullRefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */; };
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
 		4C61125917167FF5006CC59B /* YAToggleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61125817167FF5006CC59B /* YAToggleView.m */; };
@@ -60,6 +59,11 @@
 		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
 		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
 		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
+		7504394E17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7504394D17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.m */; };
+		751A7D2C17F1EC7A0025675E /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A7D2B17F1EC7A0025675E /* YARefreshIndicator.m */; };
+		75C21C3A17F15F9A00AC503A /* YARefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C3917F15F9A00AC503A /* YARefreshControl.m */; };
+		75C21C3D17F160A200AC503A /* UIScrollView+YARefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C3C17F160A200AC503A /* UIScrollView+YARefreshControl.m */; };
+		75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,7 +156,6 @@
 		4C60500E171D24E10051F41B /* MSPullToRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPullToRefreshController.m; sourceTree = "<group>"; };
 		4C605019171D3A0F0051F41B /* PullRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshViewController.h; sourceTree = "<group>"; };
 		4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshViewController.m; sourceTree = "<group>"; };
-		4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullRefreshViewController.xib; sourceTree = "<group>"; };
 		4C61123717165644006CC59B /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		4C61123817165644006CC59B /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		4C61123917165644006CC59B /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
@@ -171,6 +174,16 @@
 		4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_thumb_btn@2x.png"; sourceTree = "<group>"; };
 		4CF4160717670B8A00664D8C /* YASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASegmentedControl.h; sourceTree = "<group>"; };
 		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
+		7504394C17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+YAInfiniteScrolling.h"; sourceTree = "<group>"; };
+		7504394D17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+YAInfiniteScrolling.m"; sourceTree = "<group>"; };
+		751A7D2A17F1EC7A0025675E /* YARefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshIndicator.h; sourceTree = "<group>"; };
+		751A7D2B17F1EC7A0025675E /* YARefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshIndicator.m; sourceTree = "<group>"; };
+		75C21C3817F15F9A00AC503A /* YARefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshControl.h; sourceTree = "<group>"; };
+		75C21C3917F15F9A00AC503A /* YARefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshControl.m; sourceTree = "<group>"; };
+		75C21C3B17F160A200AC503A /* UIScrollView+YARefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+YARefreshControl.h"; sourceTree = "<group>"; };
+		75C21C3C17F160A200AC503A /* UIScrollView+YARefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+YARefreshControl.m"; sourceTree = "<group>"; };
+		75C21C7D17F1744D00AC503A /* UIFont+YAUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+YAUIKit.h"; sourceTree = "<group>"; };
+		75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+YAUIKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +309,8 @@
 		4C5C3D861713E64300F706A7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4C5C4304171E712D00391666 /* YAUIKit.h */,
+				75C21C3717F15F9A00AC503A /* YARefreshControl */,
 				02291EB617BCEB5300DDF0ED /* YADialogView */,
 				4C8A39891780856600C7FA9E /* YABadgeView */,
 				4CF4160617670B6500664D8C /* YASegmentedControl */,
@@ -309,8 +324,6 @@
 				4C59B9DB17150C84003B7FC2 /* YAAlertView */,
 				4C59B9DC17150C84003B7FC2 /* YAActionSheet */,
 				4C5C3D871713E66900F706A7 /* YAPlaceHolderTextView */,
-				4C5C4304171E712D00391666 /* YAUIKit.h */,
-				4C605018171D39F90051F41B /* PullRefreshViewController */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -327,6 +340,7 @@
 		4C5C3D951713F3A400F706A7 /* YAUIKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C605018171D39F90051F41B /* PullRefreshViewController */,
 				4C5D59BD171816ED00C948C2 /* BaseViewController */,
 				4C5D59B31717C10100C948C2 /* SearchViewController */,
 				4CEF06C71716AC5E00AD7913 /* ToggleViewController */,
@@ -381,6 +395,7 @@
 		4C5C42F0171E702C00391666 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				75C21C7C17F1743900AC503A /* UIFont */,
 				4CB01B4E17E81F8700F725FB /* UIControl */,
 				4C5C42F1171E702D00391666 /* UIColor */,
 				4C5C42F4171E702D00391666 /* UIImage */,
@@ -496,10 +511,8 @@
 			children = (
 				4C605019171D3A0F0051F41B /* PullRefreshViewController.h */,
 				4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */,
-				4C60501B171D3A0F0051F41B /* PullRefreshViewController.xib */,
 			);
-			name = PullRefreshViewController;
-			path = ../../YAUIKitDemo/PullRefreshViewController;
+			path = PullRefreshViewController;
 			sourceTree = "<group>";
 		};
 		4C61123617165634006CC59B /* PickerViewController */ = {
@@ -584,6 +597,30 @@
 			path = YASegmentedControl;
 			sourceTree = "<group>";
 		};
+		75C21C3717F15F9A00AC503A /* YARefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				75C21C3817F15F9A00AC503A /* YARefreshControl.h */,
+				75C21C3917F15F9A00AC503A /* YARefreshControl.m */,
+				75C21C3B17F160A200AC503A /* UIScrollView+YARefreshControl.h */,
+				75C21C3C17F160A200AC503A /* UIScrollView+YARefreshControl.m */,
+				7504394C17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.h */,
+				7504394D17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.m */,
+				751A7D2A17F1EC7A0025675E /* YARefreshIndicator.h */,
+				751A7D2B17F1EC7A0025675E /* YARefreshIndicator.m */,
+			);
+			path = YARefreshControl;
+			sourceTree = "<group>";
+		};
+		75C21C7C17F1743900AC503A /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				75C21C7D17F1744D00AC503A /* UIFont+YAUIKit.h */,
+				75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */,
+			);
+			path = UIFont;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -630,6 +667,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "liu yan";
+				TargetAttributes = {
+					4C5C3D8E1713F3A400F706A7 = {
+						DevelopmentTeam = 5DS6P2KWFQ;
+					};
+				};
 			};
 			buildConfigurationList = 4C5C3D701713E53D00F706A7 /* Build configuration list for PBXProject "YAUIKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -666,7 +708,6 @@
 				4CEF06D11716B09600AD7913 /* toggle_bg_on@2x.png in Resources */,
 				4CEF06D21716B09600AD7913 /* toggle_thumb_btn@2x.png in Resources */,
 				4C5D59B81717C11800C948C2 /* SearchViewController.xib in Resources */,
-				4C60501D171D3A0F0051F41B /* PullRefreshViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,10 +733,15 @@
 				4C5C42FF171E702D00391666 /* UINavigationController+YAAnimation.m in Sources */,
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
 				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
+				75C21C3A17F15F9A00AC503A /* YARefreshControl.m in Sources */,
 				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
+				7504394E17F1A76F00FBBD96 /* UIScrollView+YAInfiniteScrolling.m in Sources */,
 				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 				4C8A398C1780858400C7FA9E /* YABadgeView.m in Sources */,
 				02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */,
+				751A7D2C17F1EC7A0025675E /* YARefreshIndicator.m in Sources */,
+				75C21C3D17F160A200AC503A /* UIScrollView+YARefreshControl.m in Sources */,
+				75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,7 +862,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -838,7 +884,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKit/YAUIKit-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -855,19 +901,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
 				INFOPLIST_FILE = "YAUIKitDemo/YAUIKitDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -877,13 +925,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
 				INFOPLIST_FILE = "YAUIKitDemo/YAUIKitDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -891,6 +940,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};

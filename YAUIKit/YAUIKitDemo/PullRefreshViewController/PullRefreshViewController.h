@@ -10,6 +10,6 @@
 
 @interface PullRefreshViewController : BaseViewController
 
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) UITableView *tableView;
 
 @end

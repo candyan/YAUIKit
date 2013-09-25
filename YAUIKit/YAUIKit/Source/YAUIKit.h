@@ -16,6 +16,7 @@
 #import "UINavigationController+YAAnimation.h"
 #import "UIImage+YARotate.h"
 #import "UIControl+YAUIKit.h"
+#import "UIFont+YAUIKit.h"
 
 //Custom View
 #import "YAPanBackController.h"
@@ -29,5 +30,9 @@
 #import "YAPullRefreshController.h"
 #import "YASegmentedControl.h"
 #import "YABadgeView.h"
+#import "YARefreshIndicator.h"
+
+//Refresh Control
+#import "UIScrollView+YARefreshControl.h"
 
 #endif
