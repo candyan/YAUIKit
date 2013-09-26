@@ -12,6 +12,7 @@
 @implementation YAPanBackController {
   CGFloat _panBackStartPointX;
   UIViewController *_toViewController;
+  NSMutableArray *_ignoreTouchClasses;
 }
 
 #pragma mark - init
@@ -19,6 +20,7 @@
   self = [super init];
   if (self) {
     _currentViewController = currentViewController;
+    _ignoreTouchClasses = [NSMutableArray arrayWithObject:[UISlider class]];
     self.canPanBack = YES;
     [self createPanBackGestureRecongizer];
     
@@ -150,11 +152,18 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-  if ([[touch view] isKindOfClass:[UISlider class]] ||
-      !self.canPanBack) {
+  if (!self.canPanBack) {
     return NO;
   }
-  return YES;
+
+  BOOL receive = YES;
+  for (Class clz in _ignoreTouchClasses) {
+    if ([touch.view isKindOfClass:clz]) {
+      receive = NO;
+      break;
+    }
+  }
+  return receive;
 }
 
 - (void) addPanBackToView:(UIView *)view {
@@ -163,6 +172,10 @@
 
 - (void) removePanBackFromView:(UIView *)view {
   [view removeGestureRecognizer:_panBackGR];
+}
+
+- (void) ignoreTouchesOnViewOfClass:(Class)clazz {
+  [_ignoreTouchClasses addObject:clazz];
 }
 
 @end

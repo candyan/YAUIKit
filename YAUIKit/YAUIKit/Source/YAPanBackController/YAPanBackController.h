@@ -25,6 +25,8 @@
 - (void) addPanBackToView:(UIView *)view;
 - (void) removePanBackFromView:(UIView *)view;
 
+- (void) ignoreTouchesOnViewOfClass:(Class)clazz;
+
 - (void) setPanBackPrelayoutsBlock:(void(^)(UIView *fromView, UIView *toView))prelayouts
                    panChangedBlock:(void(^)(UIView *fromView, UIView *toView, CGFloat changedPrecent))panChanged
                    animationsBlock:(void(^)(UIView *fromView, UIView *toView, BOOL success))animations
