@@ -33,7 +33,7 @@
 #import "YARefreshIndicator.h"
 
 //Refresh Control
-#import "UIScrollView+YARefreshControl.h"
+#import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 
 #endif

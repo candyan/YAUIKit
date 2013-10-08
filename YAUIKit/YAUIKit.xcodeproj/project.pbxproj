@@ -59,10 +59,8 @@
 		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
 		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
 		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
-		751A7D2C17F1EC7A0025675E /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A7D2B17F1EC7A0025675E /* YARefreshIndicator.m */; };
-		7569B33F17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */; };
-		75C21C3A17F15F9A00AC503A /* YARefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C3917F15F9A00AC503A /* YARefreshControl.m */; };
-		75C21C3D17F160A200AC503A /* UIScrollView+YARefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C3C17F160A200AC503A /* UIScrollView+YARefreshControl.m */; };
+		75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B9653C180409ED007D1A4C /* YARefreshIndicator.m */; };
+		75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */; };
 		75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */; };
 /* End PBXBuildFile section */
 
@@ -174,16 +172,14 @@
 		4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_thumb_btn@2x.png"; sourceTree = "<group>"; };
 		4CF4160717670B8A00664D8C /* YASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASegmentedControl.h; sourceTree = "<group>"; };
 		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
-		751A7D2A17F1EC7A0025675E /* YARefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshIndicator.h; sourceTree = "<group>"; };
-		751A7D2B17F1EC7A0025675E /* YARefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshIndicator.m; sourceTree = "<group>"; };
 		7569B33D17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
-		75C21C3817F15F9A00AC503A /* YARefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshControl.h; sourceTree = "<group>"; };
-		75C21C3917F15F9A00AC503A /* YARefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshControl.m; sourceTree = "<group>"; };
-		75C21C3B17F160A200AC503A /* UIScrollView+YARefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+YARefreshControl.h"; sourceTree = "<group>"; };
-		75C21C3C17F160A200AC503A /* UIScrollView+YARefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+YARefreshControl.m"; sourceTree = "<group>"; };
+		75B9653B180409ED007D1A4C /* YARefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshIndicator.h; sourceTree = "<group>"; };
+		75B9653C180409ED007D1A4C /* YARefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshIndicator.m; sourceTree = "<group>"; };
 		75C21C7D17F1744D00AC503A /* UIFont+YAUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+YAUIKit.h"; sourceTree = "<group>"; };
 		75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+YAUIKit.m"; sourceTree = "<group>"; };
+		75DC805717F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +307,7 @@
 			children = (
 				4C5C4304171E712D00391666 /* YAUIKit.h */,
 				75C21C3717F15F9A00AC503A /* YARefreshControl */,
+				75B9653A180409ED007D1A4C /* YARefreshIndicator */,
 				02291EB617BCEB5300DDF0ED /* YADialogView */,
 				4C8A39891780856600C7FA9E /* YABadgeView */,
 				4CF4160617670B6500664D8C /* YASegmentedControl */,
@@ -597,17 +594,22 @@
 			path = YASegmentedControl;
 			sourceTree = "<group>";
 		};
+		75B9653A180409ED007D1A4C /* YARefreshIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				75B9653B180409ED007D1A4C /* YARefreshIndicator.h */,
+				75B9653C180409ED007D1A4C /* YARefreshIndicator.m */,
+			);
+			path = YARefreshIndicator;
+			sourceTree = "<group>";
+		};
 		75C21C3717F15F9A00AC503A /* YARefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				75C21C3817F15F9A00AC503A /* YARefreshControl.h */,
-				75C21C3917F15F9A00AC503A /* YARefreshControl.m */,
-				75C21C3B17F160A200AC503A /* UIScrollView+YARefreshControl.h */,
-				75C21C3C17F160A200AC503A /* UIScrollView+YARefreshControl.m */,
+				75DC805717F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.h */,
+				75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */,
 				7569B33D17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.h */,
 				7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */,
-				751A7D2A17F1EC7A0025675E /* YARefreshIndicator.h */,
-				751A7D2B17F1EC7A0025675E /* YARefreshIndicator.m */,
 			);
 			path = YARefreshControl;
 			sourceTree = "<group>";
@@ -718,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */,
 				4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */,
 				4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */,
@@ -731,16 +734,13 @@
 				4C5C42FD171E702D00391666 /* UIColor+YAHexColor.m in Sources */,
 				4C5C42FE171E702D00391666 /* UIImage+YAColor.m in Sources */,
 				4C5C42FF171E702D00391666 /* UINavigationController+YAAnimation.m in Sources */,
+				75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */,
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
 				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
-				75C21C3A17F15F9A00AC503A /* YARefreshControl.m in Sources */,
 				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
 				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 				4C8A398C1780858400C7FA9E /* YABadgeView.m in Sources */,
 				02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */,
-				7569B33F17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				751A7D2C17F1EC7A0025675E /* YARefreshIndicator.m in Sources */,
-				75C21C3D17F160A200AC503A /* UIScrollView+YARefreshControl.m in Sources */,
 				75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "PullRefreshViewController.h"
+#import "UIScrollView+YARefreshControl.h"
 
 @interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate, YAPullRefreshDelegate> {
   YAPullRefreshController *_yprc;
@@ -50,11 +51,11 @@
 {
   [super viewDidAppear:animated];
   __weak typeof(self) weakSelf = self;
-  [self.tableView addRefreshControlWithActionHandler:^{
+  [self.tableView addPullToRefreshWithActionHandler:^{
     [weakSelf refreshNumber];
   }];
   
-  [self.tableView.refreshControl beginRefresh];
+//  [self.tableView triggerPullToRefresh];
 }
 
 #pragma mark - Prop
@@ -99,7 +100,7 @@
     for (NSInteger index = 0; index < 7; index++) {
       [_numberArray addObject:@(random())];
     }
-    sleep(15);
+    sleep(3);
     dispatch_async(dispatch_get_main_queue(), ^{
       [_tableView reloadData];
       
@@ -109,11 +110,11 @@
       
       [formatter setDateFormat:@"HH:mm:ss"];
       
-      [self.tableView.refreshControl setSubTitle:[formatter stringFromDate:[NSDate date]] forState:(kYARefreshStateStopped
-                                                                                     | kYARefreshStateTriggered
-                                                                                     | kYARefreshStateLoading)];
-      
-      [self.tableView.refreshControl endRefresh];
+//      [self.tableView.refreshControl setSubTitle:[formatter stringFromDate:[NSDate date]] forState:(kYARefreshStateStopped
+//                                                                                     | kYARefreshStateTriggered
+//                                                                                     | kYARefreshStateLoading)];
+//
+      [self.tableView.pullToRefreshView stopAnimating];
     });
   });
 }
