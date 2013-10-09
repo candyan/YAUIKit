@@ -62,6 +62,7 @@
 		75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B9653C180409ED007D1A4C /* YARefreshIndicator.m */; };
 		75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */; };
 		75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */; };
+		75C433B3180527D8003B6FCE /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -720,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75C433B3180527D8003B6FCE /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */,
 				4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */,
