@@ -10,36 +10,16 @@
 #import <UIKit/UIKit.h>
 #import <AvailabilityMacros.h>
 
-
-@class SVPullToRefreshView;
-
-@interface UIScrollView (SVPullToRefresh)
-
-enum {
-    SVPullToRefreshPositionTop = 0,
-    SVPullToRefreshPositionBottom,
+typedef NS_ENUM(NSUInteger, YARefreshPosition) {
+  kYARefreshPositionTop = 0,
+  kYARefreshPositionBottom,
 };
 
-typedef NSUInteger SVPullToRefreshPosition;
-
-- (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler;
-- (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler position:(SVPullToRefreshPosition)position;
-- (void)triggerPullToRefresh;
-
-@property (nonatomic, strong, readonly) SVPullToRefreshView *pullToRefreshView;
-@property (nonatomic, assign) BOOL showsPullToRefresh;
-
-@end
-
-
-enum {
-    SVPullToRefreshStateStopped = 0,
-    SVPullToRefreshStateTriggered,
-    SVPullToRefreshStateLoading,
-    SVPullToRefreshStateAll = 10
+typedef NS_ENUM(NSUInteger, YARefreshState){
+  kYARefreshStateStopped   = 1 << 0,
+  kYARefreshStateTriggered = 1 << 1,
+  kYARefreshStateLoading   = 1 << 2,
 };
-
-typedef NSUInteger SVPullToRefreshState;
 
 @interface SVPullToRefreshView : UIView
 
@@ -47,12 +27,12 @@ typedef NSUInteger SVPullToRefreshState;
 @property (nonatomic, strong, readonly) UILabel *titleLabel;
 @property (nonatomic, strong, readonly) UILabel *subtitleLabel;
 
-@property (nonatomic, readonly) SVPullToRefreshState state;
-@property (nonatomic, readonly) SVPullToRefreshPosition position;
+@property (nonatomic, readonly) YARefreshState refreshState;
+@property (nonatomic, readonly) YARefreshPosition refreshPosition;
 
-- (void)setTitle:(NSString *)title forState:(SVPullToRefreshState)state;
-- (void)setSubtitle:(NSString *)subtitle forState:(SVPullToRefreshState)state;
-- (void)setCustomView:(UIView *)view forState:(SVPullToRefreshState)state;
+- (void)setTitle:(NSString *)title forState:(YARefreshState)state;
+- (void)setSubtitle:(NSString *)subtitle forState:(YARefreshState)state;
+- (void)setCustomView:(UIView *)view forState:(YARefreshState)state;
 
 - (void)startAnimating;
 - (void)stopAnimating;
@@ -66,3 +46,16 @@ typedef NSUInteger SVPullToRefreshState;
 - (void)triggerRefresh DEPRECATED_ATTRIBUTE;
 
 @end
+
+@interface UIScrollView (SVPullToRefresh)
+
+- (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler;
+- (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler position:(YARefreshPosition)position;
+- (void)triggerPullToRefresh;
+
+@property (nonatomic, strong, readonly) SVPullToRefreshView *pullToRefreshView;
+@property (nonatomic, assign) BOOL showsPullToRefresh;
+
+@end
+
+

@@ -7,7 +7,6 @@
 //
 
 #import "PullRefreshViewController.h"
-#import "UIScrollView+YARefreshControl.h"
 
 @interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate, YAPullRefreshDelegate> {
   YAPullRefreshController *_yprc;
