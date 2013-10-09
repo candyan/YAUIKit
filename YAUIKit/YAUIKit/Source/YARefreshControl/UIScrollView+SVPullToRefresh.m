@@ -28,9 +28,9 @@ static CGFloat const SVPullToRefreshViewHeight = 60;
 @property (nonatomic, readwrite) YARefreshState refreshState;
 @property (nonatomic, readwrite) YARefreshPosition refreshPosition;
 
-@property (nonatomic, strong) NSMutableArray *titles;
-@property (nonatomic, strong) NSMutableArray *subtitles;
-@property (nonatomic, strong) NSMutableArray *viewForState;
+@property (nonatomic, strong) NSMutableDictionary *titles;
+@property (nonatomic, strong) NSMutableDictionary *subtitles;
+@property (nonatomic, strong) NSMutableDictionary *viewForState;
 
 @property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, readwrite) CGFloat originalTopInset;
@@ -187,13 +187,15 @@ static char UIScrollViewPullToRefreshView;
     self.refreshState = kYARefreshStateStopped;
     self.showsDateLabel = NO;
     
-    self.titles = [NSMutableArray arrayWithObjects:NSLocalizedString(@"Pull to refresh...",),
-                   NSLocalizedString(@"Release to refresh...",),
-                   NSLocalizedString(@"Loading...",),
-                   nil];
+    self.titles = [NSMutableDictionary dictionaryWithObjects:@[NSLocalizedString(@"Pull to refresh...",),
+                                                               NSLocalizedString(@"Release to refresh...",),
+                                                               NSLocalizedString(@"Loading...",)]
+                                                     forKeys:@[@(kYARefreshStateStopped),
+                                                               @(kYARefreshStateTriggered),
+                                                               @(kYARefreshStateLoading)]];
     
-    self.subtitles = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", nil];
-    self.viewForState = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", nil];
+    self.subtitles = [NSMutableDictionary dictionary];
+    self.viewForState = [NSMutableDictionary dictionary];
     self.wasTriggeredByUser = YES;
   }
   return self;
@@ -223,7 +225,7 @@ static char UIScrollViewPullToRefreshView;
       [otherView removeFromSuperview];
   }
   
-  id customView = [self.viewForState objectAtIndex:self.refreshState];
+  id customView = [self.viewForState objectForKey:@(self.refreshState)];
   BOOL hasCustomView = [customView isKindOfClass:[UIView class]];
     
   self.titleLabel.hidden = hasCustomView;
@@ -247,9 +249,9 @@ static char UIScrollViewPullToRefreshView;
     CGFloat marginY = 2;
     CGFloat labelMaxWidth = self.bounds.size.width - margin - leftViewWidth;
         
-    self.titleLabel.text = [self.titles objectAtIndex:self.refreshState];
+    self.titleLabel.text = [self.titles objectForKey:@(self.refreshState)];
         
-    NSString *subtitle = [self.subtitles objectAtIndex:self.refreshState];
+    NSString *subtitle = [self.subtitles objectForKey:@(self.refreshState)];
     self.subtitleLabel.text = subtitle.length > 0 ? subtitle : nil;
     
     CGSize titleSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font
@@ -496,13 +498,13 @@ static char UIScrollViewPullToRefreshView;
   if(!title) title = @"";
   
   if (state & kYARefreshStateStopped) {
-    [self.titles replaceObjectAtIndex:state withObject:title];
+    [self.titles setObject:title forKey:@(kYARefreshStateStopped)];
   }
   if (state & kYARefreshStateTriggered) {
-    [self.titles replaceObjectAtIndex:state withObject:title];
+    [self.titles setObject:title forKey:@(kYARefreshStateTriggered)];
   }
   if (state & kYARefreshStateLoading) {
-    [self.titles replaceObjectAtIndex:state withObject:title];
+    [self.titles setObject:title forKey:@(kYARefreshStateLoading)];
   }
   
   [self setNeedsLayout];
@@ -513,13 +515,13 @@ static char UIScrollViewPullToRefreshView;
   if(!subtitle) subtitle = @"";
   
   if (state & kYARefreshStateStopped) {
-    [self.subtitles replaceObjectAtIndex:state withObject:subtitle];
+    [self.subtitles setObject:subtitle forKey:@(kYARefreshStateStopped)];
   }
   if (state & kYARefreshStateTriggered) {
-    [self.subtitles replaceObjectAtIndex:state withObject:subtitle];
+    [self.subtitles setObject:subtitle forKey:@(kYARefreshStateTriggered)];
   }
   if (state & kYARefreshStateLoading) {
-    [self.subtitles replaceObjectAtIndex:state withObject:subtitle];
+    [self.subtitles setObject:subtitle forKey:@(kYARefreshStateLoading)];
   }
   
   [self setNeedsLayout];
@@ -530,13 +532,13 @@ static char UIScrollViewPullToRefreshView;
   id viewPlaceholder = view;
     
   if (state & kYARefreshStateStopped) {
-    [self.viewForState replaceObjectAtIndex:state withObject:viewPlaceholder];
+    [self.viewForState setObject:viewPlaceholder forKey:@(kYARefreshStateStopped)];
   }
   if (state & kYARefreshStateTriggered) {
-    [self.viewForState replaceObjectAtIndex:state withObject:viewPlaceholder];
+    [self.viewForState setObject:viewPlaceholder forKey:@(kYARefreshStateTriggered)];
   }
   if (state & kYARefreshStateLoading) {
-    [self.viewForState replaceObjectAtIndex:state withObject:viewPlaceholder];
+    [self.viewForState setObject:viewPlaceholder forKey:@(kYARefreshStateLoading)];
   }
   
   [self setNeedsLayout];
@@ -592,12 +594,12 @@ static char UIScrollViewPullToRefreshView;
       break;
     }
   }
-  self.state = kYARefreshStateLoading;
+  self.refreshState = kYARefreshStateLoading;
 }
 
 - (void)stopAnimating
 {
-  self.state = kYARefreshStateStopped;
+  self.refreshState = kYARefreshStateStopped;
   
   switch (self.refreshPosition) {
     case kYARefreshPositionTop:
@@ -615,15 +617,15 @@ static char UIScrollViewPullToRefreshView;
   }
 }
 
-- (void)setState:(YARefreshState)newState
+- (void)setRefreshState:(YARefreshState)refreshState
 {
-  if(_refreshState != newState) {
+  if(_refreshState != refreshState) {
     YARefreshState previousState = _refreshState;
-    _refreshState = newState;
+    _refreshState = refreshState;
     
     [self setNeedsLayout];
     
-    switch (newState) {
+    switch (refreshState) {
       case kYARefreshStateStopped:
         [self.activityIndicatorView stopLoading];
         [self resetScrollViewContentInset];
@@ -639,7 +641,11 @@ static char UIScrollViewPullToRefreshView;
         
         if(previousState == kYARefreshStateTriggered
            && self.refreshActionHandler) {
-          self.refreshActionHandler();
+          double delayInSeconds = 0.3;
+          dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+          dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            self.refreshActionHandler();
+          });
         }
         break;
     }
