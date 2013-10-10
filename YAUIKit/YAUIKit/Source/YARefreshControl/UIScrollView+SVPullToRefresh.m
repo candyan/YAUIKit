@@ -16,6 +16,10 @@
 #define fequal(a,b) (fabs((a) - (b)) < FLT_EPSILON)
 #define fequalzero(a) (fabs(a) < FLT_EPSILON)
 
+#ifndef OS_PRIOR_IOS_7
+#define OS_PRIOR_IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.f)
+#endif
+
 static CGFloat const SVPullToRefreshViewHeight = 60;
 
 @interface SVPullToRefreshView ()
@@ -65,7 +69,11 @@ static char UIScrollViewPullToRefreshView;
     CGFloat yOrigin;
     switch (position) {
       case kYARefreshPositionTop:
-        yOrigin = 0;
+        if (OS_PRIOR_IOS_7) {
+          yOrigin = -SVPullToRefreshViewHeight;
+        } else {
+          yOrigin = 0;
+        }
         break;
       case kYARefreshPositionBottom:
         yOrigin = self.contentSize.height;
@@ -78,7 +86,7 @@ static char UIScrollViewPullToRefreshView;
     view.refreshActionHandler = actionHandler;
     view.scrollView = self;
     [self insertSubview:view atIndex:0];
-
+    view.backgroundColor = [UIColor clearColor];
     view.originalTopInset = self.contentInset.top;
     view.originalBottomInset = self.contentInset.bottom;
     view.refreshPosition = position;
@@ -144,7 +152,11 @@ static char UIScrollViewPullToRefreshView;
       CGFloat yOrigin;
       switch (self.pullToRefreshView.refreshPosition) {
         case kYARefreshPositionTop:
-          yOrigin = 0;
+          if (OS_PRIOR_IOS_7) {
+            yOrigin = -SVPullToRefreshViewHeight;
+          } else {
+            yOrigin = 0;
+          }
           break;
         case kYARefreshPositionBottom:
           yOrigin = self.contentSize.height;
@@ -220,8 +232,6 @@ static char UIScrollViewPullToRefreshView;
 
 - (void)layoutSubviews
 {
-  [self _sendToBack];
-
   for(id otherView in self.viewForState) {
     if([otherView isKindOfClass:[UIView class]])
       [otherView removeFromSuperview];
@@ -340,12 +350,10 @@ static char UIScrollViewPullToRefreshView;
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-  [self _sendToBack];
-
   if([keyPath isEqualToString:@"contentOffset"])
   {
     CGPoint newOffset = [[change valueForKey:NSKeyValueChangeNewKey] CGPointValue];
-    if (self.refreshPosition == kYARefreshPositionTop) {
+    if (self.refreshPosition == kYARefreshPositionTop && !OS_PRIOR_IOS_7) {
       [self setFrameOriginY:newOffset.y + self.originalTopInset];
     }
     [self scrollViewDidScroll:newOffset];
@@ -356,7 +364,11 @@ static char UIScrollViewPullToRefreshView;
     CGFloat yOrigin;
     switch (self.refreshPosition) {
       case kYARefreshPositionTop:
-        yOrigin = self.scrollView.contentOffset.y + self.originalTopInset;
+        if (OS_PRIOR_IOS_7) {
+          yOrigin = -SVPullToRefreshViewHeight;
+        } else {
+          yOrigin = self.scrollView.contentOffset.y + self.originalTopInset;
+        }
         break;
       case kYARefreshPositionBottom:
         yOrigin = MAX(self.scrollView.contentSize.height, self.scrollView.bounds.size.height);
@@ -652,15 +664,6 @@ static char UIScrollViewPullToRefreshView;
           });
         }
         break;
-    }
-  }
-}
-
-- (void)_sendToBack
-{
-  if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
-    if ([self.scrollView.subviews indexOfObject:self] != 0) {
-      [self.scrollView sendSubviewToBack:self];
     }
   }
 }
