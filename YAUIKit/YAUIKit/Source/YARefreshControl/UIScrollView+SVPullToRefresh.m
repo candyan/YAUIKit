@@ -78,7 +78,7 @@ static char UIScrollViewPullToRefreshView;
     view.refreshActionHandler = actionHandler;
     view.scrollView = self;
     [self insertSubview:view atIndex:0];
-    
+
     view.originalTopInset = self.contentInset.top;
     view.originalBottomInset = self.contentInset.bottom;
     view.refreshPosition = position;
@@ -220,6 +220,8 @@ static char UIScrollViewPullToRefreshView;
 
 - (void)layoutSubviews
 {
+  [self _sendToBack];
+
   for(id otherView in self.viewForState) {
     if([otherView isKindOfClass:[UIView class]])
       [otherView removeFromSuperview];
@@ -338,6 +340,8 @@ static char UIScrollViewPullToRefreshView;
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+  [self _sendToBack];
+
   if([keyPath isEqualToString:@"contentOffset"])
   {
     CGPoint newOffset = [[change valueForKey:NSKeyValueChangeNewKey] CGPointValue];
@@ -352,7 +356,7 @@ static char UIScrollViewPullToRefreshView;
     CGFloat yOrigin;
     switch (self.refreshPosition) {
       case kYARefreshPositionTop:
-        yOrigin = 0;
+        yOrigin = self.scrollView.contentOffset.y + self.originalTopInset;
         break;
       case kYARefreshPositionBottom:
         yOrigin = MAX(self.scrollView.contentSize.height, self.scrollView.bounds.size.height);
@@ -648,6 +652,15 @@ static char UIScrollViewPullToRefreshView;
           });
         }
         break;
+    }
+  }
+}
+
+- (void)_sendToBack
+{
+  if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
+    if ([self.scrollView.subviews indexOfObject:self] != 0) {
+      [self.scrollView sendSubviewToBack:self];
     }
   }
 }
