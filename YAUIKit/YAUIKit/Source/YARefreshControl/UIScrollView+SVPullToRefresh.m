@@ -590,23 +590,13 @@ static char UIScrollViewPullToRefreshView;
 {
   switch (self.refreshPosition) {
     case kYARefreshPositionTop: {
-      if(fequalzero(self.scrollView.contentOffset.y)) {
-        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, -self.frame.size.height) animated:YES];
-        self.wasTriggeredByUser = NO;
-      } else {
-        self.wasTriggeredByUser = YES;
-      }
+      [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, -self.frame.size.height) animated:YES];
+      self.wasTriggeredByUser = NO;
       break;
     }
     case kYARefreshPositionBottom: {
-      if((fequalzero(self.scrollView.contentOffset.y) && self.scrollView.contentSize.height < self.scrollView.bounds.size.height)
-         || fequal(self.scrollView.contentOffset.y, self.scrollView.contentSize.height - self.scrollView.bounds.size.height)) {
-        [self.scrollView setContentOffset:(CGPoint){.y = MAX(self.scrollView.contentSize.height - self.scrollView.bounds.size.height, 0.0f) + self.frame.size.height} animated:YES];
-        self.wasTriggeredByUser = NO;
-      }
-      else
-        self.wasTriggeredByUser = YES;
-      
+      [self.scrollView setContentOffset:(CGPoint){.y = MAX(self.scrollView.contentSize.height - self.scrollView.bounds.size.height, 0.0f) + self.frame.size.height} animated:YES];
+      self.wasTriggeredByUser = NO;
       break;
     }
   }
