@@ -8,7 +8,8 @@
 
 #import "YAPlaceHolderTextView.h"
 
-CGFloat const kPlaceholderEdgeInset = 8.0f;
+static CGFloat const kPlaceholderEdgeInset = 8.0f;
+static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
 
 @implementation YAPlaceHolderTextView
 
@@ -35,7 +36,10 @@ CGFloat const kPlaceholderEdgeInset = 8.0f;
 {
   [self setPlaceholder:@""];
   [self setPlaceholderColor:[UIColor lightGrayColor]];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(textChanged:)
+                                               name:UITextViewTextDidChangeNotification
+                                             object:nil];
 }
 
 #pragma mark - draw
@@ -57,9 +61,13 @@ CGFloat const kPlaceholderEdgeInset = 8.0f;
 - (UILabel *)_placeHolderLabel
 {
   if (!_placeHolderLabel) {
-    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPlaceholderEdgeInset,
+    CGFloat leftPadding = kPlaceholderLeftEdgeInset;
+    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
+      leftPadding = kPlaceholderEdgeInset;
+    }
+    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftPadding,
                                                                   kPlaceholderEdgeInset,
-                                                                  self.bounds.size.width - 2 * kPlaceholderEdgeInset,
+                                                                  self.bounds.size.width - 2 * leftPadding,
                                                                   0)];
     [_placeHolderLabel setLineBreakMode:NSLineBreakByCharWrapping];
     [_placeHolderLabel setNumberOfLines:0];
