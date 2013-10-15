@@ -59,6 +59,7 @@
 		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
 		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
 		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
+		75B57FE6180CE4CA00AA1B5A /* NSString+YAStringDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */; };
 		75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B9653C180409ED007D1A4C /* YARefreshIndicator.m */; };
 		75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */; };
 		75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */; };
@@ -175,6 +176,8 @@
 		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
 		7569B33D17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		75B57FE4180CE4CA00AA1B5A /* NSString+YAStringDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YAStringDrawing.h"; sourceTree = "<group>"; };
+		75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YAStringDrawing.m"; sourceTree = "<group>"; };
 		75B9653B180409ED007D1A4C /* YARefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshIndicator.h; sourceTree = "<group>"; };
 		75B9653C180409ED007D1A4C /* YARefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshIndicator.m; sourceTree = "<group>"; };
 		75C21C7D17F1744D00AC503A /* UIFont+YAUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+YAUIKit.h"; sourceTree = "<group>"; };
@@ -393,6 +396,7 @@
 		4C5C42F0171E702C00391666 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				75B57FE3180CE40A00AA1B5A /* YAStringDrawing */,
 				75C21C7C17F1743900AC503A /* UIFont */,
 				4CB01B4E17E81F8700F725FB /* UIControl */,
 				4C5C42F1171E702D00391666 /* UIColor */,
@@ -595,6 +599,15 @@
 			path = YASegmentedControl;
 			sourceTree = "<group>";
 		};
+		75B57FE3180CE40A00AA1B5A /* YAStringDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				75B57FE4180CE4CA00AA1B5A /* NSString+YAStringDrawing.h */,
+				75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */,
+			);
+			path = YAStringDrawing;
+			sourceTree = "<group>";
+		};
 		75B9653A180409ED007D1A4C /* YARefreshIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +739,7 @@
 				4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */,
 				4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */,
 				4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */,
+				75B57FE6180CE4CA00AA1B5A /* NSString+YAStringDrawing.m in Sources */,
 				4C59BA0017156255003B7FC2 /* YAPickerView.m in Sources */,
 				4C61125917167FF5006CC59B /* YAToggleView.m in Sources */,
 				4C5D59A11717B0A500C948C2 /* YASearchBar.m in Sources */,
