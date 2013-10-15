@@ -15,6 +15,7 @@
 #import "UIImage+YAColor.h"
 #import "UINavigationController+YAAnimation.h"
 #import "UIImage+YARotate.h"
+#import "UIImage+YAUIKit.h"
 #import "UIControl+YAUIKit.h"
 #import "UIFont+YAUIKit.h"
 #import "NSString+YAStringDrawing.h"

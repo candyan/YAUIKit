@@ -64,6 +64,7 @@
 		75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */; };
 		75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */; };
 		75C433B3180527D8003B6FCE /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */; };
+		B964D321180BA2F6003F8188 /* UIImage+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B964D320180BA2F6003F8188 /* UIImage+YAUIKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +185,8 @@
 		75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+YAUIKit.m"; sourceTree = "<group>"; };
 		75DC805717F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		B964D31F180BA2F6003F8188 /* UIImage+YAUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YAUIKit.h"; sourceTree = "<group>"; };
+		B964D320180BA2F6003F8188 /* UIImage+YAUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YAUIKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +426,8 @@
 				4C5C42F6171E702D00391666 /* UIImage+YAColor.m */,
 				4C5518D0176AD3A80046F5B8 /* UIImage+YARotate.h */,
 				4C5518D1176AD3A80046F5B8 /* UIImage+YARotate.m */,
+				B964D31F180BA2F6003F8188 /* UIImage+YAUIKit.h */,
+				B964D320180BA2F6003F8188 /* UIImage+YAUIKit.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				4C5C42FE171E702D00391666 /* UIImage+YAColor.m in Sources */,
 				4C5C42FF171E702D00391666 /* UINavigationController+YAAnimation.m in Sources */,
 				75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */,
+				B964D321180BA2F6003F8188 /* UIImage+YAUIKit.m in Sources */,
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
 				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
 				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
