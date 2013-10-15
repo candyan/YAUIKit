@@ -3,6 +3,10 @@ YAUIKit
 
 YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和自定义。
 
+### Dependency
+
+- CoreText
+
 ## ChangeLog
 
 #### v0.2.0
@@ -13,6 +17,7 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 - 提供使用16进制颜色值来获取颜色的方法
 - 提供生成纯色UIImage的方法
 - 提供可自定义动画的Pop & Push方法。
+- 计算NSString的用NSAttributedString显示时的Fit Size。
 
 #### v0.1.0
 
