@@ -385,20 +385,27 @@ static char UIScrollViewPullToRefreshView;
 {
   if(self.refreshState != kYARefreshStateLoading) {
     CGFloat scrollOffsetThreshold;
+    BOOL canVisible = NO;
     switch (self.refreshPosition) {
       case kYARefreshPositionTop:
+        canVisible = contentOffset.y <= 0;
         scrollOffsetThreshold = - (CGRectGetHeight(self.bounds) + self.originalTopInset);
         break;
       case kYARefreshPositionBottom:
         scrollOffsetThreshold = (MAX(self.scrollView.contentSize.height - self.scrollView.bounds.size.height, 0.0f)
                                  + self.bounds.size.height
                                  + self.originalBottomInset);
+        canVisible = (contentOffset.y + self.scrollView.bounds.size.height) - self.frame.origin.y >= 0 ;
         break;
     }
-    
+
     CGFloat diffOffsetY = contentOffset.y - scrollOffsetThreshold;
-    [self.activityIndicatorView didLoaded:(1 - diffOffsetY / (CGRectGetHeight(self.bounds) - 25))];
-    
+    self.hidden = !canVisible;
+    if (canVisible) {
+      CGFloat percent = (1 - diffOffsetY / CGRectGetHeight(self.bounds));
+      [self.activityIndicatorView didLoaded:percent];
+    }
+
     if(!self.scrollView.isDragging
        && self.refreshState == kYARefreshStateTriggered) {
       self.refreshState = kYARefreshStateLoading;

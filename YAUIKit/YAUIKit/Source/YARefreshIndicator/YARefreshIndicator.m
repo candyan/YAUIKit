@@ -61,7 +61,7 @@
   if (loading) {
     _indicatorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f / 33.0f
                                                        target:self
-                                                     selector:@selector(_didScroll)
+                                                     selector:@selector(_didScrollRefreshIndicator)
                                                      userInfo:nil
                                                       repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:_indicatorTimer forMode:NSRunLoopCommonModes];
@@ -129,7 +129,7 @@
 
 #pragma mark - Util
 
-- (void)_didScroll
+- (void)_didScrollRefreshIndicator
 {
   float deltaAngle = Radian2Degree(1 / [self _indicatorRadius]);
   _endAngle += deltaAngle;
