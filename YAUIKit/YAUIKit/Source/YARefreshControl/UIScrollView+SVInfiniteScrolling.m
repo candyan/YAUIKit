@@ -135,16 +135,15 @@ UIEdgeInsets scrollViewOriginalContentInsets;
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-    if (self.superview && newSuperview == nil) {
-        UIScrollView *scrollView = (UIScrollView *)self.superview;
-        if (scrollView.showsInfiniteScrolling) {
-          if (self.isObserving) {
-            [scrollView removeObserver:self forKeyPath:@"contentOffset"];
-            [scrollView removeObserver:self forKeyPath:@"contentSize"];
-            self.isObserving = NO;
-          }
-        }
+  if (self.superview && newSuperview == nil) {
+    //use self.superview, not self.scrollView. Why self.scrollView == nil here?
+    UIScrollView *scrollView = (UIScrollView *)self.superview;
+    if (self.isObserving) {
+      [scrollView removeObserver:self forKeyPath:@"contentOffset"];
+      [scrollView removeObserver:self forKeyPath:@"contentSize"];
+      self.isObserving = NO;
     }
+  }
 }
 
 - (void)layoutSubviews {

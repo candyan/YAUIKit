@@ -129,6 +129,7 @@ static char UIScrollViewPullToRefreshView;
   if(!showsPullToRefresh) {
     if (self.pullToRefreshView.isObserving) {
       [self removeObserver:self.pullToRefreshView forKeyPath:@"contentOffset"];
+      [self removeObserver:self.pullToRefreshView forKeyPath:@"contentSize"];
       [self removeObserver:self.pullToRefreshView forKeyPath:@"frame"];
       [self.pullToRefreshView resetScrollViewContentInset];
       self.pullToRefreshView.isObserving = NO;
@@ -214,19 +215,16 @@ static char UIScrollViewPullToRefreshView;
   return self;
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
+- (void)willMoveToSuperview:(UIView *)newSuperview {
   if (self.superview && newSuperview == nil) {
     //use self.superview, not self.scrollView. Why self.scrollView == nil here?
     UIScrollView *scrollView = (UIScrollView *)self.superview;
-    if (scrollView.showsPullToRefresh) {
-      if (self.isObserving) {
-        //If enter this branch, it is the moment just before "SVPullToRefreshView's dealloc", so remove observer here
-        [scrollView removeObserver:self forKeyPath:@"contentOffset"];
-        [scrollView removeObserver:self forKeyPath:@"contentSize"];
-        [scrollView removeObserver:self forKeyPath:@"frame"];
-        self.isObserving = NO;
-      }
+    if (self.isObserving) {
+      //If enter this branch, it is the moment just before "SVPullToRefreshView's dealloc", so remove observer here
+      [scrollView removeObserver:self forKeyPath:@"contentOffset"];
+      [scrollView removeObserver:self forKeyPath:@"contentSize"];
+      [scrollView removeObserver:self forKeyPath:@"frame"];
+      self.isObserving = NO;
     }
   }
 }
