@@ -104,6 +104,7 @@ static char UIScrollViewPullToRefreshView;
 - (void)triggerPullToRefresh
 {
   self.pullToRefreshView.refreshState = kYARefreshStateTriggered;
+  [self.pullToRefreshView setHidden:NO];
   [self.pullToRefreshView startAnimating];
 }
 
@@ -399,8 +400,8 @@ static char UIScrollViewPullToRefreshView;
         break;
     }
 
-    CGFloat diffOffsetY = contentOffset.y - scrollOffsetThreshold;
     self.hidden = !canVisible;
+    CGFloat diffOffsetY = contentOffset.y - scrollOffsetThreshold;
     if (canVisible) {
       CGFloat percent = (1 - diffOffsetY / CGRectGetHeight(self.bounds));
       [self.activityIndicatorView didLoaded:percent];
