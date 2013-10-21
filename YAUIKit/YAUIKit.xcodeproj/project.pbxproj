@@ -42,8 +42,6 @@
 		4C5D59B81717C11800C948C2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D59B61717C11800C948C2 /* SearchViewController.xib */; };
 		4C5D59BC1718089900C948C2 /* YAPanBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59BB1718089900C948C2 /* YAPanBackController.m */; };
 		4C5D59C0171816FA00C948C2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59BF171816FA00C948C2 /* BaseViewController.m */; };
-		4C60500B171D248D0051F41B /* YAPullRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500A171D248D0051F41B /* YAPullRefreshController.m */; };
-		4C60500F171D24E10051F41B /* MSPullToRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60500E171D24E10051F41B /* MSPullToRefreshController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C60501C171D3A0F0051F41B /* PullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */; };
 		4C61123A17165644006CC59B /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
 		4C61123B17165644006CC59B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
@@ -59,11 +57,12 @@
 		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
 		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
 		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
+		7550608D1814D67A00E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
+		7550608E1814D68600E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		75B57FE6180CE4CA00AA1B5A /* NSString+YAStringDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */; };
+		75B63233181138F8009C88FF /* YARefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B63232181138F8009C88FF /* YARefreshControl.m */; };
 		75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B9653C180409ED007D1A4C /* YARefreshIndicator.m */; };
-		75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */; };
 		75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */; };
-		75C433B3180527D8003B6FCE /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */; };
 		B964D321180BA2F6003F8188 /* UIImage+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B964D320180BA2F6003F8188 /* UIImage+YAUIKit.m */; };
 /* End PBXBuildFile section */
 
@@ -151,10 +150,6 @@
 		4C5D59BB1718089900C948C2 /* YAPanBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPanBackController.m; sourceTree = "<group>"; };
 		4C5D59BE171816FA00C948C2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		4C5D59BF171816FA00C948C2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		4C605009171D248D0051F41B /* YAPullRefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPullRefreshController.h; sourceTree = "<group>"; };
-		4C60500A171D248D0051F41B /* YAPullRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPullRefreshController.m; sourceTree = "<group>"; };
-		4C60500D171D24E10051F41B /* MSPullToRefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPullToRefreshController.h; sourceTree = "<group>"; };
-		4C60500E171D24E10051F41B /* MSPullToRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPullToRefreshController.m; sourceTree = "<group>"; };
 		4C605019171D3A0F0051F41B /* PullRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshViewController.h; sourceTree = "<group>"; };
 		4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshViewController.m; sourceTree = "<group>"; };
 		4C61123717165644006CC59B /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
@@ -175,16 +170,15 @@
 		4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_thumb_btn@2x.png"; sourceTree = "<group>"; };
 		4CF4160717670B8A00664D8C /* YASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASegmentedControl.h; sourceTree = "<group>"; };
 		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
-		7569B33D17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
-		7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		7550608C1814D67A00E957DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		75B57FE4180CE4CA00AA1B5A /* NSString+YAStringDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YAStringDrawing.h"; sourceTree = "<group>"; };
 		75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YAStringDrawing.m"; sourceTree = "<group>"; };
+		75B63231181138F8009C88FF /* YARefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshControl.h; sourceTree = "<group>"; };
+		75B63232181138F8009C88FF /* YARefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshControl.m; sourceTree = "<group>"; };
 		75B9653B180409ED007D1A4C /* YARefreshIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshIndicator.h; sourceTree = "<group>"; };
 		75B9653C180409ED007D1A4C /* YARefreshIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshIndicator.m; sourceTree = "<group>"; };
 		75C21C7D17F1744D00AC503A /* UIFont+YAUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+YAUIKit.h"; sourceTree = "<group>"; };
 		75C21C7E17F1744D00AC503A /* UIFont+YAUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+YAUIKit.m"; sourceTree = "<group>"; };
-		75DC805717F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
-		75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		B964D31F180BA2F6003F8188 /* UIImage+YAUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YAUIKit.h"; sourceTree = "<group>"; };
 		B964D320180BA2F6003F8188 /* UIImage+YAUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YAUIKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7550608D1814D67A00E957DE /* CoreText.framework in Frameworks */,
 				4C5C3DBD1713F50400F706A7 /* UIKit.framework in Frameworks */,
 				4C5C3D791713E53D00F706A7 /* Foundation.framework in Frameworks */,
 			);
@@ -203,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7550608E1814D68600E957DE /* CoreText.framework in Frameworks */,
 				4C5C4303171E710D00391666 /* libYAUIKit.a in Frameworks */,
 				4C5C3DF417146B7000F706A7 /* QuartzCore.framework in Frameworks */,
 				4C5C3D911713F3A400F706A7 /* UIKit.framework in Frameworks */,
@@ -282,6 +278,7 @@
 		4C5C3D771713E53D00F706A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7550608C1814D67A00E957DE /* CoreText.framework */,
 				4C5C3DF317146B6F00F706A7 /* QuartzCore.framework */,
 				4C5C3D781713E53D00F706A7 /* Foundation.framework */,
 				4C5C3D901713F3A400F706A7 /* UIKit.framework */,
@@ -294,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				4C5C3D861713E64300F706A7 /* Source */,
-				4C605007171D22D20051F41B /* Library */,
 				4CEF06CB1716AEAE00AD7913 /* Resource */,
 				4C5C3D7B1713E53D00F706A7 /* Supporting Files */,
 			);
@@ -319,7 +315,6 @@
 				4C8A39891780856600C7FA9E /* YABadgeView */,
 				4CF4160617670B6500664D8C /* YASegmentedControl */,
 				4C5C42F0171E702C00391666 /* Extend */,
-				4C605008171D22EB0051F41B /* YAPullRefreshController */,
 				4C69D2DF177D385E0043B3BD /* YAPanController */,
 				4C5D59B91718086100C948C2 /* YAPanBackController */,
 				4C5D599E1717B09600C948C2 /* YASearchBar */,
@@ -487,32 +482,6 @@
 			path = BaseViewController;
 			sourceTree = "<group>";
 		};
-		4C605007171D22D20051F41B /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				4C60500C171D24E10051F41B /* MSPullToRefreshController */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		4C605008171D22EB0051F41B /* YAPullRefreshController */ = {
-			isa = PBXGroup;
-			children = (
-				4C605009171D248D0051F41B /* YAPullRefreshController.h */,
-				4C60500A171D248D0051F41B /* YAPullRefreshController.m */,
-			);
-			path = YAPullRefreshController;
-			sourceTree = "<group>";
-		};
-		4C60500C171D24E10051F41B /* MSPullToRefreshController */ = {
-			isa = PBXGroup;
-			children = (
-				4C60500D171D24E10051F41B /* MSPullToRefreshController.h */,
-				4C60500E171D24E10051F41B /* MSPullToRefreshController.m */,
-			);
-			path = MSPullToRefreshController;
-			sourceTree = "<group>";
-		};
 		4C605018171D39F90051F41B /* PullRefreshViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,10 +594,8 @@
 		75C21C3717F15F9A00AC503A /* YARefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				75DC805717F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.h */,
-				75DC805817F4198A00A1EAFB /* UIScrollView+SVPullToRefresh.m */,
-				7569B33D17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.h */,
-				7569B33E17F2E4940091CCE7 /* UIScrollView+SVInfiniteScrolling.m */,
+				75B63231181138F8009C88FF /* YARefreshControl.h */,
+				75B63232181138F8009C88FF /* YARefreshControl.m */,
 			);
 			path = YARefreshControl;
 			sourceTree = "<group>";
@@ -739,8 +706,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75C433B3180527D8003B6FCE /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				75B96540180413FF007D1A4C /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4C5C3D8A1713E96000F706A7 /* YAPlaceHolderTextView.m in Sources */,
 				4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */,
 				4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */,
@@ -750,10 +715,9 @@
 				4C5D59A11717B0A500C948C2 /* YASearchBar.m in Sources */,
 				4CB01B5117E81F9C00F725FB /* UIControl+YAUIKit.m in Sources */,
 				4C5D59BC1718089900C948C2 /* YAPanBackController.m in Sources */,
-				4C60500B171D248D0051F41B /* YAPullRefreshController.m in Sources */,
-				4C60500F171D24E10051F41B /* MSPullToRefreshController.m in Sources */,
 				4C5C42FD171E702D00391666 /* UIColor+YAHexColor.m in Sources */,
 				4C5C42FE171E702D00391666 /* UIImage+YAColor.m in Sources */,
+				75B63233181138F8009C88FF /* YARefreshControl.m in Sources */,
 				4C5C42FF171E702D00391666 /* UINavigationController+YAAnimation.m in Sources */,
 				75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */,
 				B964D321180BA2F6003F8188 /* UIImage+YAUIKit.m in Sources */,

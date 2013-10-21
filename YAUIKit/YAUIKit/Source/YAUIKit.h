@@ -29,13 +29,12 @@
 #import "YAToggleView.h"
 #import "YAPlaceHolderTextView.h"
 #import "YAActionSheet.h"
-#import "YAPullRefreshController.h"
 #import "YASegmentedControl.h"
 #import "YABadgeView.h"
 #import "YARefreshIndicator.h"
 
 //Refresh Control
-#import "UIScrollView+SVPullToRefresh.h"
-#import "UIScrollView+SVInfiniteScrolling.h"
+
+#import "YARefreshControl.h"
 
 #endif

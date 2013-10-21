@@ -9,6 +9,15 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 
 ## ChangeLog
 
+#### v1.0.0
+正式发布YAUIkit
+
+- 统一下拉刷新控件 —— YARefreshControl
+- 提供iOS 7 风格的Indicator —— YARefreshIndicator
+
+#### v0.2.1
+- 添加多种下拉刷新库
+
 #### v0.2.0
 ##### 合并YAToolKit，提供YAToolKit中的所有功能以下。
 - Set Each Frame Property

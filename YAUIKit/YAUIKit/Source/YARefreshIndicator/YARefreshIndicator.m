@@ -75,13 +75,15 @@
 
 - (void)didLoaded:(float)present
 {
-  if (present < 0) present = 0;
-  if (present > 1) present = 1;
-  
-  _startAngle = -90;
-  _endAngle = -90 + 320.0f * present;
-  
-  [self setNeedsDisplay];
+  if (present >= 0.0f
+      && present <= 1.0f ) {
+    [self setHidden:NO];
+    
+    _startAngle = -90;
+    _endAngle = -90 + 320.0f * present;
+
+    [self setNeedsDisplay];
+  }
 }
 
 #pragma mark - start & stop
@@ -89,6 +91,7 @@
 - (void)startLoading
 {
   if (!self.loading) {
+    [self setHidden:NO];
     self.loading = YES;
   }
 }
@@ -97,6 +100,7 @@
 {
   if (self.loading) {
     self.loading = NO;
+    [self setHidden:YES];
   }
 }
 

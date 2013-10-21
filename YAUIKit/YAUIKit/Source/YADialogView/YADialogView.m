@@ -22,7 +22,6 @@ static CGFloat const kDialogElementWidth = 225.f;
 
 @interface YADialogView ()
 
-
 @end
 
 @implementation YADialogView

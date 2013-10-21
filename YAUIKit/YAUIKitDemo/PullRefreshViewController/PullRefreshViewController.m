@@ -7,14 +7,13 @@
 //
 
 #import "PullRefreshViewController.h"
+#import "YAUIKit.h"
 
-@interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate, YAPullRefreshDelegate> {
-  YAPullRefreshController *_yprc;
-  UILabel *_refreshHeaderView;
-  UILabel *_refreshFooterView;
-  
+@interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate> {
   NSMutableArray *_numberArray;
 }
+
+@property (nonatomic, strong) YARefreshControl *refreshControl;
 
 @end
 
@@ -38,6 +37,16 @@
   [self.view setBackgroundColor:[UIColor whiteColor]];
   _numberArray = [NSMutableArray arrayWithObjects:@1, @2, @3, @4, @5, @6, nil];
   [self.tableView setBackgroundView:nil];
+
+  __weak typeof(self) weakSelf = self;
+  [self.refreshControl setCanRefreshDirection:kYARefreshableDirectionTop | kYARefreshableDirectionBottom];
+  [self.refreshControl setRefreshHandleAction:^(YARefreshDirection direction) {
+    if (direction == kYARefreshDirectionTop) {
+      [weakSelf refreshNumber];
+    } else if (direction == kYARefreshDirectionBottom) {
+      [weakSelf loadMoreNumber];
+    }
+  }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,23 +55,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
-  __weak typeof(self) weakSelf = self;
-  [self.tableView addPullToRefreshWithActionHandler:^{
-    [weakSelf refreshNumber];
-  }];
-  
-//  [self.tableView triggerPullToRefresh];
-}
-
 #pragma mark - Prop
 
 - (UITableView *)tableView
 {
   if (!_tableView) {
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [_tableView setFrameOriginY:64];
+    [_tableView setContentInset:UIEdgeInsetsZero];
     [_tableView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight
                                      | UIViewAutoresizingFlexibleWidth)];
     _tableView.delegate = self;
@@ -70,6 +70,14 @@
     [self.view addSubview:_tableView];
   }
   return _tableView;
+}
+
+- (YARefreshControl *)refreshControl
+{
+  if (!_refreshControl) {
+    _refreshControl = [[YARefreshControl alloc] initWithScrollView:self.tableView];
+  }
+  return _refreshControl;
 }
 
 #pragma mark - TableView Delegate
@@ -102,18 +110,7 @@
     sleep(3);
     dispatch_async(dispatch_get_main_queue(), ^{
       [_tableView reloadData];
-      
-      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-      NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_Hans"];
-      [formatter setLocale:locale];
-      
-      [formatter setDateFormat:@"HH:mm:ss"];
-      
-//      [self.tableView.refreshControl setSubTitle:[formatter stringFromDate:[NSDate date]] forState:(kYARefreshStateStopped
-//                                                                                     | kYARefreshStateTriggered
-//                                                                                     | kYARefreshStateLoading)];
-//
-      [self.tableView.pullToRefreshView stopAnimating];
+      [self.refreshControl stopRefreshAtDirection:kYARefreshDirectionTop animated:YES completion:nil];
     });
   });
 }
@@ -124,8 +121,7 @@
     sleep(2);
     dispatch_async(dispatch_get_main_queue(), ^{
       [_tableView reloadData];
-      [_refreshFooterView setText:@"上拉加载更多"];
-      [_yprc finishRefreshWithDirection:kYARefreshDirectionButtom animated:YES complate:nil];
+      [self.refreshControl stopRefreshAtDirection:kYARefreshDirectionBottom animated:YES completion:nil];
     });
   });
 }
