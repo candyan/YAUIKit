@@ -109,6 +109,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     NSMutableDictionary *titlesForDirection = [NSMutableDictionary dictionaryWithDictionary:weakSelf.titles[@(direction)]];
     [titlesForDirection setObject:title forKey:@(state)];
     [weakSelf.titles setObject:[titlesForDirection copy] forKey:@(direction)];
+    [weakSelf _resetRefresViewForState:state atDirection:direction];
   }];
 }
 
@@ -117,7 +118,12 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   __weak typeof(self) weakSelf = self;
   [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection direction) {
     NSMutableDictionary *subTitlesForDirection = [NSMutableDictionary dictionaryWithDictionary:weakSelf.subTitles[@(direction)]];
-    [subTitlesForDirection setObject:subTitle forKey:@(state)];
+    for (NSInteger index = 0; index < 3; index++) {
+      YARefreshState refreshState = 1 << index;
+      if (refreshState & state) {
+        [subTitlesForDirection setObject:subTitle forKey:@(refreshState)];
+      }
+    }
     [weakSelf.subTitles setObject:[subTitlesForDirection copy] forKey:@(direction)];
   }];
 }
@@ -126,9 +132,16 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 {
   _canRefreshDirection = canRefreshDirection;
 
-  [self _enumerateForHandleDirection:(YARefreshDirection)canRefreshDirection hanldeBlock:^(YARefreshDirection direction) {
-    [self _layoutRefreshViewForDirection:direction];
-  }];
+  for (NSInteger index = 0; index < 4; index++) {
+    YARefreshDirection direction = 1 << index;
+    UIView *refreshView = [self refreshViewAtDirection:direction];
+    if (direction & canRefreshDirection) {
+      [refreshView setHidden:NO];
+      [self _layoutRefreshViewForDirection:direction];
+    } else {
+      [refreshView setHidden:YES];
+    }
+  }
 }
 
 #pragma mark - custom refresh view style
