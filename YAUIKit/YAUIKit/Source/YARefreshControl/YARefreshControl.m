@@ -257,6 +257,8 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       break;
   }
 
+  [self _resetRefresViewForState:kYARefreshStateLoading atDirection:direction];
+
   NSTimeInterval duration = flag ? 0.3f : 0.0f;
   [UIView animateWithDuration:duration animations:^{
     _scrollView.contentInset = contentInset;
@@ -266,6 +268,8 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     self.refreshableDirection &= ~refreshableDirection;
     if ([self.delegate respondsToSelector:@selector(refreshControl:didEngageRefreshDirection:)]) {
       [self.delegate refreshControl:self didEngageRefreshDirection:direction];
+    } else if (self.refreshHandleAction) {
+      self.refreshHandleAction(direction);
     }
   }];
 }
@@ -277,7 +281,6 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 
 - (void)stopRefreshAtDirection:(YARefreshDirection)direction animated:(BOOL)flag completion:(void (^)())completion
 {
-
   [self _resetRefresViewForState:kYARefreshStateStop atDirection:direction];
   NSTimeInterval duration = flag ? 0.4f : 0.0f;
 
