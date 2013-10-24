@@ -27,6 +27,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 
 @property (nonatomic, strong) NSMutableDictionary *titles;
 @property (nonatomic, strong) NSMutableDictionary *subTitles;
+@property (nonatomic, strong) NSMutableDictionary *refreshViews;
 @property (nonatomic, strong) NSDate *lastRefreshDate;
 
 @end
@@ -78,7 +79,6 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 - (NSMutableDictionary *)subTitles
 {
   if (!_subTitles) {
-
     _subTitles = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                   @{}, @(kYARefreshDirectionTop),
                   @{}, @(kYARefreshDirectionBottom), nil];
@@ -86,18 +86,26 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   return _subTitles;
 }
 
+- (NSMutableDictionary *)refreshViews
+{
+  if (!_refreshViews) {
+    _refreshViews = [NSMutableDictionary dictionary];
+  }
+  return _refreshViews;
+}
+
 - (UIView *)refreshViewAtDirection:(YARefreshDirection)direction
 {
-  return [self.scrollView viewWithTag:direction];
+  return self.refreshViews[@(direction)];
 }
 
 - (void)setRefreshView:(UIView *)customView forDirection:(YARefreshDirection)direction
 {
-  [customView setTag:direction];
   UIView *refreshView = [self refreshViewAtDirection:direction];
   if (refreshView) {
     [refreshView removeFromSuperview];
   }
+  [self.refreshViews setObject:customView forKey:@(direction)];
   [self.scrollView insertSubview:customView atIndex:0];
   [self _layoutRefreshViewForDirection:direction];
 }
@@ -473,7 +481,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     } else {
       [self.scrollView addSubview:refreshView];
     }
-
+    [self.refreshViews setObject:refreshView forKey:@(direction)];
   }
 
   CGFloat originY = 0.0f;
@@ -504,7 +512,6 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
                                                          CGRectGetWidth(self.scrollView.bounds),
                                                          kYARefreshViewDefaultHeight)];
-  [refreshView setTag:direction];
   [refreshView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
   [refreshView setBackgroundColor:[UIColor clearColor]];
 
