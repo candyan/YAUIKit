@@ -69,7 +69,7 @@
   CGRect contentRect = UIEdgeInsetsInsetRect(self.bounds, _contentEdgeInsets);
   
   NSUInteger buttonsCount = _buttonsArray.count;
-  NSUInteger separtorsNumber = buttonsCount - 1;
+  NSUInteger separtorsNumber = separatorsArray.count;
   
   CGFloat separatorWidth = self.hasSeparator ? ((_separatorImage != nil) ? _separatorImage.size.height : kYAButtonSeparatorWidth) : 0;
   CGFloat buttonWidth = floorf((CGRectGetWidth(contentRect) - (separtorsNumber * separatorWidth)) / buttonsCount);
@@ -214,7 +214,7 @@
   _buttonsArray = buttonsArray;
   
   [_buttonsArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    [self addSubview:(UIButton *)obj];
+    [self insertSubview:(UIButton *)obj atIndex:0];
     [(UIButton *)obj addTarget:self action:@selector(segmentButtonPressed:) forControlEvents:UIControlEventTouchDown];
     [(UIButton *)obj setTag:idx];
   }];
