@@ -13,14 +13,13 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
 
 @implementation UIImage (YARotate)
 
-- (UIImage *)imageAtRect:(CGRect)rect {
-  
+- (UIImage *)imageAtRect:(CGRect)rect
+{
   CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
-  UIImage* subImage = [UIImage imageWithCGImage: imageRef];
+  UIImage *subImage = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
   CGImageRelease(imageRef);
   
   return subImage;
-  
 }
 
 - (UIImage *)imageByScalingProportionallyToMinimumSize:(CGSize)targetSize {
