@@ -65,8 +65,8 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
     if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
       leftPadding = kPlaceholderEdgeInset;
     }
-    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftPadding,
-                                                                  kPlaceholderEdgeInset,
+    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftPadding + self.contentInset.left,
+                                                                  kPlaceholderEdgeInset + self.contentInset.top,
                                                                   self.bounds.size.width - 2 * leftPadding,
                                                                   0)];
     [_placeHolderLabel setLineBreakMode:NSLineBreakByCharWrapping];
@@ -78,18 +78,6 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
     [self addSubview:_placeHolderLabel];
   }
   return _placeHolderLabel;
-}
-
-- (void)setContentInset:(UIEdgeInsets)contentInset
-{
-  UIEdgeInsets insets = contentInset;
-  
-  if (insets.bottom > kPlaceholderEdgeInset) {
-    insets.bottom = 0;
-  }
-  insets.top = 0;
-  
-  [super setContentInset:insets];
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset
@@ -143,6 +131,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   } else {
     [[self _placeHolderLabel] setHidden:YES];
   }
+  [self setNeedsDisplay];
 }
 
 @end
