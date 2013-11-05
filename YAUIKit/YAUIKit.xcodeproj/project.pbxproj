@@ -59,6 +59,7 @@
 		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
 		7550608D1814D67A00E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		7550608E1814D68600E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
+		758BB77F1828CFD500F3D57E /* YAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 758BB77E1828CFD500F3D57E /* YAPageControl.m */; };
 		75B57FE6180CE4CA00AA1B5A /* NSString+YAStringDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */; };
 		75B63233181138F8009C88FF /* YARefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B63232181138F8009C88FF /* YARefreshControl.m */; };
 		75B9653D180409ED007D1A4C /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B9653C180409ED007D1A4C /* YARefreshIndicator.m */; };
@@ -171,6 +172,8 @@
 		4CF4160717670B8A00664D8C /* YASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASegmentedControl.h; sourceTree = "<group>"; };
 		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
 		7550608C1814D67A00E957DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		758BB77D1828CFD500F3D57E /* YAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPageControl.h; sourceTree = "<group>"; };
+		758BB77E1828CFD500F3D57E /* YAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPageControl.m; sourceTree = "<group>"; };
 		75B57FE4180CE4CA00AA1B5A /* NSString+YAStringDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YAStringDrawing.h"; sourceTree = "<group>"; };
 		75B57FE5180CE4CA00AA1B5A /* NSString+YAStringDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YAStringDrawing.m"; sourceTree = "<group>"; };
 		75B63231181138F8009C88FF /* YARefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshControl.h; sourceTree = "<group>"; };
@@ -322,6 +325,7 @@
 				4C59B9FD1715620A003B7FC2 /* YAPickerView */,
 				4C59B9DB17150C84003B7FC2 /* YAAlertView */,
 				4C59B9DC17150C84003B7FC2 /* YAActionSheet */,
+				758BB7791828CF7100F3D57E /* YAPageControl */,
 				4C5C3D871713E66900F706A7 /* YAPlaceHolderTextView */,
 			);
 			path = Source;
@@ -573,6 +577,15 @@
 			path = YASegmentedControl;
 			sourceTree = "<group>";
 		};
+		758BB7791828CF7100F3D57E /* YAPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				758BB77D1828CFD500F3D57E /* YAPageControl.h */,
+				758BB77E1828CFD500F3D57E /* YAPageControl.m */,
+			);
+			path = YAPageControl;
+			sourceTree = "<group>";
+		};
 		75B57FE3180CE40A00AA1B5A /* YAStringDrawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +736,7 @@
 				B964D321180BA2F6003F8188 /* UIImage+YAUIKit.m in Sources */,
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
 				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
+				758BB77F1828CFD500F3D57E /* YAPageControl.m in Sources */,
 				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
 				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 				4C8A398C1780858400C7FA9E /* YABadgeView.m in Sources */,

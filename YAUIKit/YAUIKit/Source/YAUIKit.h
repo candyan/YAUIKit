@@ -32,6 +32,7 @@
 #import "YASegmentedControl.h"
 #import "YABadgeView.h"
 #import "YARefreshIndicator.h"
+#import "YAPageControl.h"
 
 //Refresh Control
 
