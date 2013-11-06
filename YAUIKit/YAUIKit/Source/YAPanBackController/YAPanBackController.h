@@ -7,29 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YAUIKitTypeDef.h"
 
 @interface YAPanBackController : NSObject <UIGestureRecognizerDelegate> {
   UIPanGestureRecognizer *_panBackGR;
   __unsafe_unretained UIViewController *_currentViewController;
-  
-  void(^_prelayoutsBlock)(UIView *fromView, UIView *toView);
-  void(^_panChangedBlock)(UIView *fromView, UIView *toView, CGFloat changedPrecent);
-  void(^_animationsBlock)(UIView *fromView, UIView *toView, BOOL success);
-  void(^_completionBlock)(UIView *fromView, UIView *toView, BOOL success);
+
+  YAAnimationLayoutViewControllersBlock _prelayoutsBlock;
+  YAAnimationLayoutViewControllersChangedBlock _panChangedBlock;
+  YAAnimationLayoutViewControllersSuccessBlock _animationsBlock;
+  YAAnimationLayoutViewControllersSuccessBlock _completionBlock;
 }
 
 @property (assign, nonatomic) BOOL canPanBack;
 
-- (id) initWithCurrentViewController:(UIViewController *)currentViewController;
+- (instancetype)initWithCurrentViewController:(UIViewController *)currentViewController;
 
-- (void) addPanBackToView:(UIView *)view;
-- (void) removePanBackFromView:(UIView *)view;
+- (void)addPanBackToView:(UIView *)view;
+- (void)removePanBackFromView:(UIView *)view;
 
-- (void) ignoreTouchesOnViewOfClass:(Class)clazz;
+- (void)ignoreTouchesOnViewOfClass:(Class)clazz;
 
-- (void) setPanBackPrelayoutsBlock:(void(^)(UIView *fromView, UIView *toView))prelayouts
-                   panChangedBlock:(void(^)(UIView *fromView, UIView *toView, CGFloat changedPrecent))panChanged
-                   animationsBlock:(void(^)(UIView *fromView, UIView *toView, BOOL success))animations
-                   completionBlock:(void(^)(UIView *fromView, UIView *toView, BOOL success))completion;
+- (void)setPanBackPrelayoutsBlock:(YAAnimationLayoutViewsBlock)prelayouts
+                  panChangedBlock:(YAAnimationLayoutViewsChangedBlock)panChanged
+                  animationsBlock:(YAAnimationLayoutViewsSuccessBlock)animations
+                  completionBlock:(YAAnimationLayoutViewsSuccessBlock)completion;
+
+- (void)setPanBackControllerPrelayoutsBlock:(YAAnimationLayoutViewControllersBlock)prelayouts
+                            panChangedBlock:(YAAnimationLayoutViewControllersChangedBlock)panChanged
+                            animationsBlock:(YAAnimationLayoutViewControllersSuccessBlock)animations
+                            completionBlock:(YAAnimationLayoutViewControllersSuccessBlock)completion;
 
 @end

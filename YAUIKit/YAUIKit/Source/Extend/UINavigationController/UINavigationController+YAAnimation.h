@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef void(^YAAnimationLayoutViewsBlock)(UIView *fromView, UIView *toView);
-typedef void(^YAAnimationLayoutViewControllersBlock)(UIViewController *fromViewController, UIViewController *toViewController);
+#import "YAUIKitTypeDef.h"
 
 @interface UINavigationController (YAAnimation)
 

@@ -20,7 +20,7 @@
 {
   [self pushViewController:toViewController
                   duration:duration
-                   options:UIViewAnimationOptionCurveEaseIn
+                   options:UIViewAnimationOptionCurveEaseInOut
                 prelayouts:preparation
                 animations:animations
                 completion:completion];
@@ -60,7 +60,7 @@
 {
   [self pushViewController:toViewController
                   duration:duration
-                   options:UIViewAnimationOptionCurveEaseIn 
+                   options:UIViewAnimationOptionCurveEaseInOut 
       controllerPrelayouts:preparation
       controllerAnimations:animations
                 completion:completion];
@@ -110,7 +110,7 @@
                                          completion:(YAAnimationLayoutViewsBlock)completion
 {
   UIViewController *fromViewController = [self popViewControllerWithDuration:duration
-                                                                     options:UIViewAnimationOptionCurveEaseIn
+                                                                     options:UIViewAnimationOptionCurveEaseInOut
                                                                   prelayouts:preparation
                                                                   animations:animations
                                                                   completion:completion];
@@ -142,7 +142,7 @@
                                          completion:(YAAnimationLayoutViewControllersBlock)completion
 {
   return [self popViewControllerWithDuration:duration
-                                     options:UIViewAnimationOptionCurveEaseIn
+                                     options:UIViewAnimationOptionCurveEaseInOut
                         controllerPrelayouts:preparation
                         controllerAnimations:animations
                                   completion:completion];
@@ -175,7 +175,7 @@
 {
   return [self popToViewController:viewController
                           duration:duration
-                           options:UIViewAnimationOptionCurveEaseIn
+                           options:UIViewAnimationOptionCurveEaseInOut
                         prelayouts:preparation
                         animations:animations
                         completion:completion];
@@ -215,7 +215,7 @@
 {
   return [self popToViewController:viewController
                           duration:duration
-                           options:UIViewAnimationOptionCurveEaseIn
+                           options:UIViewAnimationOptionCurveEaseInOut
               controllerPrelayouts:preparation
               controllerAnimations:animations
                         completion:completion];
