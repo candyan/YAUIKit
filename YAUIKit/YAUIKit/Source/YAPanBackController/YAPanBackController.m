@@ -67,7 +67,38 @@
 - (void)setPanBackPrelayoutsBlock:(void (^)(UIView *, UIView *))prelayouts
                   panChangedBlock:(void (^)(UIView *, UIView *, CGFloat))panChanged
                   animationsBlock:(void (^)(UIView *, UIView *, BOOL))animations
-                  completionBlock:(void (^)(UIView *, UIView *, BOOL))completion{
+                  completionBlock:(void (^)(UIView *, UIView *, BOOL))completion
+{
+  if (prelayouts) {
+    _prelayoutsBlock = ^(UIViewController *fromViewController, UIViewController *toViewController) {
+      prelayouts(fromViewController.view, toViewController.view);
+    };
+  }
+
+  if (panChanged) {
+    _panChangedBlock = ^(UIViewController *fromViewController, UIViewController *toViewController, CGFloat changedPrecent) {
+      panChanged(fromViewController.view, toViewController.view, changedPrecent);
+    };
+  }
+
+  if (animations) {
+    _animationsBlock = ^(UIViewController *fromViewController, UIViewController *toViewController, BOOL success) {
+      animations(fromViewController.view, toViewController.view, success);
+    };
+  }
+
+  if (completion) {
+    _completionBlock = ^(UIViewController *fromViewController, UIViewController *toViewController, BOOL success) {
+      completion(fromViewController.view, toViewController.view, success);
+    };
+  }
+}
+
+- (void)setPanBackControllerPrelayoutsBlock:(YAAnimationLayoutViewControllersBlock)prelayouts
+                            panChangedBlock:(YAAnimationLayoutViewControllersChangedBlock)panChanged
+                            animationsBlock:(YAAnimationLayoutViewControllersSuccessBlock)animations
+                            completionBlock:(YAAnimationLayoutViewControllersSuccessBlock)completion
+{
   _prelayoutsBlock = prelayouts;
   _panChangedBlock = panChanged;
   _animationsBlock = animations;
@@ -94,7 +125,7 @@
     [_currentViewController.navigationController.view layoutIfNeeded];
     
     if (_prelayoutsBlock) {
-      _prelayoutsBlock(_currentViewController.view, _toViewController.view);
+      _prelayoutsBlock(_currentViewController, _toViewController);
     }
     
   } else if (gestureRecongnizer.state == UIGestureRecognizerStateEnded) {
@@ -107,11 +138,11 @@
     
     [UIView animateWithDuration:.2 animations:^{
       if (_animationsBlock) {
-        _animationsBlock(_currentViewController.view, _toViewController.view, backSuccess);
+        _animationsBlock(_currentViewController, _toViewController, backSuccess);
       }
     } completion:^(BOOL finished) {
       if (_completionBlock) {
-        _completionBlock(_currentViewController.view, _toViewController.view, backSuccess);
+        _completionBlock(_currentViewController, _toViewController, backSuccess);
       }
       if (backSuccess) {
         [_currentViewController.navigationController.view layoutIfNeeded];
@@ -126,7 +157,7 @@
     CGFloat diffPointX = [gestureRecongnizer translationInView:_currentViewController.view].x - _panBackStartPointX;
     if (diffPointX > 0) {
       if (_panChangedBlock) {
-        _panChangedBlock(_currentViewController.view, _toViewController.view, (diffPointX / _currentViewController.view.bounds.size.width));
+        _panChangedBlock(_currentViewController, _toViewController, (diffPointX / _currentViewController.view.bounds.size.width));
       }
     }
   }
