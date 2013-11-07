@@ -443,6 +443,9 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   NSString *refreshTitle = [self.titles[@(direction)] objectForKey:@(state)];
   [titleLable setText:refreshTitle];
 
+  [titleLable setFrameWidth:300];
+  [titleLable sizeToFit];
+
   UILabel *subTilteLabel = (UILabel *)[refreshView viewWithTag:kYARefreshSubTitleTag];
   NSString *refreshSubTitle = [self.subTitles[@(direction)] objectForKey:@(state)];
   if (!refreshSubTitle
@@ -461,12 +464,25 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     refreshSubTitle = [NSString stringWithFormat:@"最后刷新：%@", lastRefreshDateString];
   }
   [subTilteLabel setText:refreshSubTitle];
+  [subTilteLabel sizeToFit];
 
   YARefreshIndicator *indicator = (YARefreshIndicator *)[refreshView viewWithTag:kYARefreshIndicatorTag];
   if (state == kYARefreshStateLoading) {
     [indicator startLoading];
   } else {
     [indicator stopLoading];
+  }
+
+  if (state == kYARefreshStateStop) {
+    [titleLable setCenter:CGPointMake(CGRectGetMidX(refreshView.bounds), CGRectGetMidY(refreshView.bounds))];
+
+    if (!CGRectIsEmpty(subTilteLabel.frame)) {
+      [titleLable setFrameOriginY:(CGRectGetMidY(refreshView.bounds) - titleLable.frame.size.height)];
+      [subTilteLabel setFrameOriginX:titleLable.frame.origin.x];
+      [subTilteLabel setFrameOriginY:CGRectGetMaxY(titleLable.frame) + 4.0f];
+    }
+    [indicator setFrameOriginX:(titleLable.frame.origin.x - 26 - 10)];
+    [indicator setFrameOriginY:titleLable.frame.origin.y - 4];
   }
 }
 
@@ -482,16 +498,17 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       [self.scrollView addSubview:refreshView];
     }
     [self.refreshViews setObject:refreshView forKey:@(direction)];
+
+    [self _resetRefresViewForState:kYARefreshStateStop atDirection:direction];
   }
 
   CGFloat originY = 0.0f;
 
   switch (direction) {
     case kYARefreshDirectionTop:
-      originY = (([UIDevice currentDevice].systemVersion.floatValue < 7.0f)
-                 ? -CGRectGetHeight(refreshView.frame)
-                 : self.scrollView.contentOffset.y);
-      originY -= self.originContentInsets.top;
+      originY = (([UIDevice currentDevice].systemVersion.floatValue < 7.0f || self.scrollView.contentOffset.y > 0)
+                 ? -CGRectGetHeight(refreshView.frame) - self.originContentInsets.top
+                 : self.scrollView.contentOffset.y) + self.originContentInsets.top;
       break;
 
     case kYARefreshDirectionBottom:
@@ -501,7 +518,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     default:
       break;
   }
-
+  
   [refreshView setFrameOriginY:originY];
 }
 
@@ -553,7 +570,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 
   [refreshView addSubview:({
     CGRect frame = CGRectMake(CGRectGetMidX(self.scrollView.bounds) - kRefreshLabelLeftPadding - 26 - 5,
-                              7, kYARefreshIndicatorDefaultHeight, kYARefreshIndicatorDefaultHeight);
+                              5, kYARefreshIndicatorDefaultHeight, kYARefreshIndicatorDefaultHeight);
     YARefreshIndicator *indicator = [[YARefreshIndicator alloc] initWithFrame:frame];
     [indicator setTag:kYARefreshIndicatorTag];
     [indicator setAutoresizingMask:(UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin)];
