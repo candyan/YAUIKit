@@ -80,23 +80,6 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   return _placeHolderLabel;
 }
 
-- (void)setContentOffset:(CGPoint)contentOffset
-{
-  if(self.tracking || self.decelerating){
-		//initiated by user...
-		self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-	} else {
-    
-		float bottomOffset = (self.contentSize.height - self.frame.size.height + self.contentInset.bottom);
-		if(contentOffset.y < bottomOffset && self.scrollEnabled){
-			self.contentInset = UIEdgeInsetsMake(0, 0, kPlaceholderEdgeInset, 0); //maybe use scrollRangeToVisible?
-		}
-		
-	}
-	
-	[super setContentOffset:contentOffset];
-}
-
 - (void)setText:(NSString *)text
 {
   [super setText:text];
