@@ -512,7 +512,9 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       break;
 
     case kYARefreshDirectionBottom:
-      originY = self.scrollView.contentSize.height + self.originContentInsets.bottom;
+      originY = ((self.scrollView.contentSize.height > self.scrollView.frame.size.height)
+                 ? self.scrollView.contentSize.height + self.originContentInsets.bottom
+                 : self.scrollView.frame.size.height);
       break;
 
     default:
