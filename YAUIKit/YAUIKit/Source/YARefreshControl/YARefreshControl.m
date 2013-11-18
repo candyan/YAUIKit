@@ -63,12 +63,12 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 - (NSMutableDictionary *)titles
 {
   if (!_titles) {
-    NSDictionary *refreshTopTitles = @{@(kYARefreshStateStop): NSLocalizedString(@"下拉可以刷新", nil),
-                                       @(kYARefreshStateTrigger): NSLocalizedString(@"松开即可刷新", nil),
-                                       @(kYARefreshStateLoading): NSLocalizedString(@"正在刷新...", nil)};
-    NSDictionary *refreshBottomTitles = @{@(kYARefreshStateStop): NSLocalizedString(@"上拉可以加载更多", nil),
-                                          @(kYARefreshStateTrigger): NSLocalizedString(@"松开即可加载更多", nil),
-                                          @(kYARefreshStateLoading): NSLocalizedString(@"正在加载更多...", nil)};
+    NSDictionary *refreshTopTitles = @{@(kYARefreshStateStop): NSLocalizedString(@"下拉刷新", nil),
+                                       @(kYARefreshStateTrigger): NSLocalizedString(@"松开刷新", nil),
+                                       @(kYARefreshStateLoading): NSLocalizedString(@"正在刷新", nil)};
+    NSDictionary *refreshBottomTitles = @{@(kYARefreshStateStop): NSLocalizedString(@"上拉加载", nil),
+                                          @(kYARefreshStateTrigger): NSLocalizedString(@"松开加载", nil),
+                                          @(kYARefreshStateLoading): NSLocalizedString(@"正在加载", nil)};
     _titles = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                refreshTopTitles, @(kYARefreshDirectionTop),
                refreshBottomTitles, @(kYARefreshDirectionBottom), nil];
@@ -454,14 +454,14 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_Hans"];
     [formatter setLocale:locale];
 
-    [formatter setDateFormat:@"HH:mm:ss"];
+    [formatter setDateFormat:@"HH:mm"];
     NSString *lastRefreshDateString;
     if (self.lastRefreshDate) {
-      lastRefreshDateString = [formatter stringFromDate:self.lastRefreshDate];
+      lastRefreshDateString = [NSString stringWithFormat:@"今天 %@", [formatter stringFromDate:self.lastRefreshDate]];
     } else {
-      lastRefreshDateString = @"没有刷新";
+      lastRefreshDateString = @"没有更新";
     }
-    refreshSubTitle = [NSString stringWithFormat:@"最后刷新：%@", lastRefreshDateString];
+    refreshSubTitle = [NSString stringWithFormat:@"最后更新: %@", lastRefreshDateString];
   }
   [subTilteLabel setText:refreshSubTitle];
   [subTilteLabel sizeToFit];
