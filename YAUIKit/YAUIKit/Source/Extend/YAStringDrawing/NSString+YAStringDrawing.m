@@ -17,6 +17,7 @@
                                                                          attributes:attrs];
   CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attributedString);
   CGSize fitSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, size, NULL);
+  CFRelease(framesetter);
   return fitSize;
 }
 
