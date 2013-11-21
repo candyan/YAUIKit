@@ -9,6 +9,14 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 
 ## ChangeLog
 
+#### v1.0.1
+
+- 增加了可以自定义的PageControl —— YAPageControl
+- 为UINavigationController+YAAimation和YAPanBackController 增加了可操作UIViewController的Block，这样可以有效的控制NavigationBar。
+- 修复了YAPlaceholderTextView setContentInset Bug.
+- 修复了 imageAtRect: 方法中缺少scale的Bug。
+- 修复了 YASegmentedControl 分割线数组越界Bug。
+
 #### v1.0.0
 正式发布YAUIkit
 

@@ -15,7 +15,7 @@
 {
   NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:self
                                                                          attributes:attrs];
-  CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef) attributedString);
+  CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attributedString);
   CGSize fitSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, size, NULL);
   CFRelease(framesetter);
   return fitSize;
