@@ -8,8 +8,8 @@
 
 #import "UIImage+YARotate.h"
 
-CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
+CGFloat YADegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+CGFloat YARadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
 
 @implementation UIImage (YARotate)
 
@@ -182,13 +182,13 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
 }
 
 - (UIImage *)imageRotatedByRadians:(CGFloat)radians {
-  return [self imageRotatedByDegrees:RadiansToDegrees(radians)];
+  return [self imageRotatedByDegrees:YARadiansToDegrees(radians)];
 }
 
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees {
   // calculate the size of the rotated view's containing box for our drawing space
   UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.size.width, self.size.height)];
-  CGAffineTransform t = CGAffineTransformMakeRotation(DegreesToRadians(degrees));
+  CGAffineTransform t = CGAffineTransformMakeRotation(YADegreesToRadians(degrees));
   rotatedViewBox.transform = t;
   CGSize rotatedSize = rotatedViewBox.frame.size;
   
