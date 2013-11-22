@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02291EB817BCEB6400DDF0ED /* YADialogView.m */; };
-		4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5518D1176AD3A80046F5B8 /* UIImage+YARotate.m */; };
+		4C5518D2176AD3A80046F5B8 /* UIImage+YAImageTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5518D1176AD3A80046F5B8 /* UIImage+YAImageTransform.m */; };
 		4C59B9DF17150D3C003B7FC2 /* YAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */; };
 		4C59B9E2171542A4003B7FC2 /* YAActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E1171542A4003B7FC2 /* YAActionSheet.m */; };
 		4C59B9E6171548E4003B7FC2 /* AlertAndASViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E5171548E4003B7FC2 /* AlertAndASViewController.m */; };
@@ -95,8 +95,8 @@
 /* Begin PBXFileReference section */
 		02291EB717BCEB6400DDF0ED /* YADialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YADialogView.h; sourceTree = "<group>"; };
 		02291EB817BCEB6400DDF0ED /* YADialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YADialogView.m; sourceTree = "<group>"; };
-		4C5518D0176AD3A80046F5B8 /* UIImage+YARotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YARotate.h"; sourceTree = "<group>"; };
-		4C5518D1176AD3A80046F5B8 /* UIImage+YARotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YARotate.m"; sourceTree = "<group>"; };
+		4C5518D0176AD3A80046F5B8 /* UIImage+YAImageTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YAImageTransform.h"; sourceTree = "<group>"; };
+		4C5518D1176AD3A80046F5B8 /* UIImage+YAImageTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YAImageTransform.m"; sourceTree = "<group>"; };
 		4C59B9DD17150D3C003B7FC2 /* YAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAAlertView.h; sourceTree = "<group>"; };
 		4C59B9DE17150D3C003B7FC2 /* YAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAAlertView.m; sourceTree = "<group>"; };
 		4C59B9E0171542A4003B7FC2 /* YAActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAActionSheet.h; sourceTree = "<group>"; };
@@ -425,8 +425,8 @@
 			children = (
 				4C5C42F5171E702D00391666 /* UIImage+YAColor.h */,
 				4C5C42F6171E702D00391666 /* UIImage+YAColor.m */,
-				4C5518D0176AD3A80046F5B8 /* UIImage+YARotate.h */,
-				4C5518D1176AD3A80046F5B8 /* UIImage+YARotate.m */,
+				4C5518D0176AD3A80046F5B8 /* UIImage+YAImageTransform.h */,
+				4C5518D1176AD3A80046F5B8 /* UIImage+YAImageTransform.m */,
 				B964D31F180BA2F6003F8188 /* UIImage+YAUIKit.h */,
 				B964D320180BA2F6003F8188 /* UIImage+YAUIKit.m */,
 			);
@@ -739,7 +739,7 @@
 				4C5C4300171E702D00391666 /* UIView+YAUIKit.m in Sources */,
 				4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */,
 				758BB77F1828CFD500F3D57E /* YAPageControl.m in Sources */,
-				4C5518D2176AD3A80046F5B8 /* UIImage+YARotate.m in Sources */,
+				4C5518D2176AD3A80046F5B8 /* UIImage+YAImageTransform.m in Sources */,
 				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 				4C8A398C1780858400C7FA9E /* YABadgeView.m in Sources */,
 				02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */,
