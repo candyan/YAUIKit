@@ -1,5 +1,5 @@
 //
-//  UIImage+YARotate.h
+//  UIImage+YAImageTransform.h
 //  YAUIKit
 //
 //  Created by liu yan on 6/14/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (YARotate)
+@interface UIImage (YAImageTransform)
 
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees;
 - (UIImage *)imageRotatedByRadians:(CGFloat)radians;

@@ -1,21 +1,22 @@
 //
-//  UIImage+YARotate.m
+//  UIImage+YAImageTransform.m
 //  YAUIKit
 //
 //  Created by liu yan on 6/14/13.
 //  Copyright (c) 2013 liu yan. All rights reserved.
 //
 
-#import "UIImage+YARotate.h"
+#import "UIImage+YAImageTransform.h"
 
-CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
+inline CGFloat YADegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+inline CGFloat YARadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
 
-@implementation UIImage (YARotate)
+@implementation UIImage (YAImageTransform)
 
 - (UIImage *)imageAtRect:(CGRect)rect
 {
-  CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
+  CGRect finalRect = CGRectApplyAffineTransform(rect, CGAffineTransformMakeScale(self.scale, self.scale));
+  CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], finalRect);
   UIImage *subImage = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
   CGImageRelease(imageRef);
   
@@ -181,13 +182,13 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
 }
 
 - (UIImage *)imageRotatedByRadians:(CGFloat)radians {
-  return [self imageRotatedByDegrees:RadiansToDegrees(radians)];
+  return [self imageRotatedByDegrees:YARadiansToDegrees(radians)];
 }
 
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees {
   // calculate the size of the rotated view's containing box for our drawing space
   UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.size.width, self.size.height)];
-  CGAffineTransform t = CGAffineTransformMakeRotation(DegreesToRadians(degrees));
+  CGAffineTransform t = CGAffineTransformMakeRotation(YADegreesToRadians(degrees));
   rotatedViewBox.transform = t;
   CGSize rotatedSize = rotatedViewBox.frame.size;
   
@@ -199,7 +200,7 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
   CGContextTranslateCTM(bitmap, rotatedSize.width/2, rotatedSize.height/2);
   
   //   // Rotate the image context
-  CGContextRotateCTM(bitmap, DegreesToRadians(degrees));
+  CGContextRotateCTM(bitmap, YADegreesToRadians(degrees));
   
   // Now, draw the rotated/scaled image into the context
   CGContextScaleCTM(bitmap, 1.0, -1.0);
