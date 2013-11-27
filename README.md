@@ -9,6 +9,13 @@ YAUIKit 是一个复杂UI的实现库。其提供了多种复杂UI的实现和�
 
 ## ChangeLog
 
+#### v1.0.2
+
+- 修复NSString (YAStringDrawing) 中的内存泄露问题
+- YARefreshControl 对iOS 7进行了优化
+- 修复了图像操作的Bug
+- 修复了YASegmentedControl并行遍历的Bug
+
 #### v1.0.1
 
 - 增加了可以自定义的PageControl —— YAPageControl
