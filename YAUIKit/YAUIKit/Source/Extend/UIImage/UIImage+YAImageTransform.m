@@ -8,8 +8,8 @@
 
 #import "UIImage+YAImageTransform.h"
 
-inline CGFloat YADegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-inline CGFloat YARadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
+static inline CGFloat YADegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+static inline CGFloat YARadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};
 
 @implementation UIImage (YAImageTransform)
 
