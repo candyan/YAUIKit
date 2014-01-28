@@ -22,6 +22,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   self = [super initWithFrame:frame];
   if (self) {
     [self setupPlaceHolderTextView];
+    [self setFont:[UIFont systemFontOfSize:12.0f]];
   }
   return self;
 }
@@ -32,7 +33,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   [self setupPlaceHolderTextView];
 }
 
-- (void) setupPlaceHolderTextView
+- (void)setupPlaceHolderTextView
 {
   [self setPlaceholder:@""];
   [self setPlaceholderColor:[UIColor lightGrayColor]];
@@ -42,18 +43,32 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
                                              object:nil];
 }
 
+- (void)dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - draw
 - (void)drawRect:(CGRect)rect
 {
   if ([self.placeholder length] > 0
       && [self.text length] == 0) {
     [[self _placeHolderLabel] setText:self.placeholder];
+
+    CGFloat leftPadding = kPlaceholderLeftEdgeInset;
+    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
+      leftPadding = kPlaceholderEdgeInset;
+    }
+    [[self _placeHolderLabel] setFrame:CGRectMake(leftPadding + self.contentInset.left,
+                                                  kPlaceholderEdgeInset + self.contentInset.top,
+                                                  self.bounds.size.width - 2 * leftPadding,
+                                                  0)];
     [[self _placeHolderLabel] sizeToFit];
     [[self _placeHolderLabel] setHidden:NO];
   } else {
     [[self _placeHolderLabel] setHidden:YES];
   }
-  
+
   [super drawRect:rect];
 }
 
@@ -61,14 +76,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
 - (UILabel *)_placeHolderLabel
 {
   if (!_placeHolderLabel) {
-    CGFloat leftPadding = kPlaceholderLeftEdgeInset;
-    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
-      leftPadding = kPlaceholderEdgeInset;
-    }
-    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftPadding + self.contentInset.left,
-                                                                  kPlaceholderEdgeInset + self.contentInset.top,
-                                                                  self.bounds.size.width - 2 * leftPadding,
-                                                                  0)];
+    _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_placeHolderLabel setLineBreakMode:NSLineBreakByCharWrapping];
     [_placeHolderLabel setNumberOfLines:0];
     [_placeHolderLabel setBackgroundColor:[UIColor clearColor]];
@@ -108,7 +116,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
 - (void)textChanged:(NSNotification *)notification
 {
   if ([self.placeholder length] == 0) return;
-  
+
   if ([self.text length] == 0) {
     [[self _placeHolderLabel] setHidden:NO];
   } else {
