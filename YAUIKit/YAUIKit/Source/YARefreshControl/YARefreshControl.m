@@ -481,8 +481,13 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       [subTilteLabel setFrameOriginX:titleLable.frame.origin.x];
       [subTilteLabel setFrameOriginY:CGRectGetMaxY(titleLable.frame) + 4.0f];
     }
-    [indicator setFrameOriginX:(titleLable.frame.origin.x - 26 - 10)];
-    [indicator setFrameOriginY:titleLable.frame.origin.y - 4];
+    if ((titleLable.text && titleLable.text.length > 0)
+        || (subTilteLabel.text && subTilteLabel.text.length > 0)) {
+      [indicator setFrameOriginX:(titleLable.frame.origin.x - 26 - 10)];
+      [indicator setFrameOriginY:titleLable.frame.origin.y - 4];
+    }else {
+      [indicator setCenter:CGPointMake(CGRectGetMidX(refreshView.bounds), CGRectGetMidY(refreshView.bounds))];
+    }
   }
 }
 
