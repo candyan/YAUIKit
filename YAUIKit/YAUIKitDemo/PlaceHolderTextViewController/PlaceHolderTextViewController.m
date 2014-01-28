@@ -31,9 +31,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-  _placeholderTextView = [[YAPlaceHolderTextView alloc] initWithFrame:CGRectMake(15, 15, self.view.bounds.size.width - 30, 100)];
+  _placeholderTextView = [[YAPlaceHolderTextView alloc] initWithFrame:CGRectZero];
   [_placeholderTextView.layer setBorderWidth:1];
   [self.view addSubview:_placeholderTextView];
+
+  [_placeholderTextView setPlaceholder:@"sdf"];
+
+  [_placeholderTextView setFrame:CGRectMake(15, 105, self.view.bounds.size.width - 30, 100)];
 }
 
 - (void)didReceiveMemoryWarning
