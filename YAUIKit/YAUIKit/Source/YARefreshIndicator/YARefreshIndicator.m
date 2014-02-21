@@ -75,15 +75,15 @@
 
 - (void)didLoaded:(float)present
 {
-  if (present >= 0.0f
-      && present <= 1.0f ) {
-    [self setHidden:NO];
-    
-    _startAngle = -90;
-    _endAngle = -90 + 320.0f * present;
+  present = MAX(present, 0.0f);
+  present = MIN(present, 1.0f);
 
-    [self setNeedsDisplay];
-  }
+  [self setHidden:!(present > 0.0f)];
+
+  _startAngle = -90;
+  _endAngle = -90 + 320.0f * present;
+
+  [self setNeedsDisplay];
 }
 
 #pragma mark - start & stop
