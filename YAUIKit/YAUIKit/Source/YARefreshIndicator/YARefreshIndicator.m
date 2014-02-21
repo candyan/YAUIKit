@@ -26,6 +26,12 @@
 
 #pragma mark - init
 
+- (id)init
+{
+  static CGFloat const defalutSize = 24.0f;
+  return [self initWithFrame:CGRectMake(0, 0, defalutSize, defalutSize)];
+}
+
 - (id)initWithFrame:(CGRect)frame 
 {
   self = [super initWithFrame:frame];
