@@ -9,7 +9,7 @@
 #import "PullRefreshViewController.h"
 #import "YAUIKit.h"
 
-@interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate> {
+@interface PullRefreshViewController ()<UITableViewDataSource, UITableViewDelegate, YARefreshControlDelegate> {
   NSMutableArray *_numberArray;
 }
 
@@ -34,6 +34,9 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
+  if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+  }
   [self.view setBackgroundColor:[UIColor whiteColor]];
   _numberArray = [NSMutableArray arrayWithObjects:@1, @2, @3, @4, @5, @6, nil];
   [self.tableView setBackgroundView:nil];
@@ -62,7 +65,6 @@
   if (!_tableView) {
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [_tableView setFrameOriginY:64];
-    [_tableView setContentInset:UIEdgeInsetsZero];
     [_tableView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight
                                      | UIViewAutoresizingFlexibleWidth)];
     _tableView.delegate = self;
@@ -76,6 +78,8 @@
 {
   if (!_refreshControl) {
     _refreshControl = [[YARefreshControl alloc] initWithScrollView:self.tableView];
+
+    _refreshControl.delegate = self;
   }
   return _refreshControl;
 }
@@ -124,6 +128,17 @@
       [self.refreshControl stopRefreshAtDirection:kYARefreshDirectionBottom animated:YES completion:nil];
     });
   });
+}
+
+#pragma mark - delegate
+
+- (void)refreshControl:(YARefreshControl *)refreshControl didShowRefreshViewHeight:(CGFloat)progress atDirection:(YARefreshDirection)direction
+{
+  if (direction == kYARefreshDirectionTop) {
+    YARefreshView *refreshView = (YARefreshView *)[refreshControl refreshViewAtDirection:direction];
+    NSLog(@"%f", (progress / CGRectGetHeight(refreshView.bounds)));
+    [refreshView.refreshIndicator didLoaded:(progress / CGRectGetHeight(refreshView.bounds))];
+  }
 }
 
 @end

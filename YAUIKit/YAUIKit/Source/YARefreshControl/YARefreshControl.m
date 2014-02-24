@@ -1,4 +1,3 @@
-//
 //  YARefreshControl.m
 //  YAUIKit
 //
@@ -11,30 +10,19 @@
 #import "UIFont+YAUIKit.h"
 #import "YARefreshIndicator.h"
 
-static CGFloat const kYARefreshViewDefaultHeight = 44.0f;
-static CGFloat const kYARefreshIndicatorDefaultHeight = 24.0f;
-static CGFloat const kRefreshLabelLeftPadding = 37.0f;
-static CGFloat const kRefreshLabelTopPadding = 10.0f;
-
-static NSInteger const kYARefreshTitleTag = 1000;
-static NSInteger const kYARefreshIndicatorTag = 1001;
-static NSInteger const kYARefreshSubTitleTag = 1002;
-
 @interface YARefreshControl ()
 
 @property (nonatomic, assign) YARefreshableDirection refreshableDirection;
 @property (nonatomic, readwrite, assign) YARefreshDirection refreshingDirection;
 
-@property (nonatomic, strong) NSMutableDictionary *titles;
-@property (nonatomic, strong) NSMutableDictionary *subTitles;
 @property (nonatomic, strong) NSMutableDictionary *refreshViews;
-@property (nonatomic, strong) NSDate *lastRefreshDate;
 
 @end
 
 @implementation YARefreshControl
 
 #pragma mark - init
+
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView
 {
   self = [super init];
@@ -42,11 +30,19 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     // set ivars
     _scrollView = scrollView;
     _originContentInsets = scrollView.contentInset;
+
+    _canRefreshDirection = kYARefreshableDirectionNone;
+
     // observe the contentOffset. NSKeyValueObservingOptionPrior is CRUCIAL!
     [_scrollView addObserver:self
                   forKeyPath:@"contentOffset"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionPrior
                      context:NULL];
+
+    [self setRefreshView:[self _defaultRefreshViewForDirection:kYARefreshDirectionBottom]
+            forDirection:kYARefreshDirectionBottom];
+    [self setRefreshView:[self _defaultRefreshViewForDirection:kYARefreshDirectionTop]
+            forDirection:kYARefreshDirectionTop];
   }
   return self;
 }
@@ -58,33 +54,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
-#pragma mark - Set & Get
-
-- (NSMutableDictionary *)titles
-{
-  if (!_titles) {
-    NSDictionary *refreshTopTitles = @{@(kYARefreshStateStop): NSLocalizedString(@"下拉刷新", nil),
-                                       @(kYARefreshStateTrigger): NSLocalizedString(@"松开刷新", nil),
-                                       @(kYARefreshStateLoading): NSLocalizedString(@"正在刷新", nil)};
-    NSDictionary *refreshBottomTitles = @{@(kYARefreshStateStop): NSLocalizedString(@"上拉加载", nil),
-                                          @(kYARefreshStateTrigger): NSLocalizedString(@"松开加载", nil),
-                                          @(kYARefreshStateLoading): NSLocalizedString(@"正在加载", nil)};
-    _titles = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-               refreshTopTitles, @(kYARefreshDirectionTop),
-               refreshBottomTitles, @(kYARefreshDirectionBottom), nil];
-  }
-  return _titles;
-}
-
-- (NSMutableDictionary *)subTitles
-{
-  if (!_subTitles) {
-    _subTitles = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                  @{}, @(kYARefreshDirectionTop),
-                  @{}, @(kYARefreshDirectionBottom), nil];
-  }
-  return _subTitles;
-}
+#pragma mark - Getter
 
 - (NSMutableDictionary *)refreshViews
 {
@@ -99,6 +69,8 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   return self.refreshViews[@(direction)];
 }
 
+#pragma mark - Setter
+
 - (void)setRefreshView:(UIView *)customView forDirection:(YARefreshDirection)direction
 {
   UIView *refreshView = [self refreshViewAtDirection:direction];
@@ -106,34 +78,15 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     [refreshView removeFromSuperview];
   }
   [self.refreshViews setObject:customView forKey:@(direction)];
-  [self.scrollView insertSubview:customView atIndex:0];
+
+  if (direction == kYARefreshDirectionTop
+      && [UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
+    [self.scrollView insertSubview:customView atIndex:0];
+  } else {
+    [self.scrollView addSubview:customView];
+  }
+
   [self _layoutRefreshViewForDirection:direction];
-}
-
-- (void)setTitle:(NSString *)title forState:(YARefreshState)state atDirection:(YARefreshDirection)direction
-{
-  __weak typeof(self) weakSelf = self;
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection direction) {
-    NSMutableDictionary *titlesForDirection = [NSMutableDictionary dictionaryWithDictionary:weakSelf.titles[@(direction)]];
-    [titlesForDirection setObject:title forKey:@(state)];
-    [weakSelf.titles setObject:[titlesForDirection copy] forKey:@(direction)];
-    [weakSelf _resetRefresViewForState:state atDirection:direction];
-  }];
-}
-
-- (void)setSubTilte:(NSString *)subTitle forState:(YARefreshState)state atDirection:(YARefreshDirection)direction
-{
-  __weak typeof(self) weakSelf = self;
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection direction) {
-    NSMutableDictionary *subTitlesForDirection = [NSMutableDictionary dictionaryWithDictionary:weakSelf.subTitles[@(direction)]];
-    for (NSInteger index = 0; index < 3; index++) {
-      YARefreshState refreshState = 1 << index;
-      if (refreshState & state) {
-        [subTitlesForDirection setObject:subTitle forKey:@(refreshState)];
-      }
-    }
-    [weakSelf.subTitles setObject:[subTitlesForDirection copy] forKey:@(direction)];
-  }];
 }
 
 - (void)setCanRefreshDirection:(YARefreshableDirection)canRefreshDirection
@@ -152,51 +105,16 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   }
 }
 
-#pragma mark - custom refresh view style
-
-- (void)setIndicatorColor:(UIColor *)indicatorColor forDirection:(YARefreshDirection)direction
+- (void)_setRefreshState:(YARefreshState)refreshState atDirection:(YARefreshDirection)direction
 {
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection handleDirection) {
-    UIView *refreshView = [self refreshViewAtDirection:handleDirection];
-    YARefreshIndicator *indicator = (YARefreshIndicator *)[refreshView viewWithTag:kYARefreshIndicatorTag];
-    [indicator setIndicatorColor:indicatorColor];
-  }];
-}
+  if ([[self refreshViewAtDirection:direction] isKindOfClass:[YARefreshView class]]) {
+    YARefreshView *refreshView = (YARefreshView *)[self refreshViewAtDirection:direction];
+    [refreshView layoutSubviewsForRefreshState:refreshState];
+  }
 
-- (void)setTitleColor:(UIColor *)titleColor forDirection:(YARefreshDirection)direction
-{
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection handleDirection) {
-    UIView *refreshView = [self refreshViewAtDirection:handleDirection];
-    UILabel *titleLabel = (UILabel *)[refreshView viewWithTag:kYARefreshTitleTag];
-    [titleLabel setTextColor:titleColor];
-  }];
-}
-
-- (void)setSubTilteColor:(UIColor *)subTitleColor forDirection:(YARefreshDirection)direction
-{
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection handleDirection) {
-    UIView *refreshView = [self refreshViewAtDirection:handleDirection];
-    UILabel *subTitleLabel = (UILabel *)[refreshView viewWithTag:kYARefreshSubTitleTag];
-    [subTitleLabel setTextColor:subTitleColor];
-  }];
-}
-
-- (void)setTitleFont:(UIFont *)titleFont forDirection:(YARefreshDirection)direction
-{
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection handleDirection) {
-    UIView *refreshView = [self refreshViewAtDirection:handleDirection];
-    UILabel *titleLabel = (UILabel *)[refreshView viewWithTag:kYARefreshTitleTag];
-    [titleLabel setFont:titleFont];
-  }];
-}
-
-- (void)setSubTilteFont:(UIFont *)subTitleFont forDirection:(YARefreshDirection)direction
-{
-  [self _enumerateForHandleDirection:direction hanldeBlock:^(YARefreshDirection handleDirection) {
-    UIView *refreshView = [self refreshViewAtDirection:handleDirection];
-    UILabel *subTitleLabel = (UILabel *)[refreshView viewWithTag:kYARefreshSubTitleTag];
-    [subTitleLabel setFont:subTitleFont];
-  }];
+  if ([self.delegate respondsToSelector:@selector(refreshControl:didRefreshStateChanged:atDirection:)]) {
+    [self.delegate refreshControl:self didRefreshStateChanged:kYARefreshStateStop atDirection:direction];
+  }
 }
 
 #pragma mark - KVO
@@ -211,9 +129,6 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     for (NSInteger index = 0; index < 4; index++) {
       YARefreshDirection direction = 1 << index;
       BOOL canRefresh = (self.canRefreshDirection & direction);
-      if ([self.delegate respondsToSelector:@selector(refreshControl:canRefreshInDirection:)]) {
-        canRefresh = [self.delegate refreshControl:self canRefreshInDirection:direction];
-      }
       if (canRefresh) {
         [self _checkOffsetsForDirection:direction change:change];
       }
@@ -265,7 +180,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       break;
   }
 
-  [self _resetRefresViewForState:kYARefreshStateLoading atDirection:direction];
+  [self _setRefreshState:kYARefreshStateLoading atDirection:direction];
 
   NSTimeInterval duration = flag ? 0.3f : 0.0f;
   [UIView animateWithDuration:duration animations:^{
@@ -274,9 +189,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
   } completion:^(BOOL finished) {
     self.refreshingDirection |= direction;
     self.refreshableDirection &= ~refreshableDirection;
-    if ([self.delegate respondsToSelector:@selector(refreshControl:didEngageRefreshDirection:)]) {
-      [self.delegate refreshControl:self didEngageRefreshDirection:direction];
-    } else if (self.refreshHandleAction) {
+    if (self.refreshHandleAction) {
       self.refreshHandleAction(direction);
     }
   }];
@@ -289,7 +202,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
 
 - (void)stopRefreshAtDirection:(YARefreshDirection)direction animated:(BOOL)flag completion:(void (^)())completion
 {
-  [self _resetRefresViewForState:kYARefreshStateStop atDirection:direction];
+  [self _setRefreshState:kYARefreshStateStop atDirection:direction];
   NSTimeInterval duration = flag ? 0.4f : 0.0f;
 
   [UIView animateWithDuration:duration animations:^{
@@ -315,26 +228,14 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     [self _layoutRefreshViewForDirection:direction];
   }
 
-  if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
-    UIView *refreshView = [self refreshViewAtDirection:direction];
-    if (direction == kYARefreshDirectionTop
-        && oldOffset.y < 0
-        && oldOffset.y > -kYARefreshViewDefaultHeight) {
-      YARefreshIndicator *indicator = (YARefreshIndicator *)[refreshView viewWithTag:kYARefreshIndicatorTag];
-
-      CGFloat scrollOffsetThreshold = - (CGRectGetHeight(refreshView.bounds) + self.originContentInsets.top);
-      CGFloat diffOffsetY = oldOffset.y - scrollOffsetThreshold;
-      CGFloat percent = (1 - diffOffsetY / CGRectGetHeight(refreshView.bounds));
-      [indicator didLoaded:percent];
-    }
-  }
+  UIView *refreshView = [self refreshViewAtDirection:direction];
 
   YARefreshDirection refreshingDirection = direction;
   YARefreshableDirection refreshableDirection = kYARefreshableDirectionNone;
   BOOL canEngage = NO;
   UIEdgeInsets contentInset = _scrollView.contentInset;
 
-  CGFloat refreshViewHeight = [self refreshViewAtDirection:direction].frame.size.height;
+  CGFloat refreshViewHeight = refreshView.frame.size.height;
   CGFloat refreshableInset = refreshViewHeight;
   if ([self.delegate respondsToSelector:@selector(refreshControl:refreshableInsetForDirection:)]) {
     refreshableInset = [self.delegate refreshControl:self refreshableInsetForDirection:direction];
@@ -345,10 +246,11 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     refreshingInset = [self.delegate refreshControl:self refreshingInsetForDirection:direction];
   }
 
+  CGFloat threshold = 0.0f;
   switch (direction) {
     case kYARefreshDirectionTop:
       refreshableDirection = kYARefreshableDirectionTop;
-      canEngage = oldOffset.y < - refreshableInset;
+      threshold = -oldOffset.y;
       contentInset = UIEdgeInsetsMake(refreshingInset + contentInset.top,
                                       contentInset.left,
                                       contentInset.bottom,
@@ -356,6 +258,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       break;
     case kYARefreshDirectionLeft:
       refreshableDirection = kYARefreshableDirectionLeft;
+      threshold = -oldOffset.x;
       canEngage = oldOffset.x < -refreshableInset;
       contentInset = UIEdgeInsetsMake(contentInset.top,
                                       refreshingInset + contentInset.left,
@@ -365,11 +268,11 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     case kYARefreshDirectionBottom: {
       refreshableDirection = kYARefreshableDirectionBottom;
       if (_scrollView.frame.size.height > _scrollView.contentSize.height) {
+        threshold = oldOffset.y;
         canEngage = (oldOffset.y > refreshableInset);
       }  else {
-        CGFloat threshold = ((CGRectGetHeight(self.scrollView.bounds) + oldOffset.y)
-                             - (self.scrollView.contentSize.height + self.scrollView.contentInset.bottom));
-        canEngage = (threshold  > refreshableInset);
+        threshold = ((CGRectGetHeight(self.scrollView.bounds) + oldOffset.y)
+                     - (self.scrollView.contentSize.height + self.scrollView.contentInset.bottom));
       }
       contentInset = UIEdgeInsetsMake(contentInset.top,
                                       contentInset.left,
@@ -379,7 +282,7 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
     }
     case kYARefreshDirectionRight:
       refreshableDirection = kYARefreshableDirectionRight;
-      canEngage = oldOffset.x + _scrollView.frame.size.width - _scrollView.contentSize.width > refreshableInset;
+      threshold = oldOffset.x + _scrollView.frame.size.width - _scrollView.contentSize.width;
       contentInset = UIEdgeInsetsMake(contentInset.top,
                                       contentInset.left,
                                       contentInset.bottom,
@@ -387,6 +290,15 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
       break;
     default:
       break;
+  }
+
+  canEngage = (threshold  > refreshableInset);
+
+  if ([self.delegate respondsToSelector:@selector(refreshControl:didShowRefreshViewHeight:atDirection:)]
+      && !canEngage) {
+    threshold = MAX(threshold, 0);
+    threshold = MIN(threshold, CGRectGetHeight(refreshView.bounds));
+    [self.delegate refreshControl:self didShowRefreshViewHeight:threshold atDirection:direction];
   }
 
   if (!(self.refreshingDirection & refreshingDirection)) {
@@ -400,203 +312,67 @@ static NSInteger const kYARefreshSubTitleTag = 1002;
         // if you are decelerating, it means you've stopped dragging.
         self.refreshingDirection |= refreshingDirection;
         self.refreshableDirection &= ~refreshableDirection;
-        [self _resetRefresViewForState:kYARefreshStateLoading atDirection:direction];
-        if (direction & kYARefreshDirectionTop) {
-          self.lastRefreshDate = [NSDate date];
-        }
+        [self _setRefreshState:kYARefreshStateLoading atDirection:direction];
         [UIView animateWithDuration:.2f animations:^{
           _scrollView.contentInset = contentInset;
         } completion:^(BOOL finished) {
-          if ([self.delegate respondsToSelector:@selector(refreshControl:didEngageRefreshDirection:)]) {
-            [self.delegate refreshControl:self didEngageRefreshDirection:direction];
-          } else if (self.refreshHandleAction) {
-            self.refreshHandleAction(direction);
-          }
+          if (self.refreshHandleAction) self.refreshHandleAction(direction);
         }];
       } else if (_scrollView.dragging
                  && !_scrollView.decelerating
                  && !(self.refreshableDirection & refreshableDirection)) {
         // only go in here the first time you've dragged past releasable offset
         self.refreshableDirection |= refreshableDirection;
-        [self _resetRefresViewForState:kYARefreshStateTrigger atDirection:direction];
-        if ([self.delegate respondsToSelector:@selector(refreshControl:canEngageRefreshDirection:)]) {
-          [self.delegate refreshControl:self canEngageRefreshDirection:direction];
-        }
+        [self _setRefreshState:kYARefreshStateTrigger atDirection:direction];
       }
     } else if ((self.refreshableDirection & refreshableDirection) ) {
       // if you're here it means you've crossed back from the releasable offset
       self.refreshableDirection &= ~refreshableDirection;
-      [self _resetRefresViewForState:kYARefreshStateStop atDirection:direction];
-      if ([_delegate respondsToSelector:@selector(refreshControl:didDisengageRefreshDirection:)]) {
-        [self.delegate refreshControl:self didDisengageRefreshDirection:direction];
-      }
+      [self _setRefreshState:kYARefreshStateStop atDirection:direction];
     }
   }
 }
 
 #pragma mark - layout
 
-- (void)_resetRefresViewForState:(YARefreshState)state atDirection:(YARefreshDirection)direction
-{
-  UIView *refreshView = [self refreshViewAtDirection:direction];
-  UILabel *titleLable = (UILabel *)[refreshView viewWithTag:kYARefreshTitleTag];
-  NSString *refreshTitle = [self.titles[@(direction)] objectForKey:@(state)];
-  [titleLable setText:refreshTitle];
-
-  [titleLable setFrameWidth:300];
-  [titleLable sizeToFit];
-
-  UILabel *subTilteLabel = (UILabel *)[refreshView viewWithTag:kYARefreshSubTitleTag];
-  NSString *refreshSubTitle = [self.subTitles[@(direction)] objectForKey:@(state)];
-  if (!refreshSubTitle
-      && direction == kYARefreshDirectionTop) {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_Hans"];
-    [formatter setLocale:locale];
-
-    [formatter setDateFormat:@"HH:mm"];
-    NSString *lastRefreshDateString;
-    if (self.lastRefreshDate) {
-      lastRefreshDateString = [NSString stringWithFormat:@"今天 %@", [formatter stringFromDate:self.lastRefreshDate]];
-    } else {
-      lastRefreshDateString = @"没有更新";
-    }
-    refreshSubTitle = [NSString stringWithFormat:@"最后更新: %@", lastRefreshDateString];
-  }
-  [subTilteLabel setText:refreshSubTitle];
-  [subTilteLabel sizeToFit];
-
-  YARefreshIndicator *indicator = (YARefreshIndicator *)[refreshView viewWithTag:kYARefreshIndicatorTag];
-  if (state == kYARefreshStateLoading) {
-    [indicator startLoading];
-  } else {
-    [indicator stopLoading];
-  }
-
-  if (state == kYARefreshStateStop) {
-    [titleLable setCenter:CGPointMake(CGRectGetMidX(refreshView.bounds), CGRectGetMidY(refreshView.bounds))];
-
-    if (!CGRectIsEmpty(subTilteLabel.frame)) {
-      [titleLable setFrameOriginY:(CGRectGetMidY(refreshView.bounds) - titleLable.frame.size.height)];
-      [subTilteLabel setFrameOriginX:titleLable.frame.origin.x];
-      [subTilteLabel setFrameOriginY:CGRectGetMaxY(titleLable.frame) + 4.0f];
-    }
-    if ((titleLable.text && titleLable.text.length > 0)
-        || (subTilteLabel.text && subTilteLabel.text.length > 0)) {
-      [indicator setFrameOriginX:(titleLable.frame.origin.x - 26 - 10)];
-      [indicator setFrameOriginY:titleLable.frame.origin.y - 4];
-    }else {
-      [indicator setCenter:CGPointMake(CGRectGetMidX(refreshView.bounds), CGRectGetMidY(refreshView.bounds))];
-    }
-  }
-}
-
 - (void)_layoutRefreshViewForDirection:(YARefreshDirection)direction
 {
   UIView *refreshView = [self refreshViewAtDirection:direction];
-  if (!refreshView) {
-    refreshView = [self _newRefreshViewForDirection:direction];
-    if (direction == kYARefreshDirectionTop
-        && [UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
-      [self.scrollView insertSubview:refreshView atIndex:0];
-    } else {
-      [self.scrollView addSubview:refreshView];
-    }
-    [self.refreshViews setObject:refreshView forKey:@(direction)];
-
-    [self _resetRefresViewForState:kYARefreshStateStop atDirection:direction];
-  }
-
   CGFloat originY = 0.0f;
 
-  switch (direction) {
-    case kYARefreshDirectionTop:
-      originY = (([UIDevice currentDevice].systemVersion.floatValue < 7.0f || self.scrollView.contentOffset.y > 0)
-                 ? -CGRectGetHeight(refreshView.frame) - self.originContentInsets.top
-                 : self.scrollView.contentOffset.y) + self.originContentInsets.top;
-      break;
+  if (_canRefreshDirection & direction) {
+    [refreshView setHidden:NO];
+    switch (direction) {
+      case kYARefreshDirectionTop:
+        originY = (([UIDevice currentDevice].systemVersion.floatValue < 7.0f || self.scrollView.contentOffset.y > 0)
+                   ? -CGRectGetHeight(refreshView.frame) - self.originContentInsets.top
+                   : self.scrollView.contentOffset.y) + self.originContentInsets.top;
+        break;
 
-    case kYARefreshDirectionBottom:
-      originY = ((self.scrollView.contentSize.height > self.scrollView.frame.size.height)
-                 ? self.scrollView.contentSize.height + self.originContentInsets.bottom
-                 : self.scrollView.frame.size.height);
-      break;
+      case kYARefreshDirectionBottom:
+        originY = ((self.scrollView.contentSize.height > self.scrollView.frame.size.height)
+                   ? self.scrollView.contentSize.height + self.originContentInsets.bottom
+                   : self.scrollView.frame.size.height);
+        break;
 
-    default:
-      break;
-  }
-  
-  [refreshView setFrameOriginY:originY];
-}
-
-#pragma mark - Util
-
-- (UIView *)_newRefreshViewForDirection:(YARefreshDirection)direction
-{
-  UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
-                                                         CGRectGetWidth(self.scrollView.bounds),
-                                                         kYARefreshViewDefaultHeight)];
-  [refreshView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin)];
-  [refreshView setBackgroundColor:[UIColor clearColor]];
-
-  CGFloat labelOriginX = CGRectGetMidX(refreshView.bounds) - kRefreshLabelLeftPadding;
-  CGFloat lableWidth = CGRectGetMidX(self.scrollView.bounds);
-  [refreshView addSubview:({
-    CGRect frame = CGRectMake(labelOriginX,
-                              kRefreshLabelTopPadding,
-                              lableWidth,
-                              15);
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:frame];
-    [titleLabel setTag:kYARefreshTitleTag];
-    [titleLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin)];
-    [titleLabel setFont:[UIFont helveticaFontOfSize:13.0f]];
-    [titleLabel setBackgroundColor:[UIColor clearColor]];
-
-    NSString *refreshTitle = [self.titles[@(direction)] objectForKey:@(kYARefreshStateStop)];
-    [titleLabel setText:refreshTitle];
-
-    titleLabel;
-  })];
-
-  [refreshView addSubview:({
-    CGFloat subTitleHeight = 13.0f;
-    CGRect frame = CGRectMake(labelOriginX,
-                              CGRectGetHeight(refreshView.bounds) - subTitleHeight - 3,
-                              lableWidth, subTitleHeight);
-    UILabel *subTitleLable = [[UILabel alloc] initWithFrame:frame];
-    [subTitleLable setTag:kYARefreshSubTitleTag];
-    [subTitleLable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin)];
-    [subTitleLable setFont:[UIFont helveticaFontOfSize:11.0f]];
-    [subTitleLable setBackgroundColor:[UIColor clearColor]];
-
-    NSString *refreshSubTitle = [self.subTitles[@(direction)] objectForKey:@(kYARefreshStateStop)];
-    [subTitleLable setText:refreshSubTitle];
-
-    subTitleLable;
-  })];
-
-  [refreshView addSubview:({
-    CGRect frame = CGRectMake(CGRectGetMidX(self.scrollView.bounds) - kRefreshLabelLeftPadding - 26 - 5,
-                              5, kYARefreshIndicatorDefaultHeight, kYARefreshIndicatorDefaultHeight);
-    YARefreshIndicator *indicator = [[YARefreshIndicator alloc] initWithFrame:frame];
-    [indicator setTag:kYARefreshIndicatorTag];
-    [indicator setAutoresizingMask:(UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin)];
-    indicator;
-  })];
-  return refreshView;
-}
-
-- (void)_enumerateForHandleDirection:(YARefreshDirection)handleDirection
-                         hanldeBlock:(void(^)(YARefreshDirection handleDirection))handleBlock
-{
-  for (NSInteger index = 0; index < 4; index++) {
-    YARefreshDirection direction = 1 << index;
-    if ((handleDirection & direction) == direction) {
-      if (handleBlock) {
-        handleBlock(direction);
-      }
+      default:
+        break;
     }
+    [refreshView setFrameOriginY:originY];
+  } else {
+    [refreshView setHidden:YES];
   }
+}
+
+#pragma mark - Factory
+
+static CGFloat const kYARefreshViewDefaultHeight = 44.0f;
+- (YARefreshView *)_defaultRefreshViewForDirection:(YARefreshDirection)direction
+{
+  CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.scrollView.bounds), kYARefreshViewDefaultHeight);
+  YARefreshView *refreshView = [[YARefreshView alloc] initWithFrame:frame];
+  [refreshView layoutSubviewsForRefreshState:kYARefreshStateStop];
+  return refreshView;
 }
 
 @end
