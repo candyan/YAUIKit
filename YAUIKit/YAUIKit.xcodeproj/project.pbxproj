@@ -57,6 +57,38 @@
 		4CEF06D41716B53200AD7913 /* toggle_bg_on@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
 		4CEF06D51716B53200AD7913 /* toggle_thumb_btn@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
 		4CF4160917670B8A00664D8C /* YASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4160817670B8A00664D8C /* YASegmentedControl.m */; };
+		7508CF9E18BB3A7E001218CB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7508CF9D18BB3A7E001218CB /* Reveal.framework */; };
+		7508CFA318BB3A9B001218CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3D9B1713F3A400F706A7 /* main.m */; };
+		7508CFA418BB3A9B001218CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3D9F1713F3A400F706A7 /* AppDelegate.m */; };
+		7508CFA518BB3A9B001218CB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3DA81713F3A400F706A7 /* ViewController.m */; };
+		7508CFA618BB3A9B001218CB /* UINavigationController+Demo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3DE917141E3B00F706A7 /* UINavigationController+Demo.m */; };
+		7508CFA718BB3A9B001218CB /* PlaceHolderTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C3DEE171421A100F706A7 /* PlaceHolderTextViewController.m */; };
+		7508CFA818BB3A9B001218CB /* AlertAndASViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C59B9E5171548E4003B7FC2 /* AlertAndASViewController.m */; };
+		7508CFA918BB3A9B001218CB /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61123817165644006CC59B /* PickerViewController.m */; };
+		7508CFAA18BB3A9B001218CB /* ToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF06C91716AC8F00AD7913 /* ToggleViewController.m */; };
+		7508CFAB18BB3A9B001218CB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59B51717C11800C948C2 /* SearchViewController.m */; };
+		7508CFAC18BB3A9B001218CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D59BF171816FA00C948C2 /* BaseViewController.m */; };
+		7508CFAD18BB3A9B001218CB /* PullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C60501A171D3A0F0051F41B /* PullRefreshViewController.m */; };
+		7508CFAF18BB3A9B001218CB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7508CF9D18BB3A7E001218CB /* Reveal.framework */; };
+		7508CFB018BB3A9B001218CB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
+		7508CFB118BB3A9B001218CB /* libYAUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D751713E53D00F706A7 /* libYAUIKit.a */; };
+		7508CFB218BB3A9B001218CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3DF317146B6F00F706A7 /* QuartzCore.framework */; };
+		7508CFB318BB3A9B001218CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D901713F3A400F706A7 /* UIKit.framework */; };
+		7508CFB418BB3A9B001218CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D781713E53D00F706A7 /* Foundation.framework */; };
+		7508CFB518BB3A9B001218CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C3D931713F3A400F706A7 /* CoreGraphics.framework */; };
+		7508CFB718BB3A9B001218CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3D981713F3A400F706A7 /* InfoPlist.strings */; };
+		7508CFB818BB3A9B001218CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DA11713F3A400F706A7 /* Default.png */; };
+		7508CFB918BB3A9B001218CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DA31713F3A400F706A7 /* Default@2x.png */; };
+		7508CFBA18BB3A9B001218CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DA51713F3A400F706A7 /* Default-568h@2x.png */; };
+		7508CFBB18BB3A9B001218CB /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DAA1713F3A400F706A7 /* ViewController.xib */; };
+		7508CFBC18BB3A9B001218CB /* PlaceHolderTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C3DEF171421A100F706A7 /* PlaceHolderTextViewController.xib */; };
+		7508CFBD18BB3A9B001218CB /* AlertAndASViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C59B9E8171549FC003B7FC2 /* AlertAndASViewController.xib */; };
+		7508CFBE18BB3A9B001218CB /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
+		7508CFBF18BB3A9B001218CB /* toggle_bg_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CD1716B09600AD7913 /* toggle_bg_off@2x.png */; };
+		7508CFC018BB3A9B001218CB /* toggle_bg_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CE1716B09600AD7913 /* toggle_bg_on@2x.png */; };
+		7508CFC118BB3A9B001218CB /* toggle_thumb_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */; };
+		7508CFC218BB3A9B001218CB /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D59B61717C11800C948C2 /* SearchViewController.xib */; };
+		7510748018B740750025BE0A /* YARefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7510747F18B740750025BE0A /* YARefreshView.m */; };
 		7550608D1814D67A00E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		7550608E1814D68600E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		758BB77F1828CFD500F3D57E /* YAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 758BB77E1828CFD500F3D57E /* YAPageControl.m */; };
@@ -69,6 +101,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		4C5C4301171E710A00391666 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5C3D6D1713E53D00F706A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C5C3D741713E53D00F706A7;
+			remoteInfo = YAUIKit;
+		};
+		7508CFA118BB3A9B001218CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C5C3D6D1713E53D00F706A7 /* Project object */;
 			proxyType = 1;
@@ -171,6 +210,11 @@
 		4CEF06CF1716B09600AD7913 /* toggle_thumb_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle_thumb_btn@2x.png"; sourceTree = "<group>"; };
 		4CF4160717670B8A00664D8C /* YASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASegmentedControl.h; sourceTree = "<group>"; };
 		4CF4160817670B8A00664D8C /* YASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASegmentedControl.m; sourceTree = "<group>"; };
+		7508CF9D18BB3A7E001218CB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		7508CFC618BB3A9B001218CB /* YAUIKitDemo-Reveal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YAUIKitDemo-Reveal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7508CFC718BB3A9B001218CB /* YAUIKitDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "YAUIKitDemo copy-Info.plist"; path = "/Users/Candyan/Douban/Mobile/Library/YAUIKit/YAUIKit/YAUIKitDemo copy-Info.plist"; sourceTree = "<absolute>"; };
+		7510747E18B740750025BE0A /* YARefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshView.h; sourceTree = "<group>"; };
+		7510747F18B740750025BE0A /* YARefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshView.m; sourceTree = "<group>"; };
 		7550608C1814D67A00E957DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		758BB77D1828CFD500F3D57E /* YAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPageControl.h; sourceTree = "<group>"; };
 		758BB77E1828CFD500F3D57E /* YAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPageControl.m; sourceTree = "<group>"; };
@@ -202,12 +246,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7508CF9E18BB3A7E001218CB /* Reveal.framework in Frameworks */,
 				7550608E1814D68600E957DE /* CoreText.framework in Frameworks */,
 				4C5C4303171E710D00391666 /* libYAUIKit.a in Frameworks */,
 				4C5C3DF417146B7000F706A7 /* QuartzCore.framework in Frameworks */,
 				4C5C3D911713F3A400F706A7 /* UIKit.framework in Frameworks */,
 				4C5C3D921713F3A400F706A7 /* Foundation.framework in Frameworks */,
 				4C5C3D941713F3A400F706A7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7508CFAE18BB3A9B001218CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7508CFAF18BB3A9B001218CB /* Reveal.framework in Frameworks */,
+				7508CFB018BB3A9B001218CB /* CoreText.framework in Frameworks */,
+				7508CFB118BB3A9B001218CB /* libYAUIKit.a in Frameworks */,
+				7508CFB218BB3A9B001218CB /* QuartzCore.framework in Frameworks */,
+				7508CFB318BB3A9B001218CB /* UIKit.framework in Frameworks */,
+				7508CFB418BB3A9B001218CB /* Foundation.framework in Frameworks */,
+				7508CFB518BB3A9B001218CB /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +326,7 @@
 				4C5C3D951713F3A400F706A7 /* YAUIKitDemo */,
 				4C5C3D771713E53D00F706A7 /* Frameworks */,
 				4C5C3D761713E53D00F706A7 /* Products */,
+				7508CFC718BB3A9B001218CB /* YAUIKitDemo copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -275,6 +335,7 @@
 			children = (
 				4C5C3D751713E53D00F706A7 /* libYAUIKit.a */,
 				4C5C3D8F1713F3A400F706A7 /* YAUIKitDemo.app */,
+				7508CFC618BB3A9B001218CB /* YAUIKitDemo-Reveal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -282,6 +343,7 @@
 		4C5C3D771713E53D00F706A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7508CF9D18BB3A7E001218CB /* Reveal.framework */,
 				7550608C1814D67A00E957DE /* CoreText.framework */,
 				4C5C3DF317146B6F00F706A7 /* QuartzCore.framework */,
 				4C5C3D781713E53D00F706A7 /* Foundation.framework */,
@@ -611,6 +673,8 @@
 			children = (
 				75B63231181138F8009C88FF /* YARefreshControl.h */,
 				75B63232181138F8009C88FF /* YARefreshControl.m */,
+				7510747E18B740750025BE0A /* YARefreshView.h */,
+				7510747F18B740750025BE0A /* YARefreshView.m */,
 			);
 			path = YARefreshControl;
 			sourceTree = "<group>";
@@ -662,6 +726,24 @@
 			productReference = 4C5C3D8F1713F3A400F706A7 /* YAUIKitDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7508CF9F18BB3A9B001218CB /* YAUIKitDemo-Reveal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7508CFC318BB3A9B001218CB /* Build configuration list for PBXNativeTarget "YAUIKitDemo-Reveal" */;
+			buildPhases = (
+				7508CFA218BB3A9B001218CB /* Sources */,
+				7508CFAE18BB3A9B001218CB /* Frameworks */,
+				7508CFB618BB3A9B001218CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7508CFA018BB3A9B001218CB /* PBXTargetDependency */,
+			);
+			name = "YAUIKitDemo-Reveal";
+			productName = YAUIKitDemo;
+			productReference = 7508CFC618BB3A9B001218CB /* YAUIKitDemo-Reveal.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -690,6 +772,7 @@
 			targets = (
 				4C5C3D741713E53D00F706A7 /* YAUIKit */,
 				4C5C3D8E1713F3A400F706A7 /* YAUIKitDemo */,
+				7508CF9F18BB3A9B001218CB /* YAUIKitDemo-Reveal */,
 			);
 		};
 /* End PBXProject section */
@@ -711,6 +794,25 @@
 				4CEF06D11716B09600AD7913 /* toggle_bg_on@2x.png in Resources */,
 				4CEF06D21716B09600AD7913 /* toggle_thumb_btn@2x.png in Resources */,
 				4C5D59B81717C11800C948C2 /* SearchViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7508CFB618BB3A9B001218CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7508CFB718BB3A9B001218CB /* InfoPlist.strings in Resources */,
+				7508CFB818BB3A9B001218CB /* Default.png in Resources */,
+				7508CFB918BB3A9B001218CB /* Default@2x.png in Resources */,
+				7508CFBA18BB3A9B001218CB /* Default-568h@2x.png in Resources */,
+				7508CFBB18BB3A9B001218CB /* ViewController.xib in Resources */,
+				7508CFBC18BB3A9B001218CB /* PlaceHolderTextViewController.xib in Resources */,
+				7508CFBD18BB3A9B001218CB /* AlertAndASViewController.xib in Resources */,
+				7508CFBE18BB3A9B001218CB /* PickerViewController.xib in Resources */,
+				7508CFBF18BB3A9B001218CB /* toggle_bg_off@2x.png in Resources */,
+				7508CFC018BB3A9B001218CB /* toggle_bg_on@2x.png in Resources */,
+				7508CFC118BB3A9B001218CB /* toggle_thumb_btn@2x.png in Resources */,
+				7508CFC218BB3A9B001218CB /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +845,7 @@
 				4C69D2E2177D38C90043B3BD /* YAPanController.m in Sources */,
 				4C8A398C1780858400C7FA9E /* YABadgeView.m in Sources */,
 				02291EB917BCEB6400DDF0ED /* YADialogView.m in Sources */,
+				7510748018B740750025BE0A /* YARefreshView.m in Sources */,
 				75C21C7F17F1744D00AC503A /* UIFont+YAUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,6 +868,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7508CFA218BB3A9B001218CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7508CFA318BB3A9B001218CB /* main.m in Sources */,
+				7508CFA418BB3A9B001218CB /* AppDelegate.m in Sources */,
+				7508CFA518BB3A9B001218CB /* ViewController.m in Sources */,
+				7508CFA618BB3A9B001218CB /* UINavigationController+Demo.m in Sources */,
+				7508CFA718BB3A9B001218CB /* PlaceHolderTextViewController.m in Sources */,
+				7508CFA818BB3A9B001218CB /* AlertAndASViewController.m in Sources */,
+				7508CFA918BB3A9B001218CB /* PickerViewController.m in Sources */,
+				7508CFAA18BB3A9B001218CB /* ToggleViewController.m in Sources */,
+				7508CFAB18BB3A9B001218CB /* SearchViewController.m in Sources */,
+				7508CFAC18BB3A9B001218CB /* BaseViewController.m in Sources */,
+				7508CFAD18BB3A9B001218CB /* PullRefreshViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -772,6 +893,11 @@
 			isa = PBXTargetDependency;
 			target = 4C5C3D741713E53D00F706A7 /* YAUIKit */;
 			targetProxy = 4C5C4301171E710A00391666 /* PBXContainerItemProxy */;
+		};
+		7508CFA018BB3A9B001218CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C5C3D741713E53D00F706A7 /* YAUIKit */;
+			targetProxy = 7508CFA118BB3A9B001218CB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -905,7 +1031,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Users/Candyan/Douban/Mobile/Library/YAUIKit/YAUIKit;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
@@ -929,7 +1055,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Users/Candyan/Douban/Mobile/Library/YAUIKit/YAUIKit;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
@@ -942,6 +1068,55 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7508CFC418BB3A9B001218CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = /Users/Candyan/Douban/Mobile/Library/YAUIKit/YAUIKit;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				INFOPLIST_FILE = "YAUIKitDemo copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_NAME = "YAUIKitDemo-Reveal";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7508CFC518BB3A9B001218CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = /Users/Candyan/Douban/Mobile/Library/YAUIKit/YAUIKit;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YAUIKitDemo/YAUIKitDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../Dependency/**";
+				INFOPLIST_FILE = "YAUIKitDemo copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_NAME = "YAUIKitDemo-Reveal";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -974,6 +1149,15 @@
 			buildConfigurations = (
 				4C5C3DAE1713F3A400F706A7 /* Debug */,
 				4C5C3DAF1713F3A400F706A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7508CFC318BB3A9B001218CB /* Build configuration list for PBXNativeTarget "YAUIKitDemo-Reveal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7508CFC418BB3A9B001218CB /* Debug */,
+				7508CFC518BB3A9B001218CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

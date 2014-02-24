@@ -16,4 +16,12 @@ typedef void(^YAAnimationLayoutViewControllersBlock)(UIViewController *fromViewC
 typedef void(^YAAnimationLayoutViewControllersSuccessBlock)(UIViewController *fromViewController, UIViewController *toViewController, BOOL success);
 typedef void(^YAAnimationLayoutViewControllersChangedBlock)(UIViewController *fromViewController, UIViewController *toViewController, CGFloat changedPrecent);
 
+// YARefresh
+typedef NS_ENUM(NSUInteger, YARefreshState)
+{
+  kYARefreshStateStop = 1 << 0,
+  kYARefreshStateTrigger = 1 << 1,
+  kYARefreshStateLoading = 1 << 2,
+};
+
 #endif

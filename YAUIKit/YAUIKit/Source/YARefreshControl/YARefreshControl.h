@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YARefreshView.h"
 
 typedef NS_ENUM(NSUInteger, YARefreshDirection)
 {
@@ -24,13 +25,6 @@ typedef NS_ENUM(NSUInteger, YARefreshableDirection)
   kYARefreshableDirectionBottom = 1 << 1,
   kYARefreshableDirectionLeft = 1 << 2,
   kYARefreshableDirectionRight = 1 << 3,
-};
-
-typedef NS_ENUM(NSUInteger, YARefreshState)
-{
-  kYARefreshStateStop = 1 << 0,
-  kYARefreshStateTrigger = 1 << 1,
-  kYARefreshStateLoading = 1 << 2,
 };
 
 @protocol YARefreshControlDelegate;
@@ -61,25 +55,15 @@ typedef NS_ENUM(NSUInteger, YARefreshState)
 - (UIView *)refreshViewAtDirection:(YARefreshDirection)direction;
 - (void)setRefreshView:(UIView *)customView forDirection:(YARefreshDirection)direction;
 
-- (void)setTitle:(NSString *)title forState:(YARefreshState)state atDirection:(YARefreshDirection)direction;
-- (void)setSubTilte:(NSString *)subTitle forState:(YARefreshState)state atDirection:(YARefreshDirection)direction;
-
-- (void)setIndicatorColor:(UIColor *)indicatorColor forDirection:(YARefreshDirection)direction;
-- (void)setTitleColor:(UIColor *)titleColor forDirection:(YARefreshDirection)direction;
-- (void)setSubTilteColor:(UIColor *)subTitleColor forDirection:(YARefreshDirection)direction;
-- (void)setTitleFont:(UIFont *)titleFont forDirection:(YARefreshDirection)direction;
-- (void)setSubTilteFont:(UIFont *)subTitleFont forDirection:(YARefreshDirection)direction;
-
 @end
 
 @protocol YARefreshControlDelegate <NSObject>
 
 @optional
 
-/*
- * asks the delegate which refresh directions it would like enabled
- */
-- (BOOL)refreshControl:(YARefreshControl *)refreshController canRefreshInDirection:(YARefreshDirection)direction;
+- (void)refreshControl:(YARefreshControl *)refreshControl didShowRefreshViewHeight:(CGFloat)progress atDirection:(YARefreshDirection)direction;
+
+- (void)refreshControl:(YARefreshControl *)refreshControl didRefreshStateChanged:(YARefreshState)refreshState atDirection:(YARefreshDirection)direction;
 
 /*
  * inset threshold to engage refresh
@@ -90,25 +74,5 @@ typedef NS_ENUM(NSUInteger, YARefreshState)
  * inset that the direction retracts back to after refresh started
  */
 - (CGFloat)refreshControl:(YARefreshControl *)refreshController refreshingInsetForDirection:(YARefreshDirection)direction;
-
-/*
- * informs the delegate that lifting your finger will trigger a refresh
- * in that direction. This is only called when you cross the refreshable
- * offset defined in the respective MSInflectionOffsets.
- */
-- (void)refreshControl:(YARefreshControl *)refreshControl canEngageRefreshDirection:(YARefreshDirection)direction;
-
-/*
- * informs the delegate that lifting your finger will NOT trigger a refresh
- * in that direction. This is only called when you cross the refreshable
- * offset defined in the respective MSInflectionOffsets.
- */
-- (void)refreshControl:(YARefreshControl *)refreshControl didDisengageRefreshDirection:(YARefreshDirection)direction;
-
-/*
- * informs the delegate that refresh sequence has been started by the user
- * in the specified direction. A good place to start any async work.
- */
-- (void)refreshControl:(YARefreshControl *)refreshControl didEngageRefreshDirection:(YARefreshDirection)direction;
 
 @end

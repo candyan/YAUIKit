@@ -28,7 +28,7 @@
 
 - (id)init
 {
-  static CGFloat const defalutSize = 24.0f;
+  static CGFloat const defalutSize = 26.0f;
   return [self initWithFrame:CGRectMake(0, 0, defalutSize, defalutSize)];
 }
 
