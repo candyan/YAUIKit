@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'YAUIKit'
-  s.version      = '1.0.2'
+  s.version      = '1.1.0'
   s.summary      = 'YAUIKit'
   s.homepage     = 'http://code.dapps.douban.com/YAUIKit'
   s.author       = { 'Douban iOS Developers' => 'ios-dev@douban.com' }
