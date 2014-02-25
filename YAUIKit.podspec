@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
       :tag => s.version.to_s
   }
   s.frameworks    = 'CoreText'
+  s.prefix_header_file = 'YAUIKit/YAUIKit/YAUIKit-Prefix.pch'
   s.source_files = 'YAUIKit/YAUIKit/Source/**/*.{c,h,m}'
   s.requires_arc = true
 
