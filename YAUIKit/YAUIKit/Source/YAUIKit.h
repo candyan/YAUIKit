@@ -9,6 +9,8 @@
 #ifndef YAUIKit_YAUIKit_h
 #define YAUIKit_YAUIKit_h
 
+#import "YAUIKitTypeDef.h"
+
 // Extend
 #import "UIColor+YAHexColor.h"
 #import "UIView+YAUIKit.h"
