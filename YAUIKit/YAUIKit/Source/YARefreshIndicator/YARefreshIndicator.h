@@ -11,6 +11,7 @@
 @interface YARefreshIndicator : UIView
 
 @property (nonatomic, readonly) BOOL loading;
+@property (nonatomic, assign) BOOL hidesWhenStop;
 
 - (void)setIndicatorColor:(UIColor *)color;
 

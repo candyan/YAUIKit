@@ -39,6 +39,7 @@
     // Initialization code
     [self setBackgroundColor:[UIColor clearColor]];
     [self setIndicatorColor:[UIColor colorWithHex:0x00b7df]];
+    self.hidesWhenStop = YES;
     self.loading = NO;
   }
   return self;
@@ -56,6 +57,8 @@
 
 - (void)setLoading:(BOOL)loading
 {
+  if (self.hidesWhenStop) [self setHidden:!loading];
+  
   _loading = loading;
   
   _startAngle = -90;
@@ -84,7 +87,7 @@
   present = MAX(present, 0.0f);
   present = MIN(present, 1.0f);
 
-  [self setHidden:!(present > 0.0f)];
+  if (self.hidesWhenStop) [self setHidden:!(present > 0.0f)];
 
   _startAngle = -90;
   _endAngle = -90 + 320.0f * present;
@@ -97,7 +100,6 @@
 - (void)startLoading
 {
   if (!self.loading) {
-    [self setHidden:NO];
     self.loading = YES;
   }
 }
@@ -106,7 +108,6 @@
 {
   if (self.loading) {
     self.loading = NO;
-    [self setHidden:YES];
   }
 }
 
