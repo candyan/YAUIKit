@@ -250,7 +250,7 @@
   switch (direction) {
     case kYARefreshDirectionTop:
       refreshableDirection = kYARefreshableDirectionTop;
-      threshold = -oldOffset.y;
+      threshold = -oldOffset.y - self.originContentInsets.top;
       contentInset = UIEdgeInsetsMake(refreshingInset + contentInset.top,
                                       contentInset.left,
                                       contentInset.bottom,
@@ -269,10 +269,9 @@
       refreshableDirection = kYARefreshableDirectionBottom;
       if (_scrollView.frame.size.height > _scrollView.contentSize.height) {
         threshold = oldOffset.y;
-        canEngage = (oldOffset.y > refreshableInset);
       }  else {
         threshold = ((CGRectGetHeight(self.scrollView.bounds) + oldOffset.y)
-                     - (self.scrollView.contentSize.height + self.scrollView.contentInset.bottom));
+                     - (self.scrollView.contentSize.height + self.originContentInsets.bottom));
       }
       contentInset = UIEdgeInsetsMake(contentInset.top,
                                       contentInset.left,
