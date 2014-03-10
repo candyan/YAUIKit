@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'YAUIKit'
-  s.version      = '1.1.0'
+  s.version      = '1.1.1'
   s.summary      = 'YAUIKit'
   s.homepage     = 'http://code.dapps.douban.com/YAUIKit'
   s.author       = { 'Douban iOS Developers' => 'ios-dev@douban.com' }
@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
       :tag => s.version.to_s
   }
   s.frameworks    = 'CoreText'
-  s.prefix_header_file = 'YAUIKit/YAUIKit/YAUIKit-Prefix.pch'
   s.source_files = 'YAUIKit/YAUIKit/Source/**/*.{c,h,m}'
   s.requires_arc = true
 
