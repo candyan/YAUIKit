@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YARefreshIndicator.h"
+#import "YAUIKitTypeDef.h"
 
 @interface YARefreshView : UIView {
   YARefreshState _refreshState;
