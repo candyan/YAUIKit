@@ -158,13 +158,13 @@
   switch (direction) {
     case kYARefreshDirectionTop:
       refreshableDirection = kYARefreshableDirectionTop;
-      contentInset = UIEdgeInsetsMake(refreshingInset, contentInset.left, contentInset.bottom, contentInset.right);
-      contentOffset = CGPointMake(0, -refreshingInset);
+      contentInset = UIEdgeInsetsMake(refreshingInset + contentInset.top, contentInset.left, contentInset.bottom, contentInset.right);
+      contentOffset = CGPointMake(0, -(refreshingInset + contentInset.top));
       break;
     case kYARefreshDirectionLeft:
       refreshableDirection = kYARefreshableDirectionLeft;
-      contentInset = UIEdgeInsetsMake(contentInset.top, refreshingInset, contentInset.bottom, contentInset.right);
-      contentOffset = CGPointMake(-refreshingInset, 0);
+      contentInset = UIEdgeInsetsMake(contentInset.top, refreshingInset + contentInset.left, contentInset.bottom, contentInset.right);
+      contentOffset = CGPointMake(-(refreshingInset + contentInset.left), 0);
       break;
     case kYARefreshDirectionBottom:
       refreshableDirection = kYARefreshableDirectionBottom;
@@ -173,8 +173,8 @@
       break;
     case kYARefreshDirectionRight:
       refreshableDirection = kYARefreshableDirectionRight;
-      contentInset = UIEdgeInsetsMake(contentInset.top, contentInset.left, contentInset.bottom, refreshingInset);
-      contentOffset = CGPointMake(_scrollView.contentSize.width + refreshingInset, 0);
+      contentInset = UIEdgeInsetsMake(contentInset.top, contentInset.left, contentInset.bottom, refreshingInset + contentInset.right);
+      contentOffset = CGPointMake(_scrollView.contentSize.width + refreshingInset + contentInset.right, 0);
       break;
     default:
       break;
