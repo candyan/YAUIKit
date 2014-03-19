@@ -10,9 +10,9 @@
 
 @interface UIColor (YAHexColor)
 
-+ (UIColor *) colorWithHex:(NSInteger)rgbHexValue;
++ (UIColor *)colorWithHex:(NSInteger)rgbHexValue;
++ (UIColor *)colorWithHex:(NSInteger)rgbHexValue alpha:(CGFloat)alpha;
 
-+ (UIColor *) colorWithHex:(NSInteger)rgbHexValue alpha:(CGFloat)alpha;
-
++ (UIColor *)colorWithHexString:(NSString *)hexStr;
 
 @end
