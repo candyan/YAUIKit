@@ -113,7 +113,7 @@
   }
 
   if ([self.delegate respondsToSelector:@selector(refreshControl:didRefreshStateChanged:atDirection:)]) {
-    [self.delegate refreshControl:self didRefreshStateChanged:kYARefreshStateStop atDirection:direction];
+    [self.delegate refreshControl:self didRefreshStateChanged:refreshState atDirection:direction];
   }
 }
 
