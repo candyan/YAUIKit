@@ -150,7 +150,9 @@
   UIEdgeInsets contentInset = _scrollView.contentInset;
   CGPoint contentOffset = CGPointZero;
 
-  CGFloat refreshingInset = 44.0f;
+  UIView *refreshView = [self refreshViewAtDirection:direction];
+
+  CGFloat refreshingInset = CGRectGetHeight(refreshView.frame);
   if ([self.delegate respondsToSelector:@selector(refreshControl:refreshingInsetForDirection:)]) {
     refreshingInset = [self.delegate refreshControl:self refreshingInsetForDirection:direction];
   }
@@ -159,22 +161,22 @@
     case kYARefreshDirectionTop:
       refreshableDirection = kYARefreshableDirectionTop;
       contentInset = UIEdgeInsetsMake(refreshingInset + contentInset.top, contentInset.left, contentInset.bottom, contentInset.right);
-      contentOffset = CGPointMake(0, -(refreshingInset + contentInset.top));
+      contentOffset = CGPointMake(0, -contentInset.top);
       break;
     case kYARefreshDirectionLeft:
       refreshableDirection = kYARefreshableDirectionLeft;
       contentInset = UIEdgeInsetsMake(contentInset.top, refreshingInset + contentInset.left, contentInset.bottom, contentInset.right);
-      contentOffset = CGPointMake(-(refreshingInset + contentInset.left), 0);
+      contentOffset = CGPointMake(-contentInset.left, 0);
       break;
     case kYARefreshDirectionBottom:
       refreshableDirection = kYARefreshableDirectionBottom;
       contentOffset = CGPointMake(0, _scrollView.contentSize.height - _scrollView.bounds.size.height
-                                  + refreshingInset + contentInset.bottom);
+                                  + contentInset.bottom);
       break;
     case kYARefreshDirectionRight:
       refreshableDirection = kYARefreshableDirectionRight;
       contentInset = UIEdgeInsetsMake(contentInset.top, contentInset.left, contentInset.bottom, refreshingInset + contentInset.right);
-      contentOffset = CGPointMake(_scrollView.contentSize.width + refreshingInset + contentInset.right, 0);
+      contentOffset = CGPointMake(_scrollView.contentSize.width + contentInset.right, 0);
       break;
     default:
       break;
@@ -375,3 +377,4 @@ static CGFloat const kYARefreshViewDefaultHeight = 44.0f;
 }
 
 @end
+
