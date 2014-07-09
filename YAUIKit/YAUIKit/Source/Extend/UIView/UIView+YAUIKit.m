@@ -10,6 +10,20 @@
 
 @implementation UIView (YAUIKit)
 
+#pragma mark - Set Center Property
+- (void) setCenterX:(CGFloat)centerX {
+  CGPoint center = self.center;
+  center.x = centerX;
+  self.center = center;
+}
+
+- (void) setCenterY:(CGFloat)centerY {
+  CGPoint center = self.center;
+  center.y = centerY;
+  self.center = center;
+}
+
+
 #pragma mark - Set Frame Property
 - (void) setFrameOriginX:(CGFloat)originX {
   CGRect originFrame = self.frame;
