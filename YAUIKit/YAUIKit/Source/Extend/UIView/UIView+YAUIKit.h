@@ -11,6 +11,12 @@
 @interface UIView (YAUIKit)
 
 ///-------------------------------------
+/// Set UIView Each Center Property
+///-------------------------------------
+- (void) setCenterX:(CGFloat)centerX;
+- (void) setCenterY:(CGFloat)centerY;
+
+///-------------------------------------
 /// Set UIView Each Frame Property
 ///-------------------------------------
 - (void) setFrameOriginX:(CGFloat)originX;
