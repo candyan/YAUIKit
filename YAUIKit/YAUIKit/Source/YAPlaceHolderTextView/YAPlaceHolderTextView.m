@@ -48,9 +48,10 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - draw
-- (void)drawRect:(CGRect)rect
+#pragma mark - Layout
+- (void)layoutSubviews
 {
+  [super layoutSubviews];
   if ([self.placeholder length] > 0
       && [self.text length] == 0) {
     [[self _placeHolderLabel] setText:self.placeholder];
@@ -68,8 +69,6 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   } else {
     [[self _placeHolderLabel] setHidden:YES];
   }
-
-  [super drawRect:rect];
 }
 
 #pragma mark - Prop
@@ -103,7 +102,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
 - (void)setPlaceholder:(NSString *)placeholder
 {
   _placeholder = placeholder;
-  [self setNeedsDisplay];
+  [self setNeedsLayout];
 }
 
 - (void)setFont:(UIFont *)font
@@ -122,7 +121,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
   } else {
     [[self _placeHolderLabel] setHidden:YES];
   }
-  [self setNeedsDisplay];
+  [self setNeedsLayout];
 }
 
 @end
