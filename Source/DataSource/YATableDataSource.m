@@ -19,6 +19,7 @@
 {
     self = [super init];
     if (self) {
+        _objects = [NSMutableArray array];
         [[YASkinManager sharedManager] addObserver:self
                                         forKeyPath:@"skinName"
                                            options:NSKeyValueObservingOptionNew
@@ -61,6 +62,125 @@
     
     _tableView.backgroundView = nil;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+#pragma mark - Objects
+
+- (NSArray *)allSectionObjects
+{
+    return [NSArray arrayWithArray:_objects];
+}
+
+- (void)setAllSectionObjects:(NSArray *)objects
+{
+    if (objects) {
+        NSMutableArray *tmpArray = [NSMutableArray array];
+        for (id object in objects) {
+            if (![object isKindOfClass:[NSArray class]]) {
+                [tmpArray addObject:object];
+            } else {
+                if (tmpArray.count != 0) [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
+                [_objects addObject:[NSMutableArray arrayWithArray:object]];
+                [tmpArray removeAllObjects];
+            }
+        }
+        if (tmpArray.count != 0) [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
+    } else {
+        [_objects removeAllObjects];
+    }
+    [_tableView reloadData];
+}
+
+- (void)addSectionObjects:(NSArray *)objects
+{
+    [self insertSectionObjects:objects
+                       atIndex:_objects.count];
+}
+
+- (void)insertSectionObjects:(NSArray *)objects atIndex:(NSUInteger)index
+{
+    if (objects.count != 0 && index <= objects.count) {
+        [_objects insertObject:[NSMutableArray arrayWithArray:objects]
+                       atIndex:index];
+        [_tableView insertSections:[NSIndexSet indexSetWithIndex:index]
+                  withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)removeObjectsAtSection:(NSUInteger)section
+{
+    if (section < _objects.count) {
+        [_objects removeObjectAtIndex:section];
+        [_tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
+                  withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (NSArray *)objectsAtSection:(NSUInteger)sectiion
+{
+    return (sectiion < _objects.count) ? [NSArray arrayWithArray:_objects[sectiion]] : nil;
+}
+
+- (void)addObject:(id)object atSection:(NSUInteger)section
+{
+    [self addObjects:@[object] atSection:section];
+}
+
+- (void)addObjects:(NSArray *)objects atSection:(NSUInteger)section
+{
+    if (objects.count != 0 && section < _objects.count) {
+        NSMutableArray *sectionObjects = _objects[section];
+        [sectionObjects addObjectsFromArray:objects];
+
+        NSMutableArray *insertIndexPaths = [NSMutableArray array];
+        for (id insertedObject in objects) {
+            [insertIndexPaths addObject:[NSIndexPath indexPathForRow:[sectionObjects indexOfObject:insertedObject]
+                                                           inSection:section]];
+        }
+        [_tableView insertRowsAtIndexPaths:insertIndexPaths
+                          withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)insertObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+{
+    if (object && indexPath.section < _objects.count) {
+        NSMutableArray *sectionObjects = _objects[indexPath.section];
+        if (indexPath.row <= sectionObjects.count) {
+            [sectionObjects insertObject:object atIndex:indexPath.row];
+            [_tableView insertRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
+- (void)removeObject:(id)object atSection:(NSUInteger)section
+{
+    if (object) {
+        NSArray *sectionObjects = [self objectsAtSection:section];
+        NSUInteger removeObjectIndex = [sectionObjects indexOfObject:object];
+        [self removeObjectAtIndexPath:[NSIndexPath indexPathForRow:removeObjectIndex
+                                                         inSection:section]];
+    }
+}
+
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section < _objects.count) {
+        NSMutableArray *sectionObjects = _objects[indexPath.section];
+
+        if (indexPath.row != NSNotFound && indexPath.row < sectionObjects.count) {
+            [sectionObjects removeObjectAtIndex:indexPath.row];
+            [_tableView deleteRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *sectionObjects = [self objectsAtSection:indexPath.section];
+    return indexPath.row < sectionObjects.count ? sectionObjects[indexPath.row] : nil;
 }
 
 #pragma mark - Dealloc
@@ -130,12 +250,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return _objects.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self objectsAtSection:section].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

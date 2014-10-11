@@ -38,11 +38,13 @@
 #import "YASeparatorLine.h"
 #import "YARefreshIndicator.h"
 
-
 // Widget
 
 #import "YARefreshControl.h"
+
 #import "YATableDataSource.h"
+#import "YATableViewController.h"
+
 #import "YASkinManager.h"
 
 #endif
