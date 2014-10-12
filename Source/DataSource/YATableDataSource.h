@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Douban.Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface YATableDataSource : NSObject<UITableViewDataSource, UITableViewDelegate>
 {
