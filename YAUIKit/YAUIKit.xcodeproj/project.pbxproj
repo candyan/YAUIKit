@@ -85,6 +85,7 @@
 		75900D4419E4438E00C05D28 /* YARefreshIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900D2C19E4438E00C05D28 /* YARefreshIndicator.m */; };
 		75900D4819E445E500C05D28 /* YASkinManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900D4719E445E500C05D28 /* YASkinManager.m */; };
 		75900D4C19E448F100C05D28 /* YATableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900D4B19E448F100C05D28 /* YATableDataSource.m */; };
+		75C15C2419EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C15C2319EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,8 @@
 		75900D4719E445E500C05D28 /* YASkinManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASkinManager.m; sourceTree = "<group>"; };
 		75900D4A19E448F100C05D28 /* YATableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YATableDataSource.h; sourceTree = "<group>"; };
 		75900D4B19E448F100C05D28 /* YATableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YATableDataSource.m; sourceTree = "<group>"; };
+		75C15C2219EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+YAKeyboardWindow.h"; sourceTree = "<group>"; };
+		75C15C2319EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+YAKeyboardWindow.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +449,7 @@
 		75900CEE19E4438E00C05D28 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				75C15C2119EA709E00E5C341 /* UIApplication */,
 				75900CEF19E4438E00C05D28 /* UIBarButtonItem */,
 				75900CF219E4438E00C05D28 /* UIColor */,
 				75900CF519E4438E00C05D28 /* UIControl */,
@@ -616,6 +620,15 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		75C15C2119EA709E00E5C341 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				75C15C2219EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.h */,
+				75C15C2319EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m */,
+			);
+			path = UIApplication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -753,6 +766,7 @@
 				75900D3419E4438E00C05D28 /* UIImage+YAImageTransform.m in Sources */,
 				75900D3E19E4438E00C05D28 /* YAAlertView.m in Sources */,
 				75900D3D19E4438E00C05D28 /* YAActionSheet.m in Sources */,
+				75C15C2419EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m in Sources */,
 				75900D3719E4438E00C05D28 /* UIView+YAUIKit.m in Sources */,
 				75900D4119E4438E00C05D28 /* YAPlaceHolderTextView.m in Sources */,
 				75900D3019E4438E00C05D28 /* UIColor+YAHexColor.m in Sources */,

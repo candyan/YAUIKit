@@ -28,6 +28,8 @@
 
 #import "UIBarButtonItem+YAItemFactory.h"
 
+#import "UIApplication+YAKeyboardWindow.h"
+
 //Custom View
 
 #import "YAPanBackController.h"
