@@ -47,6 +47,8 @@
 #import "YATableDataSource.h"
 #import "YATableViewController.h"
 
+#import "YATextEditorViewController.h"
+
 #import "YASkinManager.h"
 
 #endif
