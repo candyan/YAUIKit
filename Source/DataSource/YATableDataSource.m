@@ -73,6 +73,7 @@
 
 - (void)setAllSectionObjects:(NSArray *)objects
 {
+    [_objects removeAllObjects];
     if (objects) {
         NSMutableArray *tmpArray = [NSMutableArray array];
         for (id object in objects) {
@@ -85,8 +86,6 @@
             }
         }
         if (tmpArray.count != 0) [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
-    } else {
-        [_objects removeAllObjects];
     }
     [_tableView reloadData];
 }
