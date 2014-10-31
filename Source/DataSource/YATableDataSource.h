@@ -36,4 +36,6 @@
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 
+- (void)replaceObjectAtIndexPath:(NSIndexPath *)indexPath withObject:(id)object;
+
 @end

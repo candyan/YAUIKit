@@ -182,6 +182,18 @@
     return indexPath.row < sectionObjects.count ? sectionObjects[indexPath.row] : nil;
 }
 
+- (void)replaceObjectAtIndexPath:(NSIndexPath *)indexPath withObject:(id)object
+{
+    if ([self objectAtIndexPath:indexPath] != nil && object) {
+        NSMutableArray *objectsInSection = [[self objectsAtSection:indexPath.section] mutableCopy];
+        [objectsInSection replaceObjectAtIndex:indexPath.row withObject:object];
+
+        [_objects replaceObjectAtIndex:indexPath.section withObject:objectsInSection];
+
+        [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 #pragma mark - Dealloc
 
 - (void)dealloc
