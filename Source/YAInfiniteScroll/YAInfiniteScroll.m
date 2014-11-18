@@ -112,7 +112,7 @@
 
 - (YAInfiniteScroll *)infiniteScroll
 {
-  PAInfiniteScroll *infiniteScroll = objc_getAssociatedObject(self, @selector(infiniteScroll));
+  YAInfiniteScroll *infiniteScroll = objc_getAssociatedObject(self, @selector(infiniteScroll));
   if (infiniteScroll == nil) {
     infiniteScroll = [[YAInfiniteScroll alloc] initWithScrollView:self.tableView];
     infiniteScroll.hasMore = NO;
