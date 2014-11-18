@@ -43,6 +43,7 @@
 // Widget
 
 #import "YARefreshControl.h"
+#import "YAInfiniteScroll.h"
 
 #import "YATableDataSource.h"
 #import "YATableViewController.h"
