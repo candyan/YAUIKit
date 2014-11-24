@@ -25,8 +25,9 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
                selector:@selector(ya_keyboardWillShowNotification:)
@@ -40,6 +41,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self
                       name:UIKeyboardWillShowNotification
@@ -53,70 +55,70 @@
 
 - (UIView *)editContainer
 {
-  if (_editContainer == nil) {
-    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
-    [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    view.backgroundColor = self.view.backgroundColor;
-    _editContainer = view;
-    [self.view addSubview:_editContainer];
-  }
-  return _editContainer;
+    if (_editContainer == nil) {
+        UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+        [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        view.backgroundColor = self.view.backgroundColor;
+        _editContainer = view;
+        [self.view addSubview:_editContainer];
+    }
+    return _editContainer;
 }
 
 - (YAPlaceHolderTextView *)inputTextView
 {
-  if (_inputTextView == nil) {
-    YAPlaceHolderTextView *textView = [[YAPlaceHolderTextView alloc] initWithFrame:self.editContainer.bounds];
-    [textView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    _inputTextView = textView;
+    if (_inputTextView == nil) {
+        YAPlaceHolderTextView *textView = [[YAPlaceHolderTextView alloc] initWithFrame:self.editContainer.bounds];
+        [textView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        _inputTextView = textView;
 
-      _inputTextView.font = [UIFont helveticaFontOfSize:15.0];
+        _inputTextView.font = [UIFont helveticaFontOfSize:15.0];
 
-    [self.editContainer addSubview:_inputTextView];
-  }
-  return _inputTextView;
+        [self.editContainer addSubview:_inputTextView];
+    }
+    return _inputTextView;
 }
 
 #pragma mark - Action
 
 - (void)sendAction:(id)sender
 {
-  //TODO: Implementation in subclass.
+    //TODO: Implementation in subclass.
 }
 
 - (void)cancelAction:(id)sender
 {
-  [self dismissViewControllerAnimated:YES completion:^{
-    if ([self.delegate respondsToSelector:@selector(textEditorControllerDidCancel:)]) {
-        [self.delegate textEditorControllerDidCancel:self];
-    }
-  }];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([self.delegate respondsToSelector:@selector(textEditorControllerDidCancel:)]) {
+            [self.delegate textEditorControllerDidCancel:self];
+        }
+    }];
 }
 
 #pragma mark - keyboard notification
 
 - (void)ya_keyboardWillShowNotification:(NSNotification *)notification
 {
-  NSDictionary *userInfo = notification.userInfo;
+    NSDictionary *userInfo = notification.userInfo;
 
-  NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-  UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-  CGFloat keyboardOriginY = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].origin.y;
+    NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    CGFloat keyboardHeight = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
 
-  [UIView animateWithDuration:duration delay:0.0f options:animationCurve animations:^{
-    [self.editContainer setFrameHeight:keyboardOriginY - CGRectGetMinY(self.editContainer.frame)];
-  } completion:nil];
+    [UIView animateWithDuration:duration delay:0.0f options:animationCurve animations:^{
+        [self.editContainer setFrameHeight:CGRectGetHeight(self.view.bounds) - keyboardHeight];
+    } completion:nil];
 }
 
 - (void)ya_keyboardWillHiddenNotification:(NSNotification *)notification
 {
-  NSDictionary *userInfo = notification.userInfo;
-  NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-  UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSDictionary *userInfo = notification.userInfo;
+    NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
 
-  [UIView animateWithDuration:duration delay:0.0f options:animationCurve animations:^{
-    [self.editContainer setFrameHeight:CGRectGetHeight(self.view.bounds)];
-  } completion:nil];
+    [UIView animateWithDuration:duration delay:0.0f options:animationCurve animations:^{
+        [self.editContainer setFrameHeight:CGRectGetHeight(self.view.bounds)];
+    } completion:nil];
 }
 
 @end

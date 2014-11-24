@@ -62,6 +62,7 @@
 		7508CFBD18BB3A9B001218CB /* AlertAndASViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C59B9E8171549FC003B7FC2 /* AlertAndASViewController.xib */; };
 		7508CFBE18BB3A9B001218CB /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C61123917165644006CC59B /* PickerViewController.xib */; };
 		7508CFC218BB3A9B001218CB /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D59B61717C11800C948C2 /* SearchViewController.xib */; };
+		7543F9D91A2342C0008178C8 /* YATextEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7543F9D81A2342C0008178C8 /* YATextEditorViewController.m */; };
 		7550608D1814D67A00E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		7550608E1814D68600E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		7557F79B19E9A75800153B2E /* YATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7557F79A19E9A75800153B2E /* YATableViewController.m */; };
@@ -161,6 +162,8 @@
 		7508CF9D18BB3A7E001218CB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		7508CFC618BB3A9B001218CB /* YAUIKitDemo-Reveal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YAUIKitDemo-Reveal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7508CFC718BB3A9B001218CB /* YAUIKitDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "YAUIKitDemo copy-Info.plist"; path = "/Users/Candyan/Douban/Mobile/Library/YAUIKit/YAUIKit/YAUIKitDemo copy-Info.plist"; sourceTree = "<absolute>"; };
+		7543F9D71A2342C0008178C8 /* YATextEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YATextEditorViewController.h; sourceTree = "<group>"; };
+		7543F9D81A2342C0008178C8 /* YATextEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YATextEditorViewController.m; sourceTree = "<group>"; };
 		7550608C1814D67A00E957DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7557F79919E9A75800153B2E /* YATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YATableViewController.h; sourceTree = "<group>"; };
 		7557F79A19E9A75800153B2E /* YATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YATableViewController.m; sourceTree = "<group>"; };
@@ -415,6 +418,15 @@
 			path = ToggleViewController;
 			sourceTree = "<group>";
 		};
+		7543F9D61A2342C0008178C8 /* TextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				7543F9D71A2342C0008178C8 /* YATextEditorViewController.h */,
+				7543F9D81A2342C0008178C8 /* YATextEditorViewController.m */,
+			);
+			path = TextEditor;
+			sourceTree = "<group>";
+		};
 		7557F79819E9A73F00153B2E /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +439,7 @@
 		75900CED19E4438E00C05D28 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7543F9D61A2342C0008178C8 /* TextEditor */,
 				75900D2D19E4438E00C05D28 /* YAUIKit.h */,
 				75900D2E19E4438E00C05D28 /* YAUIKitTypeDef.h */,
 				7557F79819E9A73F00153B2E /* TableViewController */,
@@ -760,6 +773,7 @@
 			files = (
 				75900D3819E4438E00C05D28 /* YASeparatorLine.m in Sources */,
 				75900D2F19E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m in Sources */,
+				7543F9D91A2342C0008178C8 /* YATextEditorViewController.m in Sources */,
 				75900D3119E4438E00C05D28 /* UIControl+YAUIKit.m in Sources */,
 				75900D4319E4438E00C05D28 /* YARefreshView.m in Sources */,
 				75900D3F19E4438E00C05D28 /* YAPanBackController.m in Sources */,
