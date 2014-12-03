@@ -25,9 +25,10 @@
 
 #pragma mark - view lifeCycle
 
-- (void)viewDidLoad
+- (void)dealloc
 {
-    [super viewDidLoad];
+    _tableView.delegate = nil;
+    _tableView.dataSource = nil;
 }
 
 #pragma mark - Property
