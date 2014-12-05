@@ -9,6 +9,7 @@
 #import "YATextEditorViewController.h"
 #import "UIFont+YAUIKit.h"
 #import "UIView+YAUIKit.h"
+#import <Masonry/Masonry.h>
 
 @interface YATextEditorViewController ()
 
@@ -16,12 +17,14 @@
 
 @implementation YATextEditorViewController
 
+#pragma mark - view lifeCycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+
+    if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }
 }
 
@@ -43,12 +46,24 @@
 {
     [super viewWillDisappear:animated];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self
-                      name:UIKeyboardWillShowNotification
-                    object:nil];
-    [center removeObserver:self
-                      name:UIKeyboardWillHideNotification
-                    object:nil];
+    [center removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [center removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma mark - Accessor
+
+- (void)setEdgesForExtendedLayout:(UIRectEdge)edgesForExtendedLayout
+{
+    [super setEdgesForExtendedLayout:edgesForExtendedLayout];
+
+    [self.editContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+        if ([self respondsToSelector:@selector(edgesForExtendedLayout)] &&
+            (self.edgesForExtendedLayout == UIRectEdgeTop || self.edgesForExtendedLayout == UIRectEdgeAll)) {
+            make.top.equalTo(self.view).with.offset(64);
+        } else {
+            make.top.equalTo(self.view).with.offset(0);
+        }
+    }];
 }
 
 #pragma mark - Property
@@ -56,11 +71,22 @@
 - (UIView *)editContainer
 {
     if (_editContainer == nil) {
-        UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
-        [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
         view.backgroundColor = self.view.backgroundColor;
         _editContainer = view;
         [self.view addSubview:_editContainer];
+
+        [_editContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+            if ([self respondsToSelector:@selector(edgesForExtendedLayout)] &&
+                (self.edgesForExtendedLayout == UIRectEdgeTop || self.edgesForExtendedLayout == UIRectEdgeAll)) {
+                make.top.equalTo(self.view).with.offset(64);
+            } else {
+                make.top.equalTo(self.view).with.offset(0);
+            }
+            make.bottom.equalTo(self.view).with.offset(0);
+            make.leading.equalTo(self.view);
+            make.trailing.equalTo(self.view);
+        }];
     }
     return _editContainer;
 }
@@ -68,13 +94,14 @@
 - (YAPlaceHolderTextView *)inputTextView
 {
     if (_inputTextView == nil) {
-        YAPlaceHolderTextView *textView = [[YAPlaceHolderTextView alloc] initWithFrame:self.editContainer.bounds];
-        [textView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        YAPlaceHolderTextView *textView = [[YAPlaceHolderTextView alloc] initWithFrame:CGRectZero];
         _inputTextView = textView;
 
         _inputTextView.font = [UIFont helveticaFontOfSize:15.0];
 
         [self.editContainer addSubview:_inputTextView];
+
+        [_inputTextView mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(self.editContainer); }];
     }
     return _inputTextView;
 }
@@ -83,16 +110,17 @@
 
 - (void)sendAction:(id)sender
 {
-    //TODO: Implementation in subclass.
+    // TODO: Implementation in subclass.
 }
 
 - (void)cancelAction:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        if ([self.delegate respondsToSelector:@selector(textEditorControllerDidCancel:)]) {
-            [self.delegate textEditorControllerDidCancel:self];
-        }
-    }];
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 if ([self.delegate respondsToSelector:@selector(textEditorControllerDidCancel:)]) {
+                                     [self.delegate textEditorControllerDidCancel:self];
+                                 }
+                             }];
 }
 
 #pragma mark - keyboard notification
@@ -105,9 +133,17 @@
     UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     CGFloat keyboardHeight = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
 
-    [UIView animateWithDuration:duration delay:0.0f options:animationCurve animations:^{
-        [self.editContainer setFrameHeight:CGRectGetHeight(self.view.bounds) - keyboardHeight];
-    } completion:nil];
+    [self.editContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).with.offset(-keyboardHeight);
+    }];
+
+    [self.view setNeedsLayout];
+
+    [UIView animateWithDuration:duration
+                          delay:0.0f
+                        options:animationCurve
+                     animations:^{ [self.view layoutIfNeeded]; }
+                     completion:nil];
 }
 
 - (void)ya_keyboardWillHiddenNotification:(NSNotification *)notification
@@ -116,9 +152,16 @@
     NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
 
-    [UIView animateWithDuration:duration delay:0.0f options:animationCurve animations:^{
-        [self.editContainer setFrameHeight:CGRectGetHeight(self.view.bounds)];
-    } completion:nil];
+    [self.editContainer
+     mas_updateConstraints:^(MASConstraintMaker *make) { make.bottom.equalTo(self.view).with.offset(0); }];
+
+    [self.view setNeedsLayout];
+
+    [UIView animateWithDuration:duration
+                          delay:0.0f
+                        options:animationCurve
+                     animations:^{ [self.view layoutIfNeeded]; }
+                     completion:nil];
 }
 
 @end
