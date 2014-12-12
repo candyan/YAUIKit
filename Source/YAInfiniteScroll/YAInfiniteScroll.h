@@ -19,17 +19,17 @@
 
 @end
 
-@interface YAInfiniteScroll : NSObject<UIScrollViewDelegate>
-{
-  __weak UIScrollView *_scrollView;
-  BOOL _shouldLoadMore;
+@interface YAInfiniteScroll : NSObject <UIScrollViewDelegate> {
+    __weak UIScrollView *_scrollView;
+    BOOL _shouldLoadMore;
 }
 
 @property (nonatomic, weak) id<YAInfiniteScrollDelegate> delegate;
 
+@property (nonatomic, assign) BOOL bottomStick;
 @property (nonatomic, assign) BOOL loadingMore;
 @property (nonatomic, assign) BOOL hasMore;
-@property (nonatomic, copy) void(^loadMoreBlock)();
+@property (nonatomic, copy) void (^loadMoreBlock)();
 
 @property (nonatomic, weak) UIView *loadMoreFooterView;
 
@@ -39,7 +39,7 @@
 
 @end
 
-@interface YATableViewController(YAInfiniteScroll)
+@interface YATableViewController (YAInfiniteScroll)
 
 - (YAInfiniteScroll *)infiniteScroll;
 
