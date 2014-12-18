@@ -31,8 +31,9 @@
 - (instancetype)initWithTableView:(UITableView *)tableView
 {
     NSAssert(tableView != nil, @"TableView should not be nil.");
-    if (tableView == nil) return nil;
-    
+    if (tableView == nil)
+        return nil;
+
     self = [self init];
     if (self) {
         [self setTableView:tableView];
@@ -55,11 +56,11 @@
 {
     _tableView.delegate = nil;
     _tableView.dataSource = nil;
-    
+
     tableView.delegate = self;
     tableView.dataSource = self;
     _tableView = tableView;
-    
+
     _tableView.backgroundView = nil;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
@@ -80,29 +81,28 @@
             if (![object isKindOfClass:[NSArray class]]) {
                 [tmpArray addObject:object];
             } else {
-                if (tmpArray.count != 0) [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
+                if (tmpArray.count != 0)
+                    [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
                 [_objects addObject:[NSMutableArray arrayWithArray:object]];
                 [tmpArray removeAllObjects];
             }
         }
-        if (tmpArray.count != 0) [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
+        if (tmpArray.count != 0)
+            [_objects addObject:[NSMutableArray arrayWithArray:tmpArray]];
     }
     [_tableView reloadData];
 }
 
 - (void)addSectionObjects:(NSArray *)objects
 {
-    [self insertSectionObjects:objects
-                       atIndex:_objects.count];
+    [self insertSectionObjects:objects atIndex:_objects.count];
 }
 
 - (void)insertSectionObjects:(NSArray *)objects atIndex:(NSUInteger)index
 {
     if (objects.count != 0 && index <= objects.count) {
-        [_objects insertObject:[NSMutableArray arrayWithArray:objects]
-                       atIndex:index];
-        [_tableView insertSections:[NSIndexSet indexSetWithIndex:index]
-                  withRowAnimation:UITableViewRowAnimationFade];
+        [_objects insertObject:[NSMutableArray arrayWithArray:objects] atIndex:index];
+        [_tableView insertSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -110,8 +110,7 @@
 {
     if (section < _objects.count) {
         [_objects removeObjectAtIndex:section];
-        [_tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
-                  withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -122,7 +121,7 @@
 
 - (void)addObject:(id)object atSection:(NSUInteger)section
 {
-    [self addObjects:@[object] atSection:section];
+    [self addObjects:@[ object ] atSection:section];
 }
 
 - (void)addObjects:(NSArray *)objects atSection:(NSUInteger)section
@@ -136,8 +135,7 @@
             [insertIndexPaths addObject:[NSIndexPath indexPathForRow:[sectionObjects indexOfObject:insertedObject]
                                                            inSection:section]];
         }
-        [_tableView insertRowsAtIndexPaths:insertIndexPaths
-                          withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -147,8 +145,9 @@
         NSMutableArray *sectionObjects = _objects[indexPath.section];
         if (indexPath.row <= sectionObjects.count) {
             [sectionObjects insertObject:object atIndex:indexPath.row];
-            [_tableView insertRowsAtIndexPaths:@[indexPath]
-                              withRowAnimation:UITableViewRowAnimationFade];
+            [_objects replaceObjectAtIndex:indexPath.section withObject:sectionObjects];
+            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]
+                      withRowAnimation:UITableViewRowAnimationFade];
         }
     }
 }
@@ -158,8 +157,7 @@
     if (object) {
         NSArray *sectionObjects = [self objectsAtSection:section];
         NSUInteger removeObjectIndex = [sectionObjects indexOfObject:object];
-        [self removeObjectAtIndexPath:[NSIndexPath indexPathForRow:removeObjectIndex
-                                                         inSection:section]];
+        [self removeObjectAtIndexPath:[NSIndexPath indexPathForRow:removeObjectIndex inSection:section]];
     }
 }
 
@@ -170,8 +168,7 @@
 
         if (indexPath.row != NSNotFound && indexPath.row < sectionObjects.count) {
             [sectionObjects removeObjectAtIndex:indexPath.row];
-            [_tableView deleteRowsAtIndexPaths:@[indexPath]
-                              withRowAnimation:UITableViewRowAnimationFade];
+            [_tableView deleteRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationFade];
         }
     }
 }
@@ -190,7 +187,8 @@
 
         [_objects replaceObjectAtIndex:indexPath.section withObject:objectsInSection];
 
-        [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        //        [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [_tableView reloadData];
     }
 }
 
@@ -198,9 +196,7 @@
 
 - (void)dealloc
 {
-    [[YASkinManager sharedManager] removeObserver:self
-                                       forKeyPath:@"skinName"
-                                          context:NULL];
+    [[YASkinManager sharedManager] removeObserver:self forKeyPath:@"skinName" context:NULL];
 }
 
 #pragma mark - KVO
@@ -236,7 +232,8 @@
                      withVelocity:(CGPoint)velocity
               targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    if ([self.scrollDelegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
+    if ([self.scrollDelegate
+         respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
         [self.scrollDelegate scrollViewWillEndDragging:scrollView
                                           withVelocity:velocity
                                    targetContentOffset:targetContentOffset];
@@ -271,8 +268,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                  reuseIdentifier:nil];
+    return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 }
 
 @end
