@@ -187,7 +187,6 @@
 
         [_objects replaceObjectAtIndex:indexPath.section withObject:objectsInSection];
 
-        //        [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         [_tableView reloadData];
     }
 }
@@ -269,6 +268,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    id selectedObject = [self objectAtIndexPath:indexPath];
+    if (self.delegate) {
+        if (selectedObject &&
+            [self.delegate respondsToSelector:@selector(tableDataSource:didSelectObject:atIndexPath:)]) {
+            [self.delegate tableDataSource:self didSelectObject:selectedObject atIndexPath:indexPath];
+        }
+    }
 }
 
 @end

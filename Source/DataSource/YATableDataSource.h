@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class YATableDataSource;
+
+@protocol YATableDataSourceDelegate <NSObject>
+
+@optional
+- (void)tableDataSource:(YATableDataSource *)dataSource didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface YATableDataSource : NSObject<UITableViewDataSource, UITableViewDelegate>
 {
     __weak UITableView *_tableView;
@@ -15,6 +24,8 @@
 }
 
 @property (weak, nonatomic) id<UIScrollViewDelegate> scrollDelegate;
+@property (weak, nonatomic) id<YATableDataSourceDelegate> delegate;
+
 @property (strong, nonatomic, readonly) NSCache *cellHeightCache;
 
 - (instancetype)initWithTableView:(UITableView *)tableView;
