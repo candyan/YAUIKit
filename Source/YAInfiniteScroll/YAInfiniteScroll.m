@@ -15,6 +15,7 @@
 @implementation YAInfiniteScroll
 
 @synthesize loadMoreFooterView = _loadMoreFooterView;
+@synthesize scrollView = _scrollView;
 
 #pragma mark - init
 

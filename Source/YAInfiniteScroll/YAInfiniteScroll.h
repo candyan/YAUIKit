@@ -20,9 +20,10 @@
 @end
 
 @interface YAInfiniteScroll : NSObject <UIScrollViewDelegate> {
-    __weak UIScrollView *_scrollView;
     BOOL _shouldLoadMore;
 }
+
+@property (nonatomic, weak, readonly) UIScrollView *scrollView;
 
 @property (nonatomic, weak) id<YAInfiniteScrollDelegate> delegate;
 
