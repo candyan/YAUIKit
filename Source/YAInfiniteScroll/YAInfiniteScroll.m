@@ -35,8 +35,21 @@
     self = [self init];
     if (self) {
         _scrollView = scrollView;
+
+        [_scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    @try {
+        [_scrollView removeObserver:self forKeyPath:@"contentSize" context:NULL];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%@", exception);
+    }
 }
 
 #pragma mark - Property
@@ -77,7 +90,7 @@
     if (_bottomStick && self.loadingMore == NO) {
         [self.loadMoreFooterView setFrameOriginY:MAX(scrollView.contentSize.height,
                                                      scrollView.contentOffset.y + CGRectGetHeight(scrollView.bounds) -
-                                                     self.loadMoreFooterView.bounds.size.height)];
+                                                         self.loadMoreFooterView.bounds.size.height)];
     } else {
         [self.loadMoreFooterView setFrameOriginY:scrollView.contentSize.height];
     }
