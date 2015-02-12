@@ -23,9 +23,11 @@
 {
     self = [super init];
     if (self) {
+        _hasMore = YES;
+        _canLoadMore = YES;
+
         _loadingMore = NO;
         _shouldLoadMore = NO;
-        _hasMore = YES;
     }
     return self;
 }
@@ -35,21 +37,8 @@
     self = [self init];
     if (self) {
         _scrollView = scrollView;
-
-        [_scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    @try {
-        [_scrollView removeObserver:self forKeyPath:@"contentSize" context:NULL];
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"%@", exception);
-    }
 }
 
 #pragma mark - Property
@@ -66,7 +55,11 @@
         footerRect.origin = CGPointMake(0, _scrollView.contentSize.height);
         footerRect.size = CGSizeMake(CGRectGetWidth(_scrollView.bounds), footerRect.size.height);
         [_loadMoreFooterView setFrame:footerRect];
-        [_scrollView addSubview:_loadMoreFooterView];
+        if (_scrollView.subviews.count > 1) {
+            [_scrollView insertSubview:_loadMoreFooterView atIndex:1];
+        } else {
+            [_scrollView insertSubview:_loadMoreFooterView atIndex:0];
+        }
 
         contentInsets.bottom += CGRectGetHeight(_loadMoreFooterView.bounds);
     }
@@ -76,10 +69,33 @@
 - (void)setHasMore:(BOOL)hasMore
 {
     _hasMore = hasMore;
-    if (!hasMore && [self.delegate respondsToSelector:@selector(infiniteScrollNoMoreView:)]) {
-        self.loadMoreFooterView = [self.delegate infiniteScrollNoMoreView:self];
-    } else {
+    [self ya_reloadFooterView];
+}
+
+- (void)setLoadingMore:(BOOL)loadingMore
+{
+    _loadingMore = self.canLoadMore ? loadingMore : NO;
+
+    [self ya_reloadFooterView];
+}
+
+- (void)setCanLoadMore:(BOOL)canLoadMore
+{
+    _canLoadMore = canLoadMore;
+    [self ya_reloadFooterView];
+}
+
+- (void)ya_reloadFooterView
+{
+    if (self.loadingMore) {
+        if (_shouldLoadMore == NO && [self.delegate respondsToSelector:@selector(infiniteScrollLoadingMoreView:)]) {
+            self.loadMoreFooterView = [self.delegate infiniteScrollLoadingMoreView:self];
+        }
+    } else if (self.hasMore || self.canLoadMore == NO ||
+               [self.delegate respondsToSelector:@selector(infiniteScrollNoMoreView:)] == NO) {
         self.loadMoreFooterView = nil;
+    } else {
+        self.loadMoreFooterView = [self.delegate infiniteScrollNoMoreView:self];
     }
 }
 
@@ -96,7 +112,7 @@
     }
 
     if (scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height * 1.5) &&
-        self.loadingMore == NO && self.hasMore == YES && _shouldLoadMore == NO) {
+        self.loadingMore == NO && self.hasMore == YES && _shouldLoadMore == NO && self.canLoadMore) {
         _shouldLoadMore = YES;
 
         if ([self.delegate respondsToSelector:@selector(infiniteScrollLoadingMoreView:)]) {
@@ -112,6 +128,19 @@
         _shouldLoadMore = NO;
         if (self.loadMoreBlock)
             self.loadMoreBlock();
+    }
+}
+
+#pragma mark - layout
+
+- (void)setNeedLayoutFooterView
+{
+    if (_bottomStick) {
+        [self.loadMoreFooterView setFrameOriginY:MAX(_scrollView.contentSize.height,
+                                                     _scrollView.contentOffset.y + CGRectGetHeight(_scrollView.bounds) -
+                                                         self.loadMoreFooterView.bounds.size.height)];
+    } else {
+        [self.loadMoreFooterView setFrameOriginY:_scrollView.contentSize.height];
     }
 }
 
@@ -131,7 +160,6 @@
     YAInfiniteScroll *infiniteScroll = objc_getAssociatedObject(self, @selector(infiniteScroll));
     if (infiniteScroll == nil) {
         infiniteScroll = [[YAInfiniteScroll alloc] initWithScrollView:self.tableView];
-        infiniteScroll.hasMore = NO;
         objc_setAssociatedObject(self, @selector(infiniteScroll), infiniteScroll, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return infiniteScroll;

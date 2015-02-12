@@ -28,6 +28,7 @@
 @property (nonatomic, weak) id<YAInfiniteScrollDelegate> delegate;
 
 @property (nonatomic, assign) BOOL bottomStick;
+@property (nonatomic, assign) BOOL canLoadMore;
 @property (nonatomic, assign) BOOL loadingMore;
 @property (nonatomic, assign) BOOL hasMore;
 @property (nonatomic, copy) void (^loadMoreBlock)();
@@ -37,6 +38,8 @@
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView;
 
 - (void)endLoadMore;
+
+- (void)setNeedLayoutFooterView;
 
 @end
 
