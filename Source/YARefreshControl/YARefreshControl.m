@@ -222,12 +222,10 @@
           _scrollView.contentInset = self.originContentInsets;
         }
         completion:^(BOOL finished) {
-          if (finished) {
-              self.refreshingDirection &= ~direction;
-              if (completion) {
-                  completion();
-              }
-          }
+            self.refreshingDirection &= ~direction;
+            if (completion) {
+                completion();
+            }
         }];
 }
 
