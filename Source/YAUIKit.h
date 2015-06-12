@@ -15,6 +15,7 @@
 #import "UIColor+YAHexColor.h"
 
 #import "UIView+YAUIKit.h"
+#import "UITableView+YAReusableCell.h"
 
 #import "UINavigationController+YAAnimation.h"
 
@@ -30,7 +31,7 @@
 
 #import "UIApplication+YAKeyboardWindow.h"
 
-//Custom View
+// Custom View
 
 #import "YAPanBackController.h"
 #import "YAPanController.h"
