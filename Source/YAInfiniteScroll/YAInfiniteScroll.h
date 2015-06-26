@@ -37,6 +37,7 @@
 
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView;
 
+- (void)triggerLoadMore;
 - (void)endLoadMore;
 
 - (void)setNeedLayoutFooterView;

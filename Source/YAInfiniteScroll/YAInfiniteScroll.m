@@ -146,6 +146,21 @@
 
 #pragma mark - End
 
+- (void)triggerLoadMore
+{
+    if (self.loadingMore == NO && self.hasMore == YES && _shouldLoadMore == NO && self.canLoadMore == YES) {
+        self.loadingMore = YES;
+
+        if ([self.delegate respondsToSelector:@selector(infiniteScrollLoadingMoreView:)]) {
+            self.loadMoreFooterView = [self.delegate infiniteScrollLoadingMoreView:self];
+        }
+
+        if (self.loadMoreBlock) {
+            self.loadMoreBlock();
+        }
+    }
+}
+
 - (void)endLoadMore
 {
     self.loadingMore = NO;
