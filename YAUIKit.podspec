@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'YAUIKit'
-  s.version      = '2.5.6'
+  s.version      = '2.5.7'
   s.summary      = 'YAUIKit'
   s.homepage     = 'https://github.com/candyan/YAUIKit'
   s.license      = 'MIT'
