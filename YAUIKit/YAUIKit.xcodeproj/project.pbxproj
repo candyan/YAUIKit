@@ -88,6 +88,7 @@
 		75900D4819E445E500C05D28 /* YASkinManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900D4719E445E500C05D28 /* YASkinManager.m */; };
 		75900D4C19E448F100C05D28 /* YATableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900D4B19E448F100C05D28 /* YATableDataSource.m */; };
 		75C15C2419EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C15C2319EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m */; };
+		75D8F39F1B4D023300EBC7E9 /* UIColor+YAColorMixing.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D8F39E1B4D023300EBC7E9 /* UIColor+YAColorMixing.m */; };
 		75F9D1321B2A8DF800972CB5 /* UITableView+YAReusableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F9D1311B2A8DF800972CB5 /* UITableView+YAReusableCell.m */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +216,8 @@
 		75900D4B19E448F100C05D28 /* YATableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YATableDataSource.m; sourceTree = "<group>"; };
 		75C15C2219EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+YAKeyboardWindow.h"; sourceTree = "<group>"; };
 		75C15C2319EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+YAKeyboardWindow.m"; sourceTree = "<group>"; };
+		75D8F39D1B4D023300EBC7E9 /* UIColor+YAColorMixing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YAColorMixing.h"; sourceTree = "<group>"; };
+		75D8F39E1B4D023300EBC7E9 /* UIColor+YAColorMixing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YAColorMixing.m"; sourceTree = "<group>"; };
 		75F9D1301B2A8DF800972CB5 /* UITableView+YAReusableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+YAReusableCell.h"; sourceTree = "<group>"; };
 		75F9D1311B2A8DF800972CB5 /* UITableView+YAReusableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+YAReusableCell.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -503,6 +506,8 @@
 		75900CF219E4438E00C05D28 /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
+				75D8F39D1B4D023300EBC7E9 /* UIColor+YAColorMixing.h */,
+				75D8F39E1B4D023300EBC7E9 /* UIColor+YAColorMixing.m */,
 				75900CF319E4438E00C05D28 /* UIColor+YAHexColor.h */,
 				75900CF419E4438E00C05D28 /* UIColor+YAHexColor.m */,
 			);
@@ -798,6 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75900D3819E4438E00C05D28 /* YASeparatorLine.m in Sources */,
+				75D8F39F1B4D023300EBC7E9 /* UIColor+YAColorMixing.m in Sources */,
 				75900D2F19E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m in Sources */,
 				7543F9D91A2342C0008178C8 /* YATextEditorViewController.m in Sources */,
 				75900D3119E4438E00C05D28 /* UIControl+YAUIKit.m in Sources */,

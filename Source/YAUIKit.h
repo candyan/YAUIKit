@@ -23,6 +23,8 @@
 
 #import "UIFont+YAUIKit.h"
 
+#import "UIColor+YAColorMixing.h"
+
 #import "UIImage+YAColor.h"
 #import "UIImage+YAImageTransform.h"
 #import "UIImage+YAUIKit.h"
