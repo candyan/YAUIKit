@@ -8,6 +8,7 @@
 
 #import "YAInfiniteScroll.h"
 #import <objc/runtime.h>
+#import <KVOController/FBKVOController.h>
 
 #import "YATableViewController.h"
 #import "UIView+YAUIKit.h"
@@ -37,6 +38,13 @@
     self = [self init];
     if (self) {
         _scrollView = scrollView;
+
+        [self.KVOController observe:scrollView
+                            keyPath:@"contentSize"
+                            options:NSKeyValueObservingOptionNew
+                              block:^(YAInfiniteScroll *observer, id object, NSDictionary *change) {
+                                [observer setNeedLayoutFooterView];
+                              }];
     }
     return self;
 }

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'YAUIKit'
-  s.version      = '2.5.7'
+  s.version      = '2.5.8'
   s.summary      = 'YAUIKit'
   s.homepage     = 'https://github.com/candyan/YAUIKit'
   s.license      = 'MIT'
@@ -16,5 +16,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Source/**/*.{c,h,m}'
   s.dependency 'Masonry'
+  s.dependency 'KVOController'
 
 end
