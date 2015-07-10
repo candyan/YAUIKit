@@ -59,7 +59,7 @@ static CGFloat const kPlaceholderLeftEdgeInset = 5.0f;
             [[self _placeHolderLabel]
                 setFrame:CGRectMake(
                              kPlaceholderLeftEdgeInset + self.textContainerInset.left, self.textContainerInset.top,
-                             self.bounds.size.width - self.textContainerInset.left - self.textContainerInset.right, 0)];
+                             self.bounds.size.width - self.textContainerInset.left + self.textContainerInset.right, 0)];
         } else {
             [[self _placeHolderLabel] setFrame:CGRectMake(kPlaceholderEdgeInset + self.contentInset.left,
                                                           kPlaceholderEdgeInset + self.contentInset.top,
