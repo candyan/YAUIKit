@@ -127,6 +127,10 @@
 
 - (void)ya_keyboardWillShowNotification:(NSNotification *)notification
 {
+	if (self.automaticallyAdjustsEditContainer == NO) {
+        return;
+    }
+    
     NSDictionary *userInfo = notification.userInfo;
 
     NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -148,6 +152,10 @@
 
 - (void)ya_keyboardWillHiddenNotification:(NSNotification *)notification
 {
+	if (self.automaticallyAdjustsEditContainer == NO) {
+        return;
+    }
+
     NSDictionary *userInfo = notification.userInfo;
     NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];

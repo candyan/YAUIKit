@@ -23,6 +23,7 @@
 @property (nonatomic, weak) IBOutlet UIView *editContainer;
 @property (nonatomic, weak) IBOutlet YAPlaceHolderTextView *inputTextView;
 @property (nonatomic, weak) IBOutlet id<YATextEditorControllerDelegate> delegate;
+@property (nonatomic, assign) BOOL automaticallyAdjustsEditContainer;
 
 - (IBAction)sendAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
