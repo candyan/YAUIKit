@@ -16,6 +16,7 @@
 
 #import "UIView+YAUIKit.h"
 #import "UITableView+YAReusableCell.h"
+#import "UICollectionView+YAReusableCell.h"
 
 #import "UINavigationController+YAAnimation.h"
 
