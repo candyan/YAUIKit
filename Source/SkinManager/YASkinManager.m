@@ -12,7 +12,7 @@
 #define YA_SKIN_MANAGER_UD_KEY @"YA_SKIN_NAME"
 #define YA_SKIN_CATEGORY(__KEY) ((__KEY != nil) ? __KEY : @"default")
 
-@interface YASkinManager()
+@interface YASkinManager ()
 
 @property (nonatomic, strong) NSDictionary *skinDictionary;
 @property (nonatomic, strong) NSBundle *skinBundle;
@@ -29,10 +29,10 @@ static YASkinManager *gSharedInstance = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *skinName = [userDefaults objectForKey:YA_SKIN_MANAGER_UD_KEY];
-        
-        gSharedInstance = [[YASkinManager alloc] initWithSkinName:skinName];
+      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+      NSString *skinName = [userDefaults objectForKey:YA_SKIN_MANAGER_UD_KEY];
+
+      gSharedInstance = [[YASkinManager alloc] initWithSkinName:skinName];
     });
     return gSharedInstance;
 }
@@ -63,10 +63,10 @@ static YASkinManager *gSharedInstance = nil;
     _skinName = (skinName != nil) ? skinName : @"DefaultSkin";
     _skinBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:_skinName withExtension:@"bundle"]];
     NSAssert(_skinBundle != nil, @"Skin Bundle should not be nil!");
-    
+
     NSURL *skinFileURL = [_skinBundle URLForResource:@"config" withExtension:@".plist"];
     self.skinDictionary = [NSDictionary dictionaryWithContentsOfURL:skinFileURL];
-    
+
     if (self == gSharedInstance) {
         [[NSUserDefaults standardUserDefaults] setObject:_skinName forKey:YA_SKIN_MANAGER_UD_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -83,13 +83,12 @@ static YASkinManager *gSharedInstance = nil;
     if (!colorHex) {
         colorHex = [colorDict objectForKey:YA_SKIN_CATEGORY(nil)];
     }
-    
+
     UIColor *color = nil;
     if ([colorHex isKindOfClass:[NSNumber class]]) {
         color = [UIColor colorWithHex:[colorHex integerValue]];
-    } else if ([colorHex isKindOfClass:[NSString class]]) {
-        color = [UIColor colorWithHexString:colorHex];
     }
+
     return color;
 }
 
@@ -100,13 +99,13 @@ static YASkinManager *gSharedInstance = nil;
     if (fontFamily == nil) {
         fontFamily = [fontFamilyDict objectForKey:YA_SKIN_CATEGORY(nil)];
     }
-    
+
     NSDictionary *fontSizeDict = self.skinDictionary[@"Font-Size"];
-    NSNumber *fontSize =  [fontSizeDict objectForKey:YA_SKIN_CATEGORY(tag)];
+    NSNumber *fontSize = [fontSizeDict objectForKey:YA_SKIN_CATEGORY(tag)];
     if (fontSize == nil) {
         fontSize = [fontSizeDict objectForKey:YA_SKIN_CATEGORY(nil)];
     }
-    
+
     return [UIFont fontWithName:fontFamily size:fontSize.floatValue];
 }
 
@@ -121,9 +120,10 @@ static YASkinManager *gSharedInstance = nil;
     if (cachedImage == nil) {
         NSString *filename = [imageName stringByDeletingPathExtension];
         NSString *extension = [imageName pathExtension];
-        if ([extension length] == 0) extension = @"png";
+        if ([extension length] == 0)
+            extension = @"png";
         NSBundle *bundle = self.skinBundle;
-        
+
         NSString *imagePath = nil;
         if ([UIScreen mainScreen].scale == 3.0) {
             imagePath = [self ya_plusImagePathWithName:filename extension:extension inBundle:bundle];
@@ -133,21 +133,24 @@ static YASkinManager *gSharedInstance = nil;
                 NSString *imageForiPhone5 = [NSString stringWithFormat:@"%@-568h@2x", filename];
                 imagePath = [bundle pathForResource:imageForiPhone5 ofType:extension];
             }
-            
+
             // If no image specified for iPhone 5, fallback to normal retina image.
-            if (imagePath == nil) imagePath = [self __retainImagePathWithName:filename extension:extension inBundle:bundle];
-            
+            if (imagePath == nil)
+                imagePath = [self __retainImagePathWithName:filename extension:extension inBundle:bundle];
+
             // If no image specified for Retain, fallback to normal image.
-            if (imagePath == nil) imagePath = [bundle pathForResource:filename ofType:extension];
+            if (imagePath == nil)
+                imagePath = [bundle pathForResource:filename ofType:extension];
         } else {
             imagePath = [bundle pathForResource:filename ofType:extension];
-            
+
             // If no image For Normal, fallback to Normal Retain Image.
-            if (imagePath == nil) imagePath = [self __retainImagePathWithName:filename extension:extension inBundle:bundle];
+            if (imagePath == nil)
+                imagePath = [self __retainImagePathWithName:filename extension:extension inBundle:bundle];
         }
-        
+
         UIImage *image = (imagePath != nil) ? [UIImage imageWithContentsOfFile:imagePath] : nil;
-        
+
         if (image == nil) {
             NSLog(@"[PASkinManager] Failed to get image with name: %@", imageName);
         } else {
@@ -169,12 +172,11 @@ static YASkinManager *gSharedInstance = nil;
 
 #pragma mark - Private
 
-- (NSString *)ya_plusImagePathWithName:(NSString *)imageName
-                              extension:(NSString *)extension
-                               inBundle:(NSBundle *)bundle
+- (NSString *)ya_plusImagePathWithName:(NSString *)imageName extension:(NSString *)extension inBundle:(NSBundle *)bundle
 {
     NSString *retinaName = [NSString stringWithFormat:@"%@@3x", imageName];
-    if (bundle == nil) bundle = [NSBundle mainBundle];
+    if (bundle == nil)
+        bundle = [NSBundle mainBundle];
     return [bundle pathForResource:retinaName ofType:extension];
 }
 
@@ -183,7 +185,8 @@ static YASkinManager *gSharedInstance = nil;
                                inBundle:(NSBundle *)bundle
 {
     NSString *retinaName = [NSString stringWithFormat:@"%@@2x", imageName];
-    if (bundle == nil) bundle = [NSBundle mainBundle];
+    if (bundle == nil)
+        bundle = [NSBundle mainBundle];
     return [bundle pathForResource:retinaName ofType:extension];
 }
 
