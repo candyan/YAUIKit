@@ -11,19 +11,24 @@
 #ifndef YAUIKit_YAUIKitTypeDef_h
 #define YAUIKit_YAUIKitTypeDef_h
 
-typedef void(^YAAnimationLayoutViewsBlock)(UIView *fromView, UIView *toView);
-typedef void(^YAAnimationLayoutViewsSuccessBlock)(UIView *fromView, UIView *toView, BOOL success);
-typedef void(^YAAnimationLayoutViewsChangedBlock)(UIView *fromView, UIView *toView, CGFloat changedPrecent);
-typedef void(^YAAnimationLayoutViewControllersBlock)(UIViewController *fromViewController, UIViewController *toViewController);
-typedef void(^YAAnimationLayoutViewControllersSuccessBlock)(UIViewController *fromViewController, UIViewController *toViewController, BOOL success);
-typedef void(^YAAnimationLayoutViewControllersChangedBlock)(UIViewController *fromViewController, UIViewController *toViewController, CGFloat changedPrecent);
+typedef void (^YAAnimationLayoutViewsBlock)(UIView *fromView, UIView *toView);
+typedef void (^YAAnimationLayoutViewsSuccessBlock)(UIView *fromView, UIView *toView, BOOL success);
+typedef void (^YAAnimationLayoutViewsChangedBlock)(UIView *fromView, UIView *toView, CGFloat changedPrecent);
+typedef void (^YAAnimationLayoutViewControllersBlock)(UIViewController *fromViewController,
+                                                      UIViewController *toViewController);
+typedef void (^YAAnimationLayoutViewControllersSuccessBlock)(UIViewController *fromViewController,
+                                                             UIViewController *toViewController, BOOL success);
+typedef void (^YAAnimationLayoutViewControllersChangedBlock)(UIViewController *fromViewController,
+                                                             UIViewController *toViewController,
+                                                             CGFloat changedPrecent);
 
 // YARefresh
-typedef NS_ENUM(NSUInteger, YARefreshState)
-{
-  kYARefreshStateStop = 1 << 0,
-  kYARefreshStateTrigger = 1 << 1,
-  kYARefreshStateLoading = 1 << 2,
+typedef NS_ENUM(NSUInteger, YARefreshState) {
+    kYARefreshStateStop = 1 << 0,
+    kYARefreshStateTrigger = 1 << 1,
+    kYARefreshStateLoading = 1 << 2,
 };
+
+#define YA_DEPRECATED_ATTRIBUTE(explain) __attribute__((deprecated(explain)))
 
 #endif

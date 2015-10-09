@@ -31,9 +31,9 @@
               forSupplementaryViewOfKind:(NSString *)elementKind
                             forIndexPath:(NSIndexPath *)indexPath
 {
-    [self dequeueReusableSupplementaryViewOfKind:elementKind
-                             withReuseIdentifier:NSStringFromClass(aClass)
-                                    forIndexPath:indexPath];
+    return  [self dequeueReusableSupplementaryViewOfKind:elementKind
+                                     withReuseIdentifier:NSStringFromClass(aClass)
+                                           forIndexPath:indexPath];
 }
 
 @end
