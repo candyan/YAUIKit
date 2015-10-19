@@ -87,6 +87,8 @@ static YASkinManager *gSharedInstance = nil;
     UIColor *color = nil;
     if ([colorHex isKindOfClass:[NSNumber class]]) {
         color = [UIColor colorWithHex:[colorHex integerValue]];
+    } else {
+        color = [UIColor colorWithHexString:colorHex];
     }
 
     return color;

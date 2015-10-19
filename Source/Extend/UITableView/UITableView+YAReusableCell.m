@@ -15,9 +15,12 @@
     [self registerClass:cellClass forCellReuseIdentifier:NSStringFromClass(cellClass)];
 }
 
-- (id)dequeueReusableCellWithClass:(Class)aClass
+- (instancetype)dequeueReusableCellWithClass:(Class)aClass
 {
-    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(aClass)];
+    if ([aClass isSubclassOfClass:[UITableViewCell class]]) {
+        return [self dequeueReusableCellWithIdentifier:NSStringFromClass(aClass)];
+    }
+    return nil;
 }
 
 - (void)registerReuseHeaderFooterClass:(Class)aClass

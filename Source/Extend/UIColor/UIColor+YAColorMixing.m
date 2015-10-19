@@ -15,7 +15,7 @@
     CGFloat upperRed, upperGreen, upperBlue, upperAlpha = 0;
     CGFloat underRed, underGreen, underBlue, underAlpha = 0;
     CGFloat resultRed, resultGreen, resultBlue, resultAlpha = 0;
-    
+
     [addingColor getRed:&upperRed green:&upperGreen blue:&upperBlue alpha:&upperAlpha];
     [self getRed:&underRed green:&underGreen blue:&underBlue alpha:&underAlpha];
 
