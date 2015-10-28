@@ -12,8 +12,21 @@
 
 - (UIWindow *)keyboardWindow
 {
-  NSArray *windows = self.windows;
-  return (windows.count > 1) ? windows[1] : windows.firstObject;
+    NSArray *windows = self.windows;
+    UIWindow *keyboardWindow = nil;
+
+    for (UIWindow *window in windows) {
+        if ([window isKindOfClass:NSClassFromString(@"UIRemoteKeyboardWindow")]) {
+            keyboardWindow = window;
+            break;
+        }
+    }
+
+    if (keyboardWindow == nil) {
+        keyboardWindow = (windows.count > 1) ? windows[1] : windows.firstObject;
+    }
+
+    return keyboardWindow;
 }
 
 @end
