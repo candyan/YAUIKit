@@ -70,6 +70,8 @@
 		7571AB3D1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB3C1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m */; };
 		7571AB411C23EA40008DCBA4 /* UIScrollView+YAScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB401C23EA40008DCBA4 /* UIScrollView+YAScroll.m */; };
 		7571AB451C23F07D008DCBA4 /* UIWindow+YAHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB441C23F07D008DCBA4 /* UIWindow+YAHierarchy.m */; };
+		7571AB491C23FA47008DCBA4 /* UIDevice+YAInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB481C23FA47008DCBA4 /* UIDevice+YAInfo.m */; };
+		7571AB4C1C23FBFE008DCBA4 /* UIImage+YAScreenImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB4B1C23FBFE008DCBA4 /* UIImage+YAScreenImage.m */; };
 		75900D2F19E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900CF119E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m */; };
 		75900D3019E4438E00C05D28 /* UIColor+YAHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900CF419E4438E00C05D28 /* UIColor+YAHexColor.m */; };
 		75900D3119E4438E00C05D28 /* UIControl+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900CF719E4438E00C05D28 /* UIControl+YAUIKit.m */; };
@@ -181,6 +183,10 @@
 		7571AB401C23EA40008DCBA4 /* UIScrollView+YAScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+YAScroll.m"; sourceTree = "<group>"; };
 		7571AB431C23F07D008DCBA4 /* UIWindow+YAHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+YAHierarchy.h"; sourceTree = "<group>"; };
 		7571AB441C23F07D008DCBA4 /* UIWindow+YAHierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+YAHierarchy.m"; sourceTree = "<group>"; };
+		7571AB471C23FA47008DCBA4 /* UIDevice+YAInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+YAInfo.h"; sourceTree = "<group>"; };
+		7571AB481C23FA47008DCBA4 /* UIDevice+YAInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+YAInfo.m"; sourceTree = "<group>"; };
+		7571AB4A1C23FBFE008DCBA4 /* UIImage+YAScreenImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YAScreenImage.h"; sourceTree = "<group>"; };
+		7571AB4B1C23FBFE008DCBA4 /* UIImage+YAScreenImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YAScreenImage.m"; sourceTree = "<group>"; };
 		75900CF019E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+YAItemFactory.h"; sourceTree = "<group>"; };
 		75900CF119E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+YAItemFactory.m"; sourceTree = "<group>"; };
 		75900CF319E4438E00C05D28 /* UIColor+YAHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YAHexColor.h"; sourceTree = "<group>"; };
@@ -490,6 +496,15 @@
 			path = UIWindow;
 			sourceTree = "<group>";
 		};
+		7571AB461C23FA23008DCBA4 /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
+				7571AB471C23FA47008DCBA4 /* UIDevice+YAInfo.h */,
+				7571AB481C23FA47008DCBA4 /* UIDevice+YAInfo.m */,
+			);
+			path = UIDevice;
+			sourceTree = "<group>";
+		};
 		75900CED19E4438E00C05D28 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +532,7 @@
 		75900CEE19E4438E00C05D28 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				7571AB461C23FA23008DCBA4 /* UIDevice */,
 				7571AB421C23F046008DCBA4 /* UIWindow */,
 				7571AB3E1C23EA33008DCBA4 /* UIScrollView */,
 				7571AB3A1C23E8BA008DCBA4 /* UIGestureRecognizer */,
@@ -580,6 +596,8 @@
 				75900CFF19E4438E00C05D28 /* UIImage+YAImageTransform.m */,
 				75900D0019E4438E00C05D28 /* UIImage+YAUIKit.h */,
 				75900D0119E4438E00C05D28 /* UIImage+YAUIKit.m */,
+				7571AB4A1C23FBFE008DCBA4 /* UIImage+YAScreenImage.h */,
+				7571AB4B1C23FBFE008DCBA4 /* UIImage+YAScreenImage.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -858,8 +876,10 @@
 				75900D4119E4438E00C05D28 /* YAPlaceHolderTextView.m in Sources */,
 				753BBA081A3AA18A00D4A50E /* YAInfiniteScroll.m in Sources */,
 				75900D3019E4438E00C05D28 /* UIColor+YAHexColor.m in Sources */,
+				7571AB491C23FA47008DCBA4 /* UIDevice+YAInfo.m in Sources */,
 				75900D4019E4438E00C05D28 /* YAPanController.m in Sources */,
 				7557F79B19E9A75800153B2E /* YATableViewController.m in Sources */,
+				7571AB4C1C23FBFE008DCBA4 /* UIImage+YAScreenImage.m in Sources */,
 				7571AB411C23EA40008DCBA4 /* UIScrollView+YAScroll.m in Sources */,
 				75900D3519E4438E00C05D28 /* UIImage+YAUIKit.m in Sources */,
 				75900D4219E4438E00C05D28 /* YARefreshControl.m in Sources */,
