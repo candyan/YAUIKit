@@ -67,6 +67,9 @@
 		7550608D1814D67A00E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		7550608E1814D68600E957DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550608C1814D67A00E957DE /* CoreText.framework */; };
 		7557F79B19E9A75800153B2E /* YATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7557F79A19E9A75800153B2E /* YATableViewController.m */; };
+		7571AB3D1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB3C1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m */; };
+		7571AB411C23EA40008DCBA4 /* UIScrollView+YAScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB401C23EA40008DCBA4 /* UIScrollView+YAScroll.m */; };
+		7571AB451C23F07D008DCBA4 /* UIWindow+YAHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7571AB441C23F07D008DCBA4 /* UIWindow+YAHierarchy.m */; };
 		75900D2F19E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900CF119E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m */; };
 		75900D3019E4438E00C05D28 /* UIColor+YAHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900CF419E4438E00C05D28 /* UIColor+YAHexColor.m */; };
 		75900D3119E4438E00C05D28 /* UIControl+YAUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75900CF719E4438E00C05D28 /* UIControl+YAUIKit.m */; };
@@ -172,6 +175,12 @@
 		7550608C1814D67A00E957DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7557F79919E9A75800153B2E /* YATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YATableViewController.h; sourceTree = "<group>"; };
 		7557F79A19E9A75800153B2E /* YATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YATableViewController.m; sourceTree = "<group>"; };
+		7571AB3B1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+YABlockAction.h"; sourceTree = "<group>"; };
+		7571AB3C1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+YABlockAction.m"; sourceTree = "<group>"; };
+		7571AB3F1C23EA40008DCBA4 /* UIScrollView+YAScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+YAScroll.h"; sourceTree = "<group>"; };
+		7571AB401C23EA40008DCBA4 /* UIScrollView+YAScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+YAScroll.m"; sourceTree = "<group>"; };
+		7571AB431C23F07D008DCBA4 /* UIWindow+YAHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+YAHierarchy.h"; sourceTree = "<group>"; };
+		7571AB441C23F07D008DCBA4 /* UIWindow+YAHierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+YAHierarchy.m"; sourceTree = "<group>"; };
 		75900CF019E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+YAItemFactory.h"; sourceTree = "<group>"; };
 		75900CF119E4438E00C05D28 /* UIBarButtonItem+YAItemFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+YAItemFactory.m"; sourceTree = "<group>"; };
 		75900CF319E4438E00C05D28 /* UIColor+YAHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YAHexColor.h"; sourceTree = "<group>"; };
@@ -454,13 +463,40 @@
 			path = TableViewController;
 			sourceTree = "<group>";
 		};
+		7571AB3A1C23E8BA008DCBA4 /* UIGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				7571AB3B1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.h */,
+				7571AB3C1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m */,
+			);
+			path = UIGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		7571AB3E1C23EA33008DCBA4 /* UIScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				7571AB3F1C23EA40008DCBA4 /* UIScrollView+YAScroll.h */,
+				7571AB401C23EA40008DCBA4 /* UIScrollView+YAScroll.m */,
+			);
+			path = UIScrollView;
+			sourceTree = "<group>";
+		};
+		7571AB421C23F046008DCBA4 /* UIWindow */ = {
+			isa = PBXGroup;
+			children = (
+				7571AB431C23F07D008DCBA4 /* UIWindow+YAHierarchy.h */,
+				7571AB441C23F07D008DCBA4 /* UIWindow+YAHierarchy.m */,
+			);
+			path = UIWindow;
+			sourceTree = "<group>";
+		};
 		75900CED19E4438E00C05D28 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				753BBA051A3AA18A00D4A50E /* YAInfiniteScroll */,
-				7543F9D61A2342C0008178C8 /* TextEditor */,
 				75900D2D19E4438E00C05D28 /* YAUIKit.h */,
 				75900D2E19E4438E00C05D28 /* YAUIKitTypeDef.h */,
+				753BBA051A3AA18A00D4A50E /* YAInfiniteScroll */,
+				7543F9D61A2342C0008178C8 /* TextEditor */,
 				7557F79819E9A73F00153B2E /* TableViewController */,
 				75900D4919E448F100C05D28 /* DataSource */,
 				75900D4519E445E500C05D28 /* SkinManager */,
@@ -481,6 +517,9 @@
 		75900CEE19E4438E00C05D28 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				7571AB421C23F046008DCBA4 /* UIWindow */,
+				7571AB3E1C23EA33008DCBA4 /* UIScrollView */,
+				7571AB3A1C23E8BA008DCBA4 /* UIGestureRecognizer */,
 				75C710881B2A8D7C00901AA7 /* UITableView */,
 				75C15C2119EA709E00E5C341 /* UIApplication */,
 				75900CEF19E4438E00C05D28 /* UIBarButtonItem */,
@@ -809,8 +848,10 @@
 				75900D3119E4438E00C05D28 /* UIControl+YAUIKit.m in Sources */,
 				75900D4319E4438E00C05D28 /* YARefreshView.m in Sources */,
 				75900D3F19E4438E00C05D28 /* YAPanBackController.m in Sources */,
+				7571AB451C23F07D008DCBA4 /* UIWindow+YAHierarchy.m in Sources */,
 				75900D3419E4438E00C05D28 /* UIImage+YAImageTransform.m in Sources */,
 				75900D3E19E4438E00C05D28 /* YAAlertView.m in Sources */,
+				7571AB3D1C23E8CA008DCBA4 /* UIGestureRecognizer+YABlockAction.m in Sources */,
 				75900D3D19E4438E00C05D28 /* YAActionSheet.m in Sources */,
 				75C15C2419EA70AA00E5C341 /* UIApplication+YAKeyboardWindow.m in Sources */,
 				75900D3719E4438E00C05D28 /* UIView+YAUIKit.m in Sources */,
@@ -819,6 +860,7 @@
 				75900D3019E4438E00C05D28 /* UIColor+YAHexColor.m in Sources */,
 				75900D4019E4438E00C05D28 /* YAPanController.m in Sources */,
 				7557F79B19E9A75800153B2E /* YATableViewController.m in Sources */,
+				7571AB411C23EA40008DCBA4 /* UIScrollView+YAScroll.m in Sources */,
 				75900D3519E4438E00C05D28 /* UIImage+YAUIKit.m in Sources */,
 				75900D4219E4438E00C05D28 /* YARefreshControl.m in Sources */,
 				75900D3219E4438E00C05D28 /* UIFont+YAUIKit.m in Sources */,

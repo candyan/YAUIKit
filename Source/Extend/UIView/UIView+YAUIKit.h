@@ -41,11 +41,21 @@
 - (void)setBoundsSize:(CGSize)size;
 
 ///-------------------------------------
-/// UIView SubView 
+/// UIView SubView
 ///-------------------------------------
 - (void)removeAllSubViews;
 - (NSArray *)subviewsForClassName:(Class)className;
 - (NSArray *)subviewsForClassName:(Class)className tag:(NSInteger)tag;
+
+///-------------------------------------
+/// UIView Color
+///-------------------------------------
+- (UIColor *)colorAtPoint:(CGPoint)point;
+
+///-------------------------------------
+/// UIView Snapshot
+///-------------------------------------
+- (UIImage *)snapshotWithFrame:(CGRect)frame;
 
 ///-------------------------------------
 /// Debugging
