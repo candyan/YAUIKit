@@ -31,11 +31,14 @@
 
 #import "UIImage+YAColor.h"
 #import "UIImage+YAImageTransform.h"
+#import "UIImage+YAScreenImage.h"
 #import "UIImage+YAUIKit.h"
 
 #import "UIBarButtonItem+YAItemFactory.h"
 
 #import "UIApplication+YAKeyboardWindow.h"
+
+#import "UIDevice+YAInfo.h"
 
 // Custom View
 
