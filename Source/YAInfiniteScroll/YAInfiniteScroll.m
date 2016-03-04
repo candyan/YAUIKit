@@ -7,11 +7,11 @@
 //
 
 #import "YAInfiniteScroll.h"
-#import <objc/runtime.h>
 #import <KVOController/FBKVOController.h>
+#import <objc/runtime.h>
 
-#import "YATableViewController.h"
 #import "UIView+YAUIKit.h"
+#import "YATableViewController.h"
 
 @implementation YAInfiniteScroll
 
@@ -20,7 +20,7 @@
 
 #pragma mark - init
 
-- (id)init
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView
 {
     self = [super init];
     if (self) {
@@ -29,14 +29,6 @@
 
         _loadingMore = NO;
         _shouldLoadMore = NO;
-    }
-    return self;
-}
-
-- (instancetype)initWithScrollView:(UIScrollView *)scrollView
-{
-    self = [self init];
-    if (self) {
         _scrollView = scrollView;
 
         [self.KVOController observe:scrollView
@@ -65,7 +57,8 @@
         [_loadMoreFooterView setFrame:footerRect];
         if (_scrollView.subviews.count > 1) {
             [_scrollView insertSubview:_loadMoreFooterView atIndex:1];
-        } else {
+        }
+        else {
             [_scrollView insertSubview:_loadMoreFooterView atIndex:0];
         }
 
@@ -99,10 +92,12 @@
         if (_shouldLoadMore == NO && [self.delegate respondsToSelector:@selector(infiniteScrollLoadingMoreView:)]) {
             self.loadMoreFooterView = [self.delegate infiniteScrollLoadingMoreView:self];
         }
-    } else if (self.hasMore || self.canLoadMore == NO ||
-               [self.delegate respondsToSelector:@selector(infiniteScrollNoMoreView:)] == NO) {
+    }
+    else if (self.hasMore || self.canLoadMore == NO ||
+             [self.delegate respondsToSelector:@selector(infiniteScrollNoMoreView:)] == NO) {
         self.loadMoreFooterView = nil;
-    } else {
+    }
+    else {
         self.loadMoreFooterView = [self.delegate infiniteScrollNoMoreView:self];
     }
 }
@@ -115,7 +110,8 @@
         [self.loadMoreFooterView setFrameOriginY:MAX(scrollView.contentSize.height,
                                                      scrollView.contentOffset.y + CGRectGetHeight(scrollView.bounds) -
                                                          self.loadMoreFooterView.bounds.size.height)];
-    } else {
+    }
+    else {
         [self.loadMoreFooterView setFrameOriginY:scrollView.contentSize.height];
     }
 
@@ -147,7 +143,8 @@
         [self.loadMoreFooterView setFrameOriginY:MAX(_scrollView.contentSize.height,
                                                      _scrollView.contentOffset.y + CGRectGetHeight(_scrollView.bounds) -
                                                          self.loadMoreFooterView.bounds.size.height)];
-    } else {
+    }
+    else {
         [self.loadMoreFooterView setFrameOriginY:_scrollView.contentSize.height];
     }
 }

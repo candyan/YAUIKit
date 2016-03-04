@@ -6,8 +6,8 @@
 //
 #import "YARefreshControl.h"
 
-#import "UIView+YAUIKit.h"
 #import "UIFont+YAUIKit.h"
+#import "UIView+YAUIKit.h"
 #import "YARefreshIndicator.h"
 
 @interface YARefreshControl ()
@@ -82,7 +82,8 @@
 
     if (direction == kYARefreshDirectionTop && [UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
         [self.scrollView insertSubview:customView atIndex:0];
-    } else {
+    }
+    else {
         [self.scrollView addSubview:customView];
     }
 
@@ -99,7 +100,8 @@
         if (direction & canRefreshDirection) {
             [refreshView setHidden:NO];
             [self _layoutRefreshViewForDirection:direction];
-        } else {
+        }
+        else {
             [refreshView setHidden:YES];
         }
     }
@@ -217,15 +219,30 @@
     [self _setRefreshState:kYARefreshStateStop atDirection:direction];
     NSTimeInterval duration = flag ? 0.4f : 0.0f;
 
+    UIEdgeInsets contentInset = _scrollView.contentInset;
+    UIView *refreshView = [self refreshViewAtDirection:direction];
+
+    CGFloat refreshingInset = CGRectGetHeight(refreshView.frame);
+    if ([self.delegate respondsToSelector:@selector(refreshControl:refreshingInsetForDirection:)]) {
+        refreshingInset = [self.delegate refreshControl:self refreshingInsetForDirection:direction];
+    }
+
     [UIView animateWithDuration:duration
         animations:^{
-          _scrollView.contentInset = self.originContentInsets;
+          switch (direction) {
+              case kYARefreshDirectionTop:
+                  _scrollView.contentInset = UIEdgeInsetsMake(contentInset.top - refreshingInset, contentInset.left,
+                                                              contentInset.bottom, contentInset.right);
+                  break;
+              default:
+                  break;
+          }
         }
         completion:^(BOOL finished) {
-            self.refreshingDirection &= ~direction;
-            if (completion) {
-                completion();
-            }
+          self.refreshingDirection &= ~direction;
+          if (completion) {
+              completion();
+          }
         }];
 }
 
@@ -233,7 +250,6 @@
 
 - (void)_checkOffsetsForDirection:(YARefreshDirection)direction change:(NSDictionary *)change
 {
-
     // define some local ivars that disambiguates according to direction
     CGPoint oldOffset = [[change objectForKey:NSKeyValueChangeOldKey] CGPointValue];
     if (direction == kYARefreshDirectionTop || direction == kYARefreshDirectionBottom) {
@@ -277,7 +293,8 @@
             refreshableDirection = kYARefreshableDirectionBottom;
             if (_scrollView.frame.size.height > _scrollView.contentSize.height) {
                 threshold = oldOffset.y;
-            } else {
+            }
+            else {
                 threshold = ((CGRectGetHeight(self.scrollView.bounds) + oldOffset.y) -
                              (self.scrollView.contentSize.height + self.originContentInsets.bottom));
             }
@@ -323,13 +340,15 @@
                       if (self.refreshHandleAction)
                           self.refreshHandleAction(direction);
                     }];
-            } else if (_scrollView.dragging && !_scrollView.decelerating &&
-                       !(self.refreshableDirection & refreshableDirection)) {
+            }
+            else if (_scrollView.dragging && !_scrollView.decelerating &&
+                     !(self.refreshableDirection & refreshableDirection)) {
                 // only go in here the first time you've dragged past releasable offset
                 self.refreshableDirection |= refreshableDirection;
                 [self _setRefreshState:kYARefreshStateTrigger atDirection:direction];
             }
-        } else if ((self.refreshableDirection & refreshableDirection)) {
+        }
+        else if ((self.refreshableDirection & refreshableDirection)) {
             // if you're here it means you've crossed back from the releasable offset
             self.refreshableDirection &= ~refreshableDirection;
             [self _setRefreshState:kYARefreshStateStop atDirection:direction];
@@ -348,7 +367,7 @@
         [refreshView setHidden:NO];
         switch (direction) {
             case kYARefreshDirectionTop:
-                originY = self.scrollView.contentOffset.y + self.originContentInsets.top + self.refreshViewInsets.top;
+                originY = -refreshView.frame.size.height - self.refreshViewInsets.top;
                 break;
 
             case kYARefreshDirectionBottom:
@@ -362,7 +381,8 @@
                 break;
         }
         [refreshView setFrameOriginY:originY];
-    } else {
+    }
+    else {
         [refreshView setHidden:YES];
     }
 }
