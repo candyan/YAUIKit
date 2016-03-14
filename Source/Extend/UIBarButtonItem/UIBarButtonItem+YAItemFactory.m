@@ -73,9 +73,6 @@ static CGFloat const kPABarButtonDefaultSize = 44.0f;
 + (NSArray *)barButtonItemsWithCustomView:(UIView *)customView space:(CGFloat)space
 {
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
-    if (space == 0) {
-        return @[ barButtonItem ];
-    }
 
     UIBarButtonItem *spaceItem =
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
