@@ -23,7 +23,7 @@
     }
 
     if (keyboardWindow == nil) {
-        keyboardWindow = (windows.count > 1) ? windows[1] : windows.firstObject;
+        keyboardWindow = windows.firstObject;
     }
 
     return keyboardWindow;
