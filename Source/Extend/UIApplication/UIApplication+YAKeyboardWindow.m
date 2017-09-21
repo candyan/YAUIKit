@@ -22,10 +22,6 @@
         }
     }
 
-    if (keyboardWindow == nil) {
-        keyboardWindow = (windows.count > 1) ? windows[1] : windows.firstObject;
-    }
-
     return keyboardWindow;
 }
 

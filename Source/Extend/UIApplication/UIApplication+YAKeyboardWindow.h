@@ -10,6 +10,6 @@
 
 @interface UIApplication (YAKeyboardWindow)
 
-- (UIWindow *)keyboardWindow;
+- (nullable UIWindow *)keyboardWindow;
 
 @end
